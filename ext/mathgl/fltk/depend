@@ -1,0 +1,2 @@
+fltk.cxx: ../tmpl/mkwin.rb ../tmpl/win.erb.cxx
+	ruby ../tmpl/mkwin.rb fltk > $@
