@@ -1,8 +1,6 @@
-# Mathgl
+# Ruby/MathGL
 
-Ruby/MathGL : MathGL wrapper for Ruby made using SWIG
-
-MathGL - library for scientific data visualization
+Ruby wrapper of MathGL - library for scientific data visualization
 http://mathgl.sourceforge.net/
 
 (This package is under construction.)
