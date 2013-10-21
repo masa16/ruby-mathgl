@@ -33,3 +33,7 @@ spec/*/*.csv
 **/*.o
 **/*.so
 mkmf.log
+
+ext/mathgl/*/*.cxx
+ext/mathgl/*/Makefile
+ext/mathgl/Makefile
