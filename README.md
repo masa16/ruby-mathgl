@@ -26,7 +26,7 @@ Write to PNG
     require 'mathgl'
 
     prc = proc{
-      x = (1..100).map{|i| i*0.1}
+      x = (0..100).map{|i| i*0.1}
       y = x.map{|i| Math.sin(i)}
       set_ranges(0,10,-1,1)
       box
@@ -43,7 +43,7 @@ Qt window:
     require 'mathgl'
 
     prc = proc{
-      x = (1..100).map{|i| i*0.1}
+      x = (0..100).map{|i| i*0.1}
       y = x.map{|i| Math.sin(i)}
       set_ranges(0,10,-1,1)
       box

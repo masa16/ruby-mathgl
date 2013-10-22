@@ -44,9 +44,9 @@ def mgls_prepare1d(y=nil,y1=nil,y2=nil,x1=nil,x2=nil)
   for i in 0...n
     xx = i/(n-1.0)
     if y
-      y.set_val(0.7*Math.sin(2*M_PI*xx) + 0.5*Math.cos(3*M_PI*xx) + 0.2*Math.sin(M_PI*xx),i)
-      y.set_val(Math.sin(2*M_PI*xx),i+n)
-      y.set_val(Math.cos(2*M_PI*xx),i+2*n)
+      y.set_val(0.7*Math.sin(2*M_PI*xx) + 0.5*Math.cos(3*M_PI*xx) + 0.2*Math.sin(M_PI*xx),i,0)
+      y.set_val(Math.sin(2*M_PI*xx),i,1)
+      y.set_val(Math.cos(2*M_PI*xx),i,2)
     end
     if y1
       y1.set_val(0.5+0.3*Math.cos(2*M_PI*xx),i)

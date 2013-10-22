@@ -1916,6 +1916,7 @@ void Init_MathGL();
 void Init_mathgl_qt();
 void Init_mathgl_fltk();
 void Init_mathgl_glut();
+
 void Init_mathgl() {
     Init_MathGL();
 #ifdef HAVE_QT
