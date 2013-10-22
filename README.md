@@ -41,7 +41,6 @@ Write to PNG
 Qt window:
 
     require 'mathgl'
-    require "mathgl/qt"
 
     prc = proc{
       x = (1..100).map{|i| i*0.1}
