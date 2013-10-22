@@ -11,13 +11,13 @@ http://mathgl.sourceforge.net/
 
 2. Install Ruby/MathGL from source:
 
-    ruby setup.rb config --prefix=$HOME/local -- --with-mathgl-dir=/usr/local
-    ruby setup.rb setup
-    ruby setup.rb install
+        $ ruby setup.rb config -- --with-mathgl-dir=/usr/local
+        $ ruby setup.rb setup
+        $ ruby setup.rb install
 
-Or install with gem:
+  Or install with gem:
 
-    $ gem install mathgl -- --with-mathgl-dir=/usr/local
+        $ gem install mathgl -- --with-mathgl-dir=/usr/local
 
 ## Usage
 
