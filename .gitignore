@@ -25,15 +25,17 @@ tmp
 .#*
 */.#*
 */*/.#*
+#*
+*/#*
+*/*/#*
 rhosts
 spec/*/*.dat
 spec/*/*.csv
 
-**/Makefile
-**/*.o
-**/*.so
 mkmf.log
-
-ext/mathgl/*/*.cxx
-ext/mathgl/*/Makefile
+ext/mathgl/*.o
+ext/mathgl/qt.cxx
+ext/mathgl/fltk.cxx
+ext/mathgl/glut.cxx
+ext/mathgl/mathgl.so
 ext/mathgl/Makefile

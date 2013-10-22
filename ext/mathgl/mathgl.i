@@ -112,12 +112,3 @@ import_array();
 	void __setitem__( int i, float y)	{	self->SetVal(y,i);	};
 	void __paren_asgn( int i, float y)	{	self->SetVal(y,i);	};
 };
-
-#ifdef SWIGRUBY
-%{
-extern "C" {
-void Init_MathGL();
-void Init_mathgl(){ Init_MathGL(); }
-}
-%}
-#endif

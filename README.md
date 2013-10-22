@@ -7,13 +7,15 @@ http://mathgl.sourceforge.net/
 
 ## Installation
 
-Install from source:
+1. Install MathGL2 library: http://mathgl.sourceforge.net/
+
+2. Install Ruby/MathGL from source:
 
     ruby setup.rb config --prefix=$HOME/local -- --with-mathgl-dir=/usr/local
     ruby setup.rb setup
     ruby setup.rb install
 
-Or install it yourself as:
+Or install with gem:
 
     $ gem install mathgl -- --with-mathgl-dir=/usr/local
 

@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{Ruby wrapper for MathGL - library for scientific data visualization}
   spec.homepage      = "https://github.com/masa16/ruby-mathgl"
   spec.license       = "LGPL"
-  spec.extensions    = `git ls-files ext`.split($/).grep(/extconf/)
+  spec.extensions    = ["ext/mathgl/extconf.rb"]
 
   spec.files         = `git ls-files`.split($/)
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
@@ -21,4 +21,15 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
+
+  spec.rdoc_options = %w[
+--exclude lib/mathgl.so
+--exclude doc/
+--exclude ext/
+--exclude sample/
+--exclude setup.rb
+--exclude mathgl.gemspec
+--exclude Gemfile
+--exclude Rakefile
+]
 end

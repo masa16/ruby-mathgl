@@ -112,7 +112,7 @@ static VALUE mgl<%=low%>_run(VALUE self)
 
 extern "C" {
 void
-Init_<%=low%>()
+Init_mathgl_<%=low%>()
 {
     VALUE mMathGL;
     VALUE cMgl<%=up%>;

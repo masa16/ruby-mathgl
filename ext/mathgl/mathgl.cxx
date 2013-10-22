@@ -1911,6 +1911,26 @@ struct timeval rb_time_timeval(VALUE);
 #endif
 
 
+extern "C" {
+void Init_MathGL();
+void Init_mathgl_qt();
+void Init_mathgl_fltk();
+void Init_mathgl_glut();
+void Init_mathgl() {
+    Init_MathGL();
+#ifdef HAVE_QT
+    Init_mathgl_qt();
+#endif
+#ifdef HAVE_FLTK
+    Init_mathgl_fltk();
+#endif
+#ifdef HAVE_GLUT
+    Init_mathgl_glut();
+#endif
+}
+}
+
+
 static mglPoint GetMglPoint(VALUE arg)
 {
     if (TYPE(arg)==T_ARRAY) {
@@ -2263,12 +2283,6 @@ SWIGINTERN void mglData___paren_asgn(mglData *self,int i,float y){	self->SetVal(
 SWIGINTERN void mglGraph_SetFunc__SWIG_1(mglGraph *self,char const *EqX,int EqY=0,int EqZ=0,int EqA=0){ self->SetFunc(EqX, 0, 0, 0); }
 SWIGINTERN void mglGraph_SetFunc__SWIG_5(mglGraph *self,char const *EqX,char const *EqY,int EqZ=0,int EqA=0){ self->SetFunc(EqX, EqY, 0, 0); }
 SWIGINTERN void mglGraph_SetFunc__SWIG_8(mglGraph *self,char const *EqX,char const *EqY,char const *EqZ=NULL,int EqA=0){ self->SetFunc(EqX, EqY, EqZ, 0); }
-
-extern "C" {
-void Init_MathGL();
-void Init_mathgl(){ Init_MathGL(); }
-}
-
 
 /*
   Document-method: MathGL.Pi

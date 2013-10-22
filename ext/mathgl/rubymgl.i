@@ -1,6 +1,28 @@
 %include "typemaps.i"
 %include "wchar.i"
 
+%{
+extern "C" {
+void Init_MathGL();
+void Init_mathgl_qt();
+void Init_mathgl_fltk();
+void Init_mathgl_glut();
+
+void Init_mathgl() {
+    Init_MathGL();
+#ifdef HAVE_QT
+    Init_mathgl_qt();
+#endif
+#ifdef HAVE_FLTK
+    Init_mathgl_fltk();
+#endif
+#ifdef HAVE_GLUT
+    Init_mathgl_glut();
+#endif
+}
+}
+%}
+
 //-- mglPoint --
 %{
 static mglPoint GetMglPoint(VALUE arg)

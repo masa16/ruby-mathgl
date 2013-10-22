@@ -1,2 +1,12 @@
 mathgl.cxx: mathgl.i rubymgl.i
 	swig -ruby -autorename -c++ $(INCFLAGS) -o $@ $<
+fltk.cxx: tmpl/mkwin.rb tmpl/win.erb.cxx
+	ruby tmpl/mkwin.rb fltk > $@
+glut.cxx: tmpl/mkwin.rb tmpl/win.erb.cxx
+	ruby tmpl/mkwin.rb glut > $@
+qt.cxx: tmpl/mkwin.rb tmpl/win.erb.cxx
+	ruby tmpl/mkwin.rb qt > $@
+
+.PHONY : cleancxx
+cleancxx: clean
+	rm -f qt.cxx fltk.cxx glut.cxx
