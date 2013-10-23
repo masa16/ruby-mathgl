@@ -5,6 +5,8 @@ http://mathgl.sourceforge.net/
 
 (This package is under construction.)
 
+Sample plots: https://github.com/masa16/ruby-mathgl-sample
+
 ## Installation
 
 1. Install MathGL2 library: http://mathgl.sourceforge.net/

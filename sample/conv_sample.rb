@@ -10,21 +10,8 @@ class ConvSample
     @i = -1
 
     print "
-libdir = File.expand_path(File.dirname(__FILE__))
-require libdir+"/../ext/mathgl/mathgl.so"
-require libdir+"/prepare"
-
-def mgl_rnd
-  rand
-end
-
-def pow(a,b)
-  a**b
-end
-
-M_PI = Math::PI
-NULL = nil
-NAN  = 0.0/0.0
+require 'mathgl'
+require './prepare'
 
 procs = {}
 "

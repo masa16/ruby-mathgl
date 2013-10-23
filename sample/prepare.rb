@@ -1,6 +1,14 @@
+def mgl_rnd
+  rand
+end
+
 def pow(a,b)
   a**b
 end
+
+M_PI = Math::PI
+NULL = nil
+NAN  = 0.0/0.0
 
 # void mgls_prepare1d(mglData *y, mglData *y1, mglData *y2, mglData *x1, mglData *x2)
 # {
