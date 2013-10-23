@@ -1,11 +1,11 @@
 # Ruby/MathGL
 
-Ruby wrapper of MathGL - library for scientific data visualization
-http://mathgl.sourceforge.net/
+Ruby wrapper of [MathGL](http://mathgl.sourceforge.net/) -
+library for scientific data visualization
 
 (This package is under construction.)
 
-Sample plots: https://github.com/masa16/ruby-mathgl-sample
+- [Sample plots](https://github.com/masa16/ruby-mathgl-sample)
 
 ## Installation
 
