@@ -4,7 +4,7 @@ Ruby wrapper of [MathGL - library for scientific data visualization](http://math
 
 (This package is under construction.)
 
-- [Sample plots](https://github.com/masa16/ruby-mathgl-sample)
+- [Ruby/MathGL Sample Plots](https://github.com/masa16/ruby-mathgl-sample)
 
 ## Installation
 
