@@ -4,7 +4,8 @@ Ruby wrapper of [MathGL - library for scientific data visualization](http://math
 
 (This package is under construction.)
 
-- [Ruby/MathGL Sample Plots](https://github.com/masa16/ruby-mathgl-sample)
+- [Ruby/MathGL Plot Samples](https://github.com/masa16/ruby-mathgl-sample)
+- [Ruby/MathGL API Document](http://masa16.github.io/ruby-mathgl/doc/frames.html)
 
 ## Installation
 
@@ -12,13 +13,13 @@ Ruby wrapper of [MathGL - library for scientific data visualization](http://math
 
 2. Install Ruby/MathGL from source:
 
-        $ ruby setup.rb config -- --with-mathgl-dir=/usr/local
-        $ ruby setup.rb setup
-        $ ruby setup.rb install
+        ruby setup.rb config -- --with-mathgl-dir=/usr/local
+        ruby setup.rb setup
+        ruby setup.rb install
 
   Or install with gem:
 
-        $ gem install mathgl -- --with-mathgl-dir=/usr/local
+        gem install mathgl -- --with-mathgl-dir=/usr/local
 
 ## Usage
 

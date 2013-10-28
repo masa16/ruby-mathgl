@@ -5,7 +5,7 @@ require 'mathgl/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "mathgl"
-  spec.version       = Mathgl::VERSION
+  spec.version       = MathGL::VERSION
   spec.authors       = ["Masahiro TANAKA"]
   spec.email         = ["masa16.tanaka@gmail.com"]
   spec.description   = %q{Ruby wrapper for MathGL - library for scientific data visualization}

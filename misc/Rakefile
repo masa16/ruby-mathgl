@@ -1,0 +1,10 @@
+require 'rake/clean'
+
+task :mkdoc do
+  sh "ruby conv_texi.rb"
+  sh "yard -r ../README.md --title 'Ruby/MathGL document'"
+end
+
+task :default => :mkdoc
+
+CLEAN.include %w[doc .yardoc]

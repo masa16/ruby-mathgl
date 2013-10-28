@@ -93,6 +93,7 @@ class MethodType
     @docs.each do |s|
       d << s
     end
+    d << "#"
     d << "# @overload #{name}(#{vars.join(',')})"
     @args.each do |a|
       d << "#  @param [#{a.type}] #{a.name} #{a.default_s}"
@@ -158,6 +159,7 @@ class MethodType
       @name != "!" and
       @name != "unknown_method" and
       @clss =~ /^mgl/i and
+      @clss !~ /^mgldatac/i and
       @return_type !~ re_ignore and
       @args.all?{|a| re_ignore !~ a.type}
   end
@@ -198,7 +200,11 @@ class TexiParse
   def write(io)
     @docs.each do |clss,docs|
       if clss
-        io.print "\n# #{clss} class\nclass #{clss}\n\n"
+        if clss == "MglVar"
+          io.print "\n# #{clss} class\nclass #{clss} < MglData\n\n"
+        else
+          io.print "\n# #{clss} class\nclass #{clss}\n\n"
+        end
         docs.each do |x|
           io.print x+"\n\n"
         end
@@ -322,14 +328,18 @@ class TexiParse
       end
     end
     h.each do |clss,a|
-      d = s.dup
-      a.each do |m|
-        d << m.mkdoc
+      mn = {}
+      a.each{|m| mn[m.name]=true}
+      mn.keys.each do |name|
+        d = s.dup
+        a.each do |m|
+          if m.name==name
+            d << m.mkdoc
+          end
+        end
+        d << "def #{name}\nend\n"
+        (@docs[clss] ||= []) << d
       end
-      d << a[0].ruby_def
-      b = @docs[clss]
-      @docs[clss] = b = [] unless b
-      b << d
     end
     nil
   end
@@ -405,7 +415,7 @@ class TexiParse
 end
 
 srcdir = ENV["HOME"]+"/2013/src/mathgl-2.1.3.1/texinfo/"
-dstdir = ENV["HOME"]+"/2013/git/ruby-mathgl/lib/mathgl/"
+dstdir = "lib/mathgl/"
 
 %w[core data other parse].each do |b|
   rf = srcdir+b+'_en.texi'
@@ -418,8 +428,12 @@ dstdir = ENV["HOME"]+"/2013/git/ruby-mathgl/lib/mathgl/"
     tp.parse(src)
     if !tp.empty?
       open(wf,"w"){|io|
-      io.puts "# This document is converted from #{File.basename(rf)}."
+        io.puts "# This document is converted from #{File.basename(rf)}."
+        io.puts ""
+        io.puts "# module MathGL"
+        io.puts "module MathGL"
         tp.write(io)
+        io.puts "end"
       }
     end
   end
