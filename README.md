@@ -17,7 +17,7 @@ Ruby wrapper of [MathGL - library for scientific data visualization](http://math
         ruby setup.rb setup
         ruby setup.rb install
 
-  Or install with gem:
+   Or install with gem:
 
         gem install mathgl -- --with-mathgl-dir=/usr/local
 
