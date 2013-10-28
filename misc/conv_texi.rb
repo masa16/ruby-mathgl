@@ -131,9 +131,13 @@ class MethodType
 
   def decomp_parms(parms)
     parms.split(/,/).each_with_index do |x,i|
+      x.strip!
       if /(\S.*[\s*&])(\w+)(=([^=]+))?/ =~ x
         @args[i] = Args.new($1,$2,$4)
+      elsif x=="num"
+        @args[i] = Args.new("Numeric",x)
       else
+        puts "unknown params: "+x+" in "+parms
         @args[i] = Args.new("unknown","error")
       end
     end
@@ -153,7 +157,7 @@ class MethodType
   end
 
   def valid
-    re_ignore = /\b(HMGL|HCDT|HMPR|HMDT|HADT)\b/
+    re_ignore = /\b(HMGL|HCDT|HMPR|HMDT|HADT|dual)\b/
     @name !~ /=$/ and
       @name !~ /^mgl_/ and
       @name != "!" and
@@ -254,12 +258,15 @@ class TexiParse
   end
 
   def parse_inline(a)
-    a = a.gsub(/@(\w+)\{([^}]*)\}/){|x| parse_tag($1,$2)}
+    a.gsub(/@(\w+)\{([^}]*)\}/){|x| parse_tag($1,$2)}
+  end
+
+  def escape(a)
     #a.gsub!(/@\{/,"&#123;")
     #a.gsub!(/@\}/,"&#125;")
     #a.gsub!(/\[/,'&#91;')
     #a.gsub!(/\]/,'&#93;')
-    a.gsub!(/@\{/,'(')
+    a = a.gsub(/@\{/,'(')
     a.gsub!(/@\}/,')')
     a.gsub!(/\[/,'(')
     a.gsub!(/\]/,')')
@@ -276,7 +283,7 @@ class TexiParse
       line = parse_inline(a)
     end
     if line
-      @block_nest.last.push(line)
+      @block_nest.last.push(escape(line))
     end
   end
 

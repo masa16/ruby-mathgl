@@ -882,9 +882,9 @@ end
 # Data changing.
 # Rolls the data along direction dir. Resulting array will be out(i) = ini((i+num)%nx) if dir='x'.
 #
-# @overload roll(dir,error)
+# @overload roll(dir,num)
 #  @param [String] dir 
-#  @param [unknown] error 
+#  @param [Numeric] num 
 #  @return [nil]
 def roll
 end
@@ -1312,10 +1312,10 @@ end
 # Evaluate expression.
 # Evaluates the formula for variables in array var(0,...,'z'-'a').
 #
-# @overload var(error)
-#  @param [unknown] error 
-#  @return [mreal Eval (mreal]
-def var
+# @overload eval(var)
+#  @param [Float] var 
+#  @return [Float]
+def eval
 end
 
 
@@ -1335,42 +1335,15 @@ end
 # Evaluate expression.
 # Evaluates the formula derivation respect to dir for variables in array var(0,...,'z'-'a').
 #
-# @overload var(error)
-#  @param [unknown] error 
-#  @return [mreal Diff (char dir, mreal]
-def var
+# @overload diff(dir,var)
+#  @param [String] dir 
+#  @param [Float] var 
+#  @return [Float]
+def diff
 end
 
 
 end # MglExpr
-
-
-# MglExprC class
-class MglExprC
-
-# Evaluate expression.
-# Evaluates the formula for 'x','r'=x, 'y','n'=y, 'z','t'=z, 'a','u'=u.
-#
-# @overload eval(x,y,z)
-#  @param [dual] x 
-#  @param [dual] y 
-#  @param [dual] z 
-#  @return [dual]
-def eval
-end
-
-
-# Evaluate expression.
-# Evaluates the formula for variables in array var(0,...,'z'-'a').
-#
-# @overload var(error)
-#  @param [unknown] error 
-#  @return [dual Eval (dual]
-def var
-end
-
-
-end # MglExprC
 
 
 # MglVar class
