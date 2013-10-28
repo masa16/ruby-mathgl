@@ -1,7 +1,9 @@
 # This document is converted from parse_en.texi.
+
+# MglParse class
 class MglParse
 
-# Main function in the class. Function parse and execute line-by-line MGL script in array text. Lines are separated by newline symbol  as usual.
+# Main function in the class. Function parse and execute line-by-line MGL script in array text. Lines are separated by newline symbol '\n' as usual.
 # @overload execute(gr,text)
 #  @param [MglGraph] gr 
 #  @param [String] text 
@@ -38,7 +40,7 @@ def calc
 end
 
 
-# Function set the value of n-th parameter as string str (n=0, 1 ... 'z'-'a'+10). String str shouldn't contain  symbol.
+# Function set the value of n-th parameter as string str (n=0, 1 ... 'z'-'a'+10). String str shouldn't contain '$' symbol.
 # @overload add_param(n,str)
 #  @param [Integer] n 
 #  @param [String] str 
@@ -47,7 +49,7 @@ def add_param
 end
 
 
-# Function returns the pointer to variable with name name or zero if variable is absent. Use this function to put external data array to the script or get the data from the script. You must  obtained data arrays!
+# Function returns the pointer to variable with name name or zero if variable is absent. Use this function to put external data array to the script or get the data from the script. You must not delete obtained data arrays!
 # @overload find_var(name)
 #  @param [String] name 
 #  @return [MglVar]
@@ -55,7 +57,7 @@ def find_var
 end
 
 
-# Function returns the pointer to variable with name name. If variable is absent then new variable is created with name name. Use this function to put external data array to the script or get the data from the script. You must  obtained data arrays!
+# Function returns the pointer to variable with name name. If variable is absent then new variable is created with name name. Use this function to put external data array to the script or get the data from the script. You must not delete obtained data arrays!
 # @overload add_var(name)
 #  @param [String] name 
 #  @return [MglVar]

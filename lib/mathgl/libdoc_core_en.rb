@@ -1,8 +1,10 @@
 # This document is converted from core_en.texi.
+
+# MglGraph class
 class MglGraph
 
 # Create and delete objects.
-# Creates the instance of class mglGraph with specified sizes width and height. Parameter kind may have following values:  -- use default plotter,  -- use OpenGL plotter.
+# Creates the instance of class mglGraph with specified sizes width and height. Parameter kind may have following values: '0' -- use default plotter, '1' -- use OpenGL plotter.
 # @overload initialize(kind=0,width=600,height=400)
 #  @param [Integer] kind default=0
 #  @param [Integer] width default=600
@@ -43,6 +45,7 @@ end
 
 # Transparency.
 # Set the type of transparency. Possible values are:
+# Types of transparency.
 # @overload set_transp_type(type)
 #  @param [Integer] type 
 #  @return [nil]
@@ -70,7 +73,7 @@ end
 
 
 # Lighting.
-# The function adds a light source with identification n in direction d with color c and with brightness bright (which must be in range [0,1]). If position r is specified and isn't NAN then light source is supposed to be local otherwise light source is supposed to be placed at infinity.
+# The function adds a light source with identification n in direction d with color c and with brightness bright (which must be in range (0,1)). If position r is specified and isn't NAN then light source is supposed to be local otherwise light source is supposed to be placed at infinity.
 # @overload add_light(n,d,c='w',bright=0.5,ap=0)
 #  @param [Integer] n 
 #  @param [MglPoint] d 
@@ -100,7 +103,7 @@ end
 
 
 # Lighting.
-# Sets the brightness of ambient light. The value should be in range [0,1].
+# Sets the brightness of ambient light. The value should be in range (0,1).
 # @overload set_ambient(bright=0.5)
 #  @param [Float] bright default=0.5
 #  @return [nil]
@@ -109,7 +112,7 @@ end
 
 
 # Fog.
-# Function imitate a fog in the plot. Fog start from relative distance dz from view point and its density growths exponentially in depth. So that the fog influence is determined by law ~ 1-exp(-*d*z*). Here *z* is normalized to 1 depth of the plot. If value d=0 then the fog is absent. Note, that fog was applied at stage of image creation, not at stage of drawing. 
+# Function imitate a fog in the plot. Fog start from relative distance dz from view point and its density growths exponentially in depth. So that the fog influence is determined by law ~ 1-exp(-d*z). Here *z* is normalized to 1 depth of the plot. If value d=0 then the fog is absent. Note, that fog was applied at stage of image creation, not at stage of drawing. Adding fog
 # @overload fog(d,dz=0.25)
 #  @param [Float] d 
 #  @param [Float] dz default=0.25
@@ -228,7 +231,7 @@ end
 
 
 # Font settings.
-# Sets the font specification (see Text printing). Default is  -- Roman font centering.
+# Sets the font specification (see Text printing). Default is 'rC' -- Roman font centering.
 # @overload set_font_def(fnt)
 #  @param [String] fnt 
 #  @return [nil]
@@ -303,7 +306,7 @@ end
 
 
 # Palette and colors.
-# Sets the palette as selected colors. Default value is "Hbgrcmyhlnqeup" that corresponds to colors: dark gray , blue , green , red , cyan , magenta , yellow , gray , blue-green , sky-blue , orange , yellow-green , blue-violet , purple . The palette is used mostly in 1D plots (see 1D plotting) for curves which styles are not specified. Internal color counter will be nullified by any change of palette. This includes even hidden change (for example, by box or axis functions).
+# Sets the palette as selected colors. Default value is "Hbgrcmyhlnqeup" that corresponds to colors: dark gray 'H', blue 'b', green 'g', red 'r', cyan 'c', magenta 'm', yellow 'y', gray 'h', blue-green 'l', sky-blue 'n', orange 'q', yellow-green 'e', blue-violet 'u', purple 'p'. The palette is used mostly in 1D plots (see 1D plotting) for curves which styles are not specified. Internal color counter will be nullified by any change of palette. This includes even hidden change (for example, by box or axis functions).
 # @overload set_palette(colors)
 #  @param [String] colors 
 #  @return [nil]
@@ -347,7 +350,7 @@ end
 
 
 # Ranges (bounding box).
-# Sets the range for -,-,- coordinate or coloring (). See also ranges.
+# Sets the range for 'x'-,'y'-,'z'- coordinate or coloring ('c'). See also ranges.
 # @overload set_range(dir,v1,v2)
 #  @param [String] dir 
 #  @param [Float] v1 
@@ -358,7 +361,7 @@ end
 
 
 # Ranges (bounding box).
-# Sets the range for -,-,- coordinate or coloring () as minimal and maximal values of data dat. Parameter add=on shows that the new range will be joined to existed one (not replace it).
+# Sets the range for 'x'-,'y'-,'z'- coordinate or coloring ('c') as minimal and maximal values of data dat. Parameter add=on shows that the new range will be joined to existed one (not replace it).
 # @overload set_range(dir,dat,add=false)
 #  @param [String] dir 
 #  @param [MglData] dat 
@@ -369,7 +372,7 @@ end
 
 
 # Ranges (bounding box).
-# Sets the ranges of coordinates. If minimal and maximal values of the coordinate are the same then they are ignored. Also it sets the range for coloring (analogous to crange z1 z2). This is default color range for 2d plots. Initial ranges are [-1, 1].
+# Sets the ranges of coordinates. If minimal and maximal values of the coordinate are the same then they are ignored. Also it sets the range for coloring (analogous to crange z1 z2). This is default color range for 2d plots. Initial ranges are (-1, 1).
 # @overload set_ranges(p1,p2)
 #  @param [MglPoint] p1 
 #  @param [MglPoint] p2 
@@ -387,7 +390,7 @@ end
 
 
 # Ranges (bounding box).
-# Sets the ranges of -,-,-coordinates and coloring as minimal and maximal values of data xx, yy, zz, cc correspondingly.
+# Sets the ranges of 'x'-,'y'-,'z'-coordinates and coloring as minimal and maximal values of data xx, yy, zz, cc correspondingly.
 # @overload set_ranges(xx,yy)
 #  @param [MglData] xx 
 #  @param [MglData] yy 
@@ -442,7 +445,7 @@ end
 
 
 # Ranges (bounding box).
-# Additionally extend axis range for any settings made by SetRange or SetRanges functions according the formula  and  (or  and  for log-axis range when  or ). Initial ranges are [0, 1]. Attention! this settings can not be overwritten by any other functions, including DefaultPlotParam().
+# Additionally extend axis range for any settings made by SetRange or SetRanges functions according the formula min += (max-min)*p1 and max += (max-min)*p1 (or min *= (max/min)^p1 and max *= (max/min)^p1 for log-axis range when inf>max/min>100 or 0<max/min<0.01). Initial ranges are (0, 1). Attention! this settings can not be overwritten by any other functions, including DefaultPlotParam().
 # @overload zoom_axis(p1,p2)
 #  @param [MglPoint] p1 
 #  @param [MglPoint] p2 
@@ -452,7 +455,7 @@ end
 
 
 # Curved coordinates.
-# Sets transformation formulas for curvilinear coordinate. Each string should contain mathematical expression for real coordinate depending on internal coordinates , ,  and  or  for colorbar. For example, the cylindrical coordinates are introduced as SetFunc("x*cos(y)", "x*sin(y)", "z");. For removing of formulas the corresponding parameter should be empty or NULL. Using transformation formulas will slightly slowing the program. Parameter EqA set the similar transformation formula for color scheme. .
+# Sets transformation formulas for curvilinear coordinate. Each string should contain mathematical expression for real coordinate depending on internal coordinates 'x', 'y', 'z' and 'a' or 'c' for colorbar. For example, the cylindrical coordinates are introduced as SetFunc("x*cos(y)", "x*sin(y)", "z");. For removing of formulas the corresponding parameter should be empty or NULL. Using transformation formulas will slightly slowing the program. Parameter EqA set the similar transformation formula for color scheme. Textual formulas.
 # @overload set_func(eqx,eqy,eqz="",eqa="")
 #  @param [String] eqx 
 #  @param [String] eqy 
@@ -464,7 +467,7 @@ end
 
 
 # Curved coordinates.
-# Sets one of the predefined transformation formulas for curvilinear coordinate. Paramater how define the coordinates: mglCartesian=0 -- Cartesian coordinates (no transformation); mglPolar=1 -- Polar coordinates ; mglSpherical=2 -- Sperical coordinates ; mglParabolic=3 -- Parabolic coordinates ; mglParaboloidal=4 -- Paraboloidal coordinates ; mglOblate=5 -- Oblate coordinates ; mglProlate=6 -- Prolate coordinates ; mglElliptic=7 -- Elliptic coordinates ; mglToroidal=8 -- Toroidal coordinates ; mglBispherical=9 -- Bispherical coordinates ; mglBipolar=10 -- Bipolar coordinates ; mglLogLog=11 -- log-log coordinates ; mglLogX=12 -- log-x coordinates ; mglLogY=13 -- log-y coordinates .
+# Sets one of the predefined transformation formulas for curvilinear coordinate. Paramater how define the coordinates: mglCartesian=0 -- Cartesian coordinates (no transformation); mglPolar=1 -- Polar coordinates x_n=x*cos(y),y_n=x*sin(y), z_n=z; mglSpherical=2 -- Sperical coordinates x_n=x*sin(y)*cos(z), y_n=x*sin(y)*sin(z), z_n=x*cos(y); mglParabolic=3 -- Parabolic coordinates x_n=x*y, y_n=(x*x-y*y)/2, z_n=z; mglParaboloidal=4 -- Paraboloidal coordinates x_n=(x*x-y*y)*cos(z)/2, y_n=(x*x-y*y)*sin(z)/2, z_n=x*y; mglOblate=5 -- Oblate coordinates x_n=cosh(x)*cos(y)*cos(z), y_n=cosh(x)*cos(y)*sin(z), z_n=sinh(x)*sin(y); mglProlate=6 -- Prolate coordinates x_n=sinh(x)*sin(y)*cos(z), y_n=sinh(x)*sin(y)*sin(z), z_n=cosh(x)*cos(y); mglElliptic=7 -- Elliptic coordinates x_n=cosh(x)*cos(y), y_n=sinh(x)*sin(y), z_n=z; mglToroidal=8 -- Toroidal coordinates x_n=sinh(x)*cos(z)/(cosh(x)-cos(y)), y_n=sinh(x)*sin(z)/(cosh(x)-cos(y)), z_n=sin(y)/(cosh(x)-cos(y)); mglBispherical=9 -- Bispherical coordinates x_n=sin(y)*cos(z)/(cosh(x)-cos(y)), y_n=sin(y)*sin(z)/(cosh(x)-cos(y)), z_n=sinh(x)/(cosh(x)-cos(y)); mglBipolar=10 -- Bipolar coordinates x_n=sinh(x)/(cosh(x)-cos(y)), y_n=sin(y)/(cosh(x)-cos(y)), z_n=z; mglLogLog=11 -- log-log coordinates x_n=lg(x), y_n=lg(y), z_n=lg(z); mglLogX=12 -- log-x coordinates x_n=lg(x), y_n=y, z_n=z; mglLogY=13 -- log-y coordinates x_n=x, y_n=lg(y), z_n=z.
 # @overload set_coor(how)
 #  @param [Integer] how 
 #  @return [nil]
@@ -481,7 +484,7 @@ end
 # 
 # Projections can be obtained by adding value 4 to tern argument. So, that tern=4 will draw projections in Cartesian coordinates, tern=5 will draw projections in Ternary coordinates, tern=6 will draw projections in Quaternary coordinates.
 # 
-# Use Ternary(0) for returning to usual axis.  
+# Use Ternary(0) for returning to usual axis. Ternary axis Axis projection
 # @overload ternary(tern)
 #  @param [Integer] tern 
 #  @return [nil]
@@ -511,7 +514,7 @@ end
 
 
 # Ticks.
-# Set the manual positions val and its labels lbl for ticks along axis dir. If array val is absent then values equidistantly distributed in interval [Min.x, Max.x] are used. Labels are separated by  symbol. Use SetTicks() to restore automatic ticks.
+# Set the manual positions val and its labels lbl for ticks along axis dir. If array val is absent then values equidistantly distributed in interval (Min.x, Max.x) are used. Labels are separated by '\n' symbol. Use SetTicks() to restore automatic ticks.
 # @overload set_ticks_val(dir,lbl,add=false)
 #  @param [String] dir 
 #  @param [String] lbl 
@@ -528,7 +531,7 @@ end
 
 
 # Ticks.
-# Set template templ for x-,y-,z-axis ticks or colorbar ticks. It may contain TeX symbols also. If templ="" then default template is used (in simplest case it is ). Setting on template switch off automatic ticks tuning.
+# Set template templ for x-,y-,z-axis ticks or colorbar ticks. It may contain TeX symbols also. If templ="" then default template is used (in simplest case it is '%.2g'). Setting on template switch off automatic ticks tuning.
 # @overload set_tick_templ(dir,templ)
 #  @param [String] dir 
 #  @param [String] templ 
@@ -538,7 +541,7 @@ end
 
 
 # Ticks.
-# Sets time labels with step val and template templ for x-,y-,z-axis ticks or colorbar ticks. It may contain TeX symbols also. The format of template templ is the same as described in . Most common variants are  for national representation of time,  for national representation of date,  for year with century. If val=0 and/or templ="" then automatic tick step and/or template will be selected. You can use mgl_get_time() function for obtaining number of second for given date/time string. Note, that MS Visual Studio couldn't handle date before 1970.
+# Sets time labels with step val and template templ for x-,y-,z-axis ticks or colorbar ticks. It may contain TeX symbols also. The format of template templ is the same as described in http://www.manpagez.com/man/3/strftime/. Most common variants are '%X' for national representation of time, '%x' for national representation of date, '%Y' for year with century. If val=0 and/or templ="" then automatic tick step and/or template will be selected. You can use mgl_get_time() function for obtaining number of second for given date/time string. Note, that MS Visual Studio couldn't handle date before 1970.
 # @overload set_ticks_time(dir,val,templ)
 #  @param [String] dir 
 #  @param [Float] val 
@@ -615,7 +618,7 @@ end
 
 
 # Ticks.
-# The line style of axis (stl), ticks (tck) and subticks (sub). If stl is empty then default style is used ( or  depending on transparency type). If tck or sub is empty then axis style is used (i.e. stl).
+# The line style of axis (stl), ticks (tck) and subticks (sub). If stl is empty then default style is used ('k' or 'w' depending on transparency type). If tck or sub is empty then axis style is used (i.e. stl).
 # @overload set_axis_stl(stl="k",tck=0,sub=0)
 #  @param [String] stl default="k"
 #  @param [String] tck default=0
@@ -655,7 +658,7 @@ end
 
 
 # Subplots and rotation.
-# Puts further plotting in some region of the whole frame surface. This function allows one to create a plot in arbitrary place of the screen. The position is defined by rectangular coordinates [x1, x2]*[y1, y2]. The coordinates x1, x2, y1, y2 are normalized to interval [0, 1]. If parameter rel=true then the relative position to current subplot (or inplot with rel=false) is used. This function set off any aspects or rotations. So it should be used first for creating subplot.
+# Puts further plotting in some region of the whole frame surface. This function allows one to create a plot in arbitrary place of the screen. The position is defined by rectangular coordinates (x1, x2)*(y1, y2). The coordinates x1, x2, y1, y2 are normalized to interval (0, 1). If parameter rel=true then the relative position to current subplot (or inplot with rel=false) is used. This function set off any aspects or rotations. So it should be used first for creating subplot.
 # @overload in_plot(x1,x2,y1,y2,rel=true)
 #  @param [Float] x1 
 #  @param [Float] x2 
@@ -749,7 +752,7 @@ end
 
 
 # Subplots and rotation.
-# Add (switch on) the perspective to plot. The parameter  \in [0,1)}. By default (a=0) the perspective is off.
+# Add (switch on) the perspective to plot. The parameter a ~ 1/z_(eff@ \in (0,1)}. By default (a=0) the perspective is off.
 # @overload perspective(a)
 #  @param [Float] a 
 #  @return [nil]
@@ -794,7 +797,7 @@ end
 
 
 # Subplots and rotation.
-# The function changes the scale of graphics that correspond to zoom in/out of the picture. After function call the current plot will be cleared and further the picture will contain plotting from its part [x1,x2]*[y1,y2]. Here picture coordinates x1, x2, y1, y2 changes from 0 to 1. Attention! this settings can not be overwritten by any other functions, including DefaultPlotParam(). Use Zoom(0,0,1,1) to return default view.
+# The function changes the scale of graphics that correspond to zoom in/out of the picture. After function call the current plot will be cleared and further the picture will contain plotting from its part (x1,x2)*(y1,y2). Here picture coordinates x1, x2, y1, y2 changes from 0 to 1. Attention! this settings can not be overwritten by any other functions, including DefaultPlotParam(). Use Zoom(0,0,1,1) to return default view.
 # @overload zoom(x1,y1,x2,y2)
 #  @param [Float] x1 
 #  @param [Float] y1 
@@ -806,7 +809,7 @@ end
 
 
 # Export picture.
-# Sets size of picture in pixels. This function  called before any other plotting because it completely remove picture contents.
+# Sets size of picture in pixels. This function must be called before any other plotting because it completely remove picture contents.
 # @overload set_size(width,height)
 #  @param [Integer] width 
 #  @param [Integer] height 
@@ -850,7 +853,7 @@ end
 
 
 # Export to file.
-# Exports current frame to a file fname which type is determined by the extension. Parameter descr adds description to file (can be ""). If fname="" then the file  is used, where  is current frame id and name  is defined by plotid class property.
+# Exports current frame to a file fname which type is determined by the extension. Parameter descr adds description to file (can be ""). If fname="" then the file 'frame####.jpg' is used, where '####' is current frame id and name 'frame' is defined by plotid class property.
 # @overload write_frame(fname="",descr="")
 #  @param [String] fname default=""
 #  @param [String] descr default=""
@@ -912,7 +915,7 @@ end
 
 
 # Export to file.
-# Exports current frame to EPS file using vector representation. So it is not recommended for the export of large data plot. It is better to use bitmap format (for example PNG or JPEG). However, program has no internal limitations for size of output file. Parameter fname specifies the file name, descr adds description to file. By default there is no description added. If file name is terminated by  (for example, ) then file will be compressed in gzip format.
+# Exports current frame to EPS file using vector representation. So it is not recommended for the export of large data plot. It is better to use bitmap format (for example PNG or JPEG). However, program has no internal limitations for size of output file. Parameter fname specifies the file name, descr adds description to file. By default there is no description added. If file name is terminated by 'z' (for example, 'fname.eps.gz') then file will be compressed in gzip format.
 # @overload write_eps(fname,descr="")
 #  @param [String] fname 
 #  @param [String] descr default=""
@@ -922,7 +925,7 @@ end
 
 
 # Export to file.
-# Exports current frame to EPS file using bitmap representation. Parameter fname specifies the file name, descr adds description to file. By default there is no description added. If file name is terminated by  (for example, ) then file will be compressed in gzip format.
+# Exports current frame to EPS file using bitmap representation. Parameter fname specifies the file name, descr adds description to file. By default there is no description added. If file name is terminated by 'z' (for example, 'fname.eps.gz') then file will be compressed in gzip format.
 # @overload write_bps(fname,descr="")
 #  @param [String] fname 
 #  @param [String] descr default=""
@@ -932,7 +935,7 @@ end
 
 
 # Export to file.
-# Exports current frame to SVG (Scalable Vector Graphics) file using vector representation. In difference of EPS format, SVG format support transparency that allows to correctly draw semitransparent plot (like surfa, surf3a or cloud). Note, the output file may be too large for graphic of large data array (especially for surfaces). It is better to use bitmap format (for example PNG or JPEG). However, program has no internal limitations for size of output file. Parameter fname specifies the file name, descr adds description to file (default is file name). If file name is terminated by  (for example, ) then file will be compressed in gzip format.
+# Exports current frame to SVG (Scalable Vector Graphics) file using vector representation. In difference of EPS format, SVG format support transparency that allows to correctly draw semitransparent plot (like surfa, surf3a or cloud). Note, the output file may be too large for graphic of large data array (especially for surfaces). It is better to use bitmap format (for example PNG or JPEG). However, program has no internal limitations for size of output file. Parameter fname specifies the file name, descr adds description to file (default is file name). If file name is terminated by 'z' (for example, 'fname.svgz') then file will be compressed in gzip format.
 # @overload write_svg(fname,descr="")
 #  @param [String] fname 
 #  @param [String] descr default=""
@@ -952,7 +955,7 @@ end
 
 
 # Export to file.
-# Exports current frame to PRC file using vector representation (see ). Note, the output file may be too large for graphic of large data array (especially for surfaces). It is better to use bitmap format (for example PNG or JPEG). However, program has no internal limitations for size of output file. Parameter fname specifies the file name, descr adds description to file (default is file name). If parameter make_pdf=true and PDF was enabled at MathGL configure then corresponding PDF file with 3D image will be created.
+# Exports current frame to PRC file using vector representation (see http://en.wikipedia.org/wiki/PRC_%28file_format%29). Note, the output file may be too large for graphic of large data array (especially for surfaces). It is better to use bitmap format (for example PNG or JPEG). However, program has no internal limitations for size of output file. Parameter fname specifies the file name, descr adds description to file (default is file name). If parameter make_pdf=true and PDF was enabled at MathGL configure then corresponding PDF file with 3D image will be created.
 # @overload write_prc(fname,descr="",make_pdf=true)
 #  @param [String] fname 
 #  @param [String] descr default=""
@@ -963,7 +966,7 @@ end
 
 
 # Export to file.
-# Exports current frame to OBJ/MTL file using vector representation (see  for details). Note, the output file may be too large for graphic of large data array (especially for surfaces). It is better to use bitmap format (for example PNG or JPEG). However, program has no internal limitations for size of output file. Parameter fname specifies the file name, descr adds description to file (default is file name).
+# Exports current frame to OBJ/MTL file using vector representation (see http://en.wikipedia.org/wiki/Wavefront_.obj_file, OBJ format for details). Note, the output file may be too large for graphic of large data array (especially for surfaces). It is better to use bitmap format (for example PNG or JPEG). However, program has no internal limitations for size of output file. Parameter fname specifies the file name, descr adds description to file (default is file name).
 # @overload write_obj(fname,descr="")
 #  @param [String] fname 
 #  @param [String] descr default=""
@@ -973,7 +976,7 @@ end
 
 
 # Export to file.
-# Exports current frame to XYZ/XYZL/XYZF files using vector representation (see  for details). Note, the output file may be too large for graphic of large data array (especially for surfaces). It is better to use bitmap format (for example PNG or JPEG). However, program has no internal limitations for size of output file. Parameter fname specifies the file name, descr adds description to file (default is file name).
+# Exports current frame to XYZ/XYZL/XYZF files using vector representation (see http://people.sc.fsu.edu/~jburkardt/data/xyz/xyz.html, XYZ format for details). Note, the output file may be too large for graphic of large data array (especially for surfaces). It is better to use bitmap format (for example PNG or JPEG). However, program has no internal limitations for size of output file. Parameter fname specifies the file name, descr adds description to file (default is file name).
 # @overload write_xyz(fname,descr="")
 #  @param [String] fname 
 #  @param [String] descr default=""
@@ -983,7 +986,7 @@ end
 
 
 # Export to file.
-# Exports current frame to STL file using vector representation (see  for details). Note, the output file may be too large for graphic of large data array (especially for surfaces). It is better to use bitmap format (for example PNG or JPEG). However, program has no internal limitations for size of output file. Parameter fname specifies the file name, descr adds description to file (default is file name.
+# Exports current frame to STL file using vector representation (see http://en.wikipedia.org/wiki/STL_(file_format), STL format for details). Note, the output file may be too large for graphic of large data array (especially for surfaces). It is better to use bitmap format (for example PNG or JPEG). However, program has no internal limitations for size of output file. Parameter fname specifies the file name, descr adds description to file (default is file name.
 # @overload write_stl(fname,descr="")
 #  @param [String] fname 
 #  @param [String] descr default=""
@@ -993,7 +996,7 @@ end
 
 
 # Export to file.
-# Exports current frame to OFF file using vector representation (see  for details). Note, the output file may be too large for graphic of large data array (especially for surfaces). It is better to use bitmap format (for example PNG or JPEG). However, program has no internal limitations for size of output file. Parameter fname specifies the file name, descr adds description to file (default is file name).
+# Exports current frame to OFF file using vector representation (see http://people.sc.fsu.edu/~jburkardt/data/off/off.html, OFF format for details). Note, the output file may be too large for graphic of large data array (especially for surfaces). It is better to use bitmap format (for example PNG or JPEG). However, program has no internal limitations for size of output file. Parameter fname specifies the file name, descr adds description to file (default is file name).
 # @overload write_off(fname,descr="",colored=false)
 #  @param [String] fname 
 #  @param [String] descr default=""
@@ -1044,7 +1047,7 @@ end
 
 
 # Frames/Animation.
-# Creates new frame. Function returns current frame id. This is not thread safe function in OpenGL mode! Use direct list creation in multi-threading drawing. The function EndFrame()  be call after the finishing of the frame drawing for each call of this function.
+# Creates new frame. Function returns current frame id. This is not thread safe function in OpenGL mode! Use direct list creation in multi-threading drawing. The function EndFrame() must be call after the finishing of the frame drawing for each call of this function.
 # @overload new_frame()
 #  @return [nil]
 def new_frame
@@ -1068,7 +1071,7 @@ end
 
 
 # Frames/Animation.
-# Finishes the frame drawing and sets drawing data to frame i, which should be in range [0, GetNumFrame()-1]. This function is similar to EndFrame() but don't add frame to the GIF image.
+# Finishes the frame drawing and sets drawing data to frame i, which should be in range (0, GetNumFrame()-1). This function is similar to EndFrame() but don't add frame to the GIF image.
 # @overload set_frame(i)
 #  @param [Integer] i 
 #  @return [nil]
@@ -1112,7 +1115,7 @@ end
 
 
 # Frames/Animation.
-# Start writing frames into animated GIF file fname. Parameter ms set the delay between frames in milliseconds. You  change the picture size during writing the cinema. Use CloseGIF() to finalize writing. Note, that this function is disabled in OpenGL mode.
+# Start writing frames into animated GIF file fname. Parameter ms set the delay between frames in milliseconds. You should not change the picture size during writing the cinema. Use CloseGIF() to finalize writing. Note, that this function is disabled in OpenGL mode.
 # @overload start_gif(fname,ms=100)
 #  @param [String] fname 
 #  @param [Integer] ms default=100
@@ -1130,7 +1133,7 @@ end
 
 
 # Bitmap in memory.
-# Gets RGB bitmap of the current state of the image. Format of each element of bits is: (red, green, blue). Number of elements is Width*Height. Position of element (i,j) is [3*i + 3*Width*j] (or is [4*i + 4*Width*j] for GetBGRN()). You have to provide the proper size of the buffer, buf, i.e. the code for Python should look like
+# Gets RGB bitmap of the current state of the image. Format of each element of bits is: (red, green, blue). Number of elements is Width*Height. Position of element (i,j) is (3*i + 3*Width*j) (or is (4*i + 4*Width*j) for GetBGRN()). You have to provide the proper size of the buffer, buf, i.e. the code for Python should look like
 # @overload get_rgb()
 #  @return [unsigned char]
 # @overload get_rgb(buf,size)
@@ -1141,12 +1144,12 @@ end
 #  @param [String] buf 
 #  @param [Integer] size 
 #  @return [nil]
-def get_bgrn
+def get_rgb
 end
 
 
 # Bitmap in memory.
-# Gets RGBA bitmap of the current state of the image. Format of each element of bits is: (red, green, blue, alpha). Number of elements is Width*Height. Position of element (i,j) is [4*i + 4*Width*j].
+# Gets RGBA bitmap of the current state of the image. Format of each element of bits is: (red, green, blue, alpha). Number of elements is Width*Height. Position of element (i,j) is (4*i + 4*Width*j).
 # @overload get_rgba()
 #  @return [unsigned char]
 # @overload get_rgba(buf,size)
@@ -1163,7 +1166,7 @@ end
 #  @return [Integer]
 # @overload get_height()
 #  @return [Integer]
-def get_height
+def get_width
 end
 
 
@@ -1276,7 +1279,7 @@ end
 
 
 # Primitives.
-# Draws a mark (point  by default) at position p=(x, y, z) with color col.
+# Draws a mark (point '.' by default) at position p=(x, y, z) with color col.
 # @overload ball(p,col='r')
 #  @param [MglPoint] p 
 #  @param [String] col default='r'
@@ -1285,7 +1288,7 @@ end
 #  @param [MglPoint] p 
 #  @param [String] mark 
 #  @return [nil]
-def mark
+def ball
 end
 
 
@@ -1340,7 +1343,7 @@ end
 
 
 # Primitives.
-# Draws the solid rectangle (face) perpendicular to [x,y,z]-axis correspondingly at position (x0, y0, z0) with color stl and with widths wx, wy, wz along corresponding directions. At this colors can be the same for all vertexes or separately if all 4 colors are specified for each vertex. Parameters d1!=0, d2!=0 set additional shift of the last vertex (i.e. to draw quadrangle). Face will be drawn even if it lies out of bounding box.
+# Draws the solid rectangle (face) perpendicular to (x,y,z)-axis correspondingly at position (x0, y0, z0) with color stl and with widths wx, wy, wz along corresponding directions. At this colors can be the same for all vertexes or separately if all 4 colors are specified for each vertex. Parameters d1!=0, d2!=0 set additional shift of the last vertex (i.e. to draw quadrangle). Face will be drawn even if it lies out of bounding box.
 # @overload face_x(x0,y0,z0,wy,wz,stl="w",d1=0,d2=0)
 #  @param [Float] x0 
 #  @param [Float] y0 
@@ -1371,7 +1374,7 @@ end
 #  @param [Float] d1 default=0
 #  @param [Float] d2 default=0
 #  @return [nil]
-def face_z
+def face_x
 end
 
 
@@ -1387,7 +1390,7 @@ end
 
 
 # Primitives.
-# Draw the drop with radius r at point p elongated in direction d and with color col. Parameter shift set the degree of drop oblongness:  is sphere,  is maximally oblongness drop. Parameter ap set relative width of the drop (this is analogue of ``ellipticity'' for the sphere).
+# Draw the drop with radius r at point p elongated in direction d and with color col. Parameter shift set the degree of drop oblongness: '0' is sphere, '1' is maximally oblongness drop. Parameter ap set relative width of the drop (this is analogue of ``ellipticity'' for the sphere).
 # @overload drop(p,d,r,col="r",shift=1,ap=1)
 #  @param [MglPoint] p 
 #  @param [MglPoint] d 
@@ -1401,7 +1404,7 @@ end
 
 
 # Primitives.
-# Draw tube (or truncated cone if edge=false) between points p1, p2 with radius at the edges r1, r2. If r2<0 then it is supposed that r2=r1. The cone color is defined by string stl. If style contain  then edges will be drawn.
+# Draw tube (or truncated cone if edge=false) between points p1, p2 with radius at the edges r1, r2. If r2<0 then it is supposed that r2=r1. The cone color is defined by string stl. If style contain '@' then edges will be drawn.
 # @overload cone(p1,p2,r1,r2=-1,stl="B")
 #  @param [MglPoint] p1 
 #  @param [MglPoint] p2 
@@ -1468,7 +1471,7 @@ end
 
 
 # Text printing.
-# The function plots the string text at position p along direction d with specified size. Parameter fnt set text style and text position: above () or under () the line.
+# The function plots the string text at position p along direction d with specified size. Parameter fnt set text style and text position: above ('T') or under ('t') the line.
 # @overload puts(p,d,text,fnt=":L",size=-1)
 #  @param [MglPoint] p 
 #  @param [MglPoint] d 
@@ -1481,7 +1484,7 @@ end
 
 
 # Text printing.
-# The function draws text along the curve between points (x[i], y[i], z[i]) by font style fnt. The string fnt may contain symbols  for printing the text under the curve (default), or  for printing the text above the curve. The sizes of 1st dimension must be equal for all arrays x.nx=y.nx=z.nx. If array x is not specified then its an automatic array is used with values equidistantly distributed in interval [Min.x, Max.x] (see Ranges (bounding box)). If array z is not specified then z[i] = Min.z is used. String opt contain command options (see Command options). 
+# The function draws text along the curve between points (x(i), y(i), z(i)) by font style fnt. The string fnt may contain symbols 't' for printing the text under the curve (default), or 'T' for printing the text above the curve. The sizes of 1st dimension must be equal for all arrays x.nx=y.nx=z.nx. If array x is not specified then its an automatic array is used with values equidistantly distributed in interval (Min.x, Max.x) (see Ranges (bounding box)). If array z is not specified then z(i) = Min.z is used. String opt contain command options (see Command options). 
 # @overload text(y,text,fnt="",opt="")
 #  @param [MglData] y 
 #  @param [String] text 
@@ -1509,7 +1512,7 @@ end
 
 # Axis and Colorbar.
 # Draws axes with ticks (see Axis settings). Parameter dir may contain:
-# Styles of ticks and axis can be overrided by using stl string. 
+# Styles of ticks and axis can be overrided by using stl string. Axis and ticks
 # @overload axis(dir="xyz",stl="",opt="")
 #  @param [String] dir default="xyz"
 #  @param [String] stl default=""
@@ -1521,6 +1524,7 @@ end
 
 # Axis and Colorbar.
 # Draws colorbar. Parameter sch may contain:
+# Colorbars
 # @overload colorbar(sch="")
 #  @param [String] sch default=""
 #  @return [nil]
@@ -1529,7 +1533,7 @@ end
 
 
 # Axis and Colorbar.
-# The same as previous but with sharp colors sch (current palette if sch="") for values v. 
+# The same as previous but with sharp colors sch (current palette if sch="") for values v. ContD sample
 # @overload colorbar(v,sch="")
 #  @param [MglData] v 
 #  @param [String] sch default=""
@@ -1539,7 +1543,7 @@ end
 
 
 # Axis and Colorbar.
-# The same as first one but at arbitrary position of subplot (x, y) (supposed to be in range [0,1]). Parameters w, h set the relative width and height of the colorbar.
+# The same as first one but at arbitrary position of subplot (x, y) (supposed to be in range (0,1)). Parameters w, h set the relative width and height of the colorbar.
 # @overload colorbar(sch,x,y,w=1,h=1)
 #  @param [String] sch 
 #  @param [Float] x 
@@ -1552,7 +1556,7 @@ end
 
 
 # Axis and Colorbar.
-# The same as previous but with sharp colors sch (current palette if sch="") for values v. 
+# The same as previous but with sharp colors sch (current palette if sch="") for values v. ContD sample
 # @overload colorbar(v,sch,x,y,w=1,h=1)
 #  @param [MglData] v 
 #  @param [String] sch 
@@ -1566,7 +1570,7 @@ end
 
 
 # Axis and Colorbar.
-# Draws grid lines perpendicular to direction determined by string parameter dir. The step of grid lines is the same as tick step for axis. The style of lines is determined by pen parameter (default value is dark blue solid line ).
+# Draws grid lines perpendicular to direction determined by string parameter dir. The step of grid lines is the same as tick step for axis. The style of lines is determined by pen parameter (default value is dark blue solid line 'B-').
 # @overload grid(dir="xyz",pen="B",opt="")
 #  @param [String] dir default="xyz"
 #  @param [String] pen default="B"
@@ -1577,7 +1581,7 @@ end
 
 
 # Axis and Colorbar.
-# Draws bounding box outside the plotting volume with color col. If col contain  then filled faces are drawn. At this first color is used for faces (default is light yellow), last one for edges. 
+# Draws bounding box outside the plotting volume with color col. If col contain '@' then filled faces are drawn. At this first color is used for faces (default is light yellow), last one for edges. Bounding box
 # @overload box(col="",ticks=true)
 #  @param [String] col default=""
 #  @param [bool] ticks default=true
@@ -1587,7 +1591,7 @@ end
 
 
 # Axis and Colorbar.
-# Prints the label text for axis dir=,,, (here  is ``ternary'' axis ). The position of label is determined by pos parameter. If pos=0 then label is printed at the center of axis. If pos>0 then label is printed at the maximum of axis. If pos<0 then label is printed at the minimum of axis. Value option set additional shifting of the label. .
+# Prints the label text for axis dir='x','y','z','t' (here 't' is ``ternary'' axis t=1-x-y). The position of label is determined by pos parameter. If pos=0 then label is printed at the center of axis. If pos>0 then label is printed at the maximum of axis. If pos<0 then label is printed at the minimum of axis. Value option set additional shifting of the label. Text printing.
 # @overload label(dir,text,pos=1,opt="")
 #  @param [String] dir 
 #  @param [String] text 
@@ -1599,7 +1603,7 @@ end
 
 
 # Legend.
-# Draws legend of accumulated legend entries by font fnt with size. Parameter pos sets the position of the legend:  is bottom left corner,  is bottom right corner,  is top left corner,  is top right corner (is default). Parameter fnt can contain colors for face (1st one), for border (2nd one) and for text (last one). If less than 3 colors are specified then the color for border is black (for 2 and less colors), and the color for face is white (for 1 or none colors). If string fnt contain  then border around the legend is drawn. If string fnt contain  then legend entries will arranged horizontally.
+# Draws legend of accumulated legend entries by font fnt with size. Parameter pos sets the position of the legend: '0' is bottom left corner, '1' is bottom right corner, '2' is top left corner, '3' is top right corner (is default). Parameter fnt can contain colors for face (1st one), for border (2nd one) and for text (last one). If less than 3 colors are specified then the color for border is black (for 2 and less colors), and the color for face is white (for 1 or none colors). If string fnt contain '#' then border around the legend is drawn. If string fnt contain '-' then legend entries will arranged horizontally.
 # @overload legend(pos=0x3,fnt="#",opt="")
 #  @param [Integer] pos default=0x3
 #  @param [String] fnt default="#"
@@ -1610,7 +1614,7 @@ end
 
 
 # Legend.
-# Draws legend of accumulated legend entries by font fnt with size. Position of legend is determined by parameter x, y which supposed to be normalized to interval [0,1].
+# Draws legend of accumulated legend entries by font fnt with size. Position of legend is determined by parameter x, y which supposed to be normalized to interval (0,1).
 # @overload legend(x,y,fnt="#",opt="")
 #  @param [Float] x 
 #  @param [Float] y 
@@ -1649,7 +1653,7 @@ end
 
 
 # 1D plotting.
-# These functions draw continuous lines between points (x[i], y[i], z[i]). See also area, step, stem, tube, mark, error, belt, tens, tape. 
+# These functions draw continuous lines between points (x(i), y(i), z(i)). See also area, step, stem, tube, mark, error, belt, tens, tape. Plot sample
 # @overload plot(y,pen="",opt="")
 #  @param [MglData] y 
 #  @param [String] pen default=""
@@ -1673,7 +1677,7 @@ end
 
 
 # 1D plotting.
-# This functions draws radar chart which is continuous lines between points located on an radial lines (like plot in Polar coordinates). Parameter value in options opt set the additional shift of data (i.e. the data a+value is used instead of a). If value<0 then r=max(0, -min(value). If pen containt  symbol then "grid" (radial lines and circle for r) is drawn. See also plot. 
+# This functions draws radar chart which is continuous lines between points located on an radial lines (like plot in Polar coordinates). Parameter value in options opt set the additional shift of data (i.e. the data a+value is used instead of a). If value<0 then r=max(0, -min(value). If pen containt '#' symbol then "grid" (radial lines and circle for r) is drawn. See also plot. Radar sample
 # @overload radar(a,pen="",opt="")
 #  @param [MglData] a 
 #  @param [String] pen default=""
@@ -1684,7 +1688,7 @@ end
 
 
 # 1D plotting.
-# These functions draw continuous stairs for points to axis plane. See also plot, stem, tile, boxs. 
+# These functions draw continuous stairs for points to axis plane. See also plot, stem, tile, boxs. Step sample
 # @overload step(y,pen="",opt="")
 #  @param [MglData] y 
 #  @param [String] pen default=""
@@ -1708,7 +1712,7 @@ end
 
 
 # 1D plotting.
-# These functions draw continuous lines between points (x[i], y[i], z[i]) with color defined by the special array c[i] (look like tension plot). String pen specifies the color scheme (see Color scheme) and style and/or width of line (see Line styles). See also plot, mesh, fall. 
+# These functions draw continuous lines between points (x(i), y(i), z(i)) with color defined by the special array c(i) (look like tension plot). String pen specifies the color scheme (see Color scheme) and style and/or width of line (see Line styles). See also plot, mesh, fall. Tens sample
 # @overload tens(y,c,pen="",opt="")
 #  @param [MglData] y 
 #  @param [MglData] c 
@@ -1735,7 +1739,7 @@ end
 
 
 # 1D plotting.
-# These functions draw tapes of normals for curve between points (x[i], y[i], z[i]). Initial tape(s) was selected in x-y plane (for  in pen) and/or y-z plane (for  in pen). The width of tape is proportional to barwidth. See also plot, flow, barwidth. 
+# These functions draw tapes of normals for curve between points (x(i), y(i), z(i)). Initial tape(s) was selected in x-y plane (for 'x' in pen) and/or y-z plane (for 'x' in pen). The width of tape is proportional to barwidth. See also plot, flow, barwidth. Tape sample
 # @overload tape(y,pen="",opt="")
 #  @param [MglData] y 
 #  @param [String] pen default=""
@@ -1759,7 +1763,7 @@ end
 
 
 # 1D plotting.
-# These functions draw continuous lines between points and fills it to axis plane. Also you can use gradient filling if number of specified colors is equal to 2*number of curves. See also plot, bars, stem, region. 
+# These functions draw continuous lines between points and fills it to axis plane. Also you can use gradient filling if number of specified colors is equal to 2*number of curves. See also plot, bars, stem, region. Area sample
 # @overload area(y,pen="",opt="")
 #  @param [MglData] y 
 #  @param [String] pen default=""
@@ -1783,7 +1787,7 @@ end
 
 
 # 1D plotting.
-# These functions fill area between 2 curves. Dimensions of arrays y1 and y2 must be equal. Also you can use gradient filling if number of specified colors is equal to 2*number of curves. If pen contain symbol  then only area with y1<y<y2 will be filled else the area with y2<y<y1 will be filled too. See also area, bars, stem. 
+# These functions fill area between 2 curves. Dimensions of arrays y1 and y2 must be equal. Also you can use gradient filling if number of specified colors is equal to 2*number of curves. If pen contain symbol 'i' then only area with y1<y<y2 will be filled else the area with y2<y<y1 will be filled too. See also area, bars, stem. Region sample
 # @overload region(y1,y2,pen="",opt="")
 #  @param [MglData] y1 
 #  @param [MglData] y2 
@@ -1802,7 +1806,7 @@ end
 
 
 # 1D plotting.
-# These functions draw vertical lines from points to axis plane. See also area, bars, plot, mark. 
+# These functions draw vertical lines from points to axis plane. See also area, bars, plot, mark. Stem sample
 # @overload stem(y,pen="",opt="")
 #  @param [MglData] y 
 #  @param [String] pen default=""
@@ -1826,7 +1830,7 @@ end
 
 
 # 1D plotting.
-# These functions draw vertical bars from points to axis plane. If string pen contain symbol  then lines are drawn one above another (like summation). If string contain symbol  then waterfall chart is drawn for determining the cumulative effect of sequentially introduced positive or negative values. You can give different colors for positive and negative values if number of specified colors is equal to 2*number of curves. See also barh, cones, area, stem, chart, barwidth. 
+# These functions draw vertical bars from points to axis plane. If string pen contain symbol 'a' then lines are drawn one above another (like summation). If string contain symbol 'f' then waterfall chart is drawn for determining the cumulative effect of sequentially introduced positive or negative values. You can give different colors for positive and negative values if number of specified colors is equal to 2*number of curves. See also barh, cones, area, stem, chart, barwidth. Bars sample
 # @overload bars(y,pen="",opt="")
 #  @param [MglData] y 
 #  @param [String] pen default=""
@@ -1850,7 +1854,7 @@ end
 
 
 # 1D plotting.
-# These functions draw horizontal bars from points to axis plane. If string contain symbol  then lines are drawn one above another (like summation). If string contain symbol  then waterfall chart is drawn for determining the cumulative effect of sequentially introduced positive or negative values. You can give different colors for positive and negative values if number of specified colors is equal to 2*number of curves. See also bars, barwidth. 
+# These functions draw horizontal bars from points to axis plane. If string contain symbol 'a' then lines are drawn one above another (like summation). If string contain symbol 'f' then waterfall chart is drawn for determining the cumulative effect of sequentially introduced positive or negative values. You can give different colors for positive and negative values if number of specified colors is equal to 2*number of curves. See also bars, barwidth. Barh sample
 # @overload barh(v,pen="",opt="")
 #  @param [MglData] v 
 #  @param [String] pen default=""
@@ -1867,7 +1871,7 @@ end
 
 
 # 1D plotting.
-# These functions draw cones from points to axis plane. If string contain symbol  then cones are drawn one above another (like summation). You can give different colors for positive and negative values if number of specified colors is equal to 2*number of curves. See also bars, barwidth. 
+# These functions draw cones from points to axis plane. If string contain symbol 'a' then cones are drawn one above another (like summation). You can give different colors for positive and negative values if number of specified colors is equal to 2*number of curves. See also bars, barwidth. Cones sample
 # @overload cones(y,pen="",opt="")
 #  @param [MglData] y 
 #  @param [String] pen default=""
@@ -1891,7 +1895,7 @@ end
 
 
 # 1D plotting.
-# The function draws colored stripes (boxes) for data in array a. The number of stripes is equal to the number of rows in a (equal to a.ny). The color of each next stripe is cyclically changed from colors specified in string col or in palette Pal (see Palette and colors). Spaces in colors denote transparent ``color'' (i.e. corresponding stripe(s) are not drawn). The stripe width is proportional to value of element in a. Chart is plotted only for data with non-negative elements. If string col have symbol  then black border lines are drawn. The most nice form the chart have in 3d (after rotation of coordinates) or in cylindrical coordinates (becomes so called Pie chart). 
+# The function draws colored stripes (boxes) for data in array a. The number of stripes is equal to the number of rows in a (equal to a.ny). The color of each next stripe is cyclically changed from colors specified in string col or in palette Pal (see Palette and colors). Spaces in colors denote transparent ``color'' (i.e. corresponding stripe(s) are not drawn). The stripe width is proportional to value of element in a. Chart is plotted only for data with non-negative elements. If string col have symbol '#' then black border lines are drawn. The most nice form the chart have in 3d (after rotation of coordinates) or in cylindrical coordinates (becomes so called Pie chart). Chart sample
 # @overload chart(a,col="",opt="")
 #  @param [MglData] a 
 #  @param [String] col default=""
@@ -1902,7 +1906,7 @@ end
 
 
 # 1D plotting.
-# These functions draw boxplot (also known as a box-and-whisker diagram) at points x[i]. This is five-number summaries of data a[i,j] (minimum, lower quartile (Q1), median (Q2), upper quartile (Q3) and maximum) along second (j-th) direction. See also plot, error, bars, barwidth. 
+# These functions draw boxplot (also known as a box-and-whisker diagram) at points x(i). This is five-number summaries of data a(i,j) (minimum, lower quartile (Q1), median (Q2), upper quartile (Q3) and maximum) along second (j-th) direction. See also plot, error, bars, barwidth. BoxPlot sample
 # @overload box_plot(a,pen="",opt="")
 #  @param [MglData] a 
 #  @param [String] pen default=""
@@ -1919,7 +1923,7 @@ end
 
 
 # 1D plotting.
-# These functions draw candlestick chart at points x[i]. This is a combination of a line-chart and a bar-chart, in that each bar represents the range of price movement over a given time interval. Wire (or white) candle correspond to price growth v1[i]<v2[i], opposite case -- solid (or dark) candle. "Shadows" show the minimal y1 and maximal y2 prices. If v2 is absent then it is determined as v2[i]=v1[i+1]. See also plot, bars, barwidth. 
+# These functions draw candlestick chart at points x(i). This is a combination of a line-chart and a bar-chart, in that each bar represents the range of price movement over a given time interval. Wire (or white) candle correspond to price growth v1(i)<v2(i), opposite case -- solid (or dark) candle. "Shadows" show the minimal y1 and maximal y2 prices. If v2 is absent then it is determined as v2(i)=v1(i+1). See also plot, bars, barwidth. Candle sample
 # @overload candle(v1,pen="",opt="")
 #  @param [MglData] v1 
 #  @param [String] pen default=""
@@ -1960,7 +1964,7 @@ end
 
 
 # 1D plotting.
-# These functions draw error boxes (ex[i], ey[i]) at points (x[i], y[i]). This can be useful, for example, in experimental points, or to show numeric error or some estimations and so on. If string pen contain symbol  than large semitransparent mark is used instead of error box. See also plot, mark. 
+# These functions draw error boxes (ex(i), ey(i)) at points (x(i), y(i)). This can be useful, for example, in experimental points, or to show numeric error or some estimations and so on. If string pen contain symbol '@' than large semitransparent mark is used instead of error box. See also plot, mark. Error sample
 # @overload error(y,ey,pen="",opt="")
 #  @param [MglData] y 
 #  @param [MglData] ey 
@@ -1987,7 +1991,7 @@ end
 
 
 # 1D plotting.
-# These functions draw marks with size r[i]*marksize at points (x[i], y[i], z[i]). If you need to draw markers of the same size then you can use plot function with empty line style . For markers with size in axis range use error with style . See also plot, textmark, error, stem. 
+# These functions draw marks with size r(i)*marksize at points (x(i), y(i), z(i)). If you need to draw markers of the same size then you can use plot function with empty line style ' '. For markers with size in axis range use error with style '@'. See also plot, textmark, error, stem. Mark sample
 # @overload mark(y,r,pen="",opt="")
 #  @param [MglData] y 
 #  @param [MglData] r 
@@ -2014,7 +2018,7 @@ end
 
 
 # 1D plotting.
-# These functions draw string txt as marks with size proportional to r[i]*marksize at points (x[i], y[i], z[i]). By default (if omitted) r[i]=1. See also plot, mark, stem. 
+# These functions draw string txt as marks with size proportional to r(i)*marksize at points (x(i), y(i), z(i)). By default (if omitted) r(i)=1. See also plot, mark, stem. TextMark sample
 # @overload text_mark(y,txt,fnt="",opt="")
 #  @param [MglData] y 
 #  @param [String] txt 
@@ -2050,7 +2054,7 @@ end
 
 
 # 1D plotting.
-# These functions draw string txt at points (x[i], y[i], z[i]). If string txt contain , ,  or  then it will be replaced by the value of x-,y-,z-coordinate of the point or its index. See also plot, mark, textmark, table. 
+# These functions draw string txt at points (x(i), y(i), z(i)). If string txt contain '%x', '%y', '%z' or '%n' then it will be replaced by the value of x-,y-,z-coordinate of the point or its index. See also plot, mark, textmark, table. Label sample
 # @overload label(y,txt,fnt="",opt="")
 #  @param [MglData] y 
 #  @param [String] txt 
@@ -2077,7 +2081,7 @@ end
 
 
 # 1D plotting.
-# These functions draw table with values of val and captions from string txt (separated by newline symbol ) at points (x, y) (default at (0,0)) related to current subplot. If string fnt contain  then cell border will be drawn. If string fnt contain  then table width is limited by subplot width (equivalent option ). If string fnt contain  then widths of all cells are the same. Option value set the width of the table (default is 1). See also plot, label. 
+# These functions draw table with values of val and captions from string txt (separated by newline symbol '\n') at points (x, y) (default at (0,0)) related to current subplot. If string fnt contain '#' then cell border will be drawn. If string fnt contain '|' then table width is limited by subplot width (equivalent option 'value 1'). If string fnt contain '=' then widths of all cells are the same. Option value set the width of the table (default is 1). See also plot, label. Table sample
 # @overload table(val,txt,fnt="",opt="")
 #  @param [MglData] val 
 #  @param [String] txt 
@@ -2097,7 +2101,7 @@ end
 
 
 # 1D plotting.
-# These functions draw the tube with variable radius r[i] along the curve between points (x[i], y[i], z[i]). See also plot. 
+# These functions draw the tube with variable radius r(i) along the curve between points (x(i), y(i), z(i)). See also plot. Tube sample
 # @overload tube(y,r,pen="",opt="")
 #  @param [MglData] y 
 #  @param [MglData] r 
@@ -2145,7 +2149,7 @@ end
 
 
 # 1D plotting.
-# These functions draw surface which is result of curve (r, z) rotation around axis. If string pen contain symbols  or  then rotation axis will be set to specified direction (default is ). If string pen have symbol  then wire plot is produced. If string pen have symbol  then plot by dots is produced. See also plot, axial. 
+# These functions draw surface which is result of curve (r, z) rotation around axis. If string pen contain symbols 'x' or 'z' then rotation axis will be set to specified direction (default is 'y'). If string pen have symbol '#' then wire plot is produced. If string pen have symbol '.' then plot by dots is produced. See also plot, axial. Torus sample
 # @overload torus(r,z,pen="",opt="")
 #  @param [MglData] r 
 #  @param [MglData] z 
@@ -2157,7 +2161,7 @@ end
 
 
 # 2D plotting.
-# The function draws surface specified parametrically (x[i,j], y[i,j], z[i,j]). If string sch have symbol  then grid lines are drawn. If string sch have symbol  then plot by dots is produced. See also mesh, dens, belt, tile, boxs, surfc, surfa. 
+# The function draws surface specified parametrically (x(i,j), y(i,j), z(i,j)). If string sch have symbol '#' then grid lines are drawn. If string sch have symbol '.' then plot by dots is produced. See also mesh, dens, belt, tile, boxs, surfc, surfa. Surf sample
 # @overload surf(z,sch="",opt="")
 #  @param [MglData] z 
 #  @param [String] sch default=""
@@ -2175,7 +2179,7 @@ end
 
 
 # 2D plotting.
-# The function draws mesh lines for surface specified parametrically (x[i,j], y[i,j], z[i,j]). See also surf, fall, meshnum, cont, tens. 
+# The function draws mesh lines for surface specified parametrically (x(i,j), y(i,j), z(i,j)). See also surf, fall, meshnum, cont, tens. Mesh sample
 # @overload mesh(z,sch="",opt="")
 #  @param [MglData] z 
 #  @param [String] sch default=""
@@ -2193,7 +2197,7 @@ end
 
 
 # 2D plotting.
-# The function draws fall lines for surface specified parametrically (x[i,j], y[i,j], z[i,j]). This plot can be used for plotting several curves shifted in depth one from another. If sch contain  then lines are drawn along x-direction else (by default) lines are drawn along y-direction. See also belt, mesh, tens, meshnum. 
+# The function draws fall lines for surface specified parametrically (x(i,j), y(i,j), z(i,j)). This plot can be used for plotting several curves shifted in depth one from another. If sch contain 'x' then lines are drawn along x-direction else (by default) lines are drawn along y-direction. See also belt, mesh, tens, meshnum. Fall sample
 # @overload fall(z,sch="",opt="")
 #  @param [MglData] z 
 #  @param [String] sch default=""
@@ -2211,7 +2215,7 @@ end
 
 
 # 2D plotting.
-# The function draws belts for surface specified parametrically (x[i,j], y[i,j], z[i,j]). This plot can be used as 3d generalization of plot). If sch contain  then belts are drawn along x-direction else (by default) belts are drawn along y-direction. See also fall, surf, plot, meshnum. 
+# The function draws belts for surface specified parametrically (x(i,j), y(i,j), z(i,j)). This plot can be used as 3d generalization of plot). If sch contain 'x' then belts are drawn along x-direction else (by default) belts are drawn along y-direction. See also fall, surf, plot, meshnum. Belt sample
 # @overload belt(z,sch="",opt="")
 #  @param [MglData] z 
 #  @param [String] sch default=""
@@ -2229,7 +2233,7 @@ end
 
 
 # 2D plotting.
-# The function draws vertical boxes for surface specified parametrically (x[i,j], y[i,j], z[i,j]). Symbol  in sch set to draw filled boxes. See also surf, dens, tile, step. 
+# The function draws vertical boxes for surface specified parametrically (x(i,j), y(i,j), z(i,j)). Symbol '@' in sch set to draw filled boxes. See also surf, dens, tile, step. Boxs sample
 # @overload boxs(z,sch="",opt="")
 #  @param [MglData] z 
 #  @param [String] sch default=""
@@ -2247,7 +2251,7 @@ end
 
 
 # 2D plotting.
-# The function draws horizontal tiles for surface specified parametrically (x[i,j], y[i,j], z[i,j]). Such plot can be used as 3d generalization of step. See also surf, boxs, step, tiles. 
+# The function draws horizontal tiles for surface specified parametrically (x(i,j), y(i,j), z(i,j)). Such plot can be used as 3d generalization of step. See also surf, boxs, step, tiles. Tile sample
 # @overload tile(z,sch="",opt="")
 #  @param [MglData] z 
 #  @param [String] sch default=""
@@ -2265,7 +2269,7 @@ end
 
 
 # 2D plotting.
-# The function draws density plot for surface specified parametrically (x[i,j], y[i,j], z[i,j]) at z = Min.z. If string sch have symbol  then grid lines are drawn. If string sch have symbol  then plot by dots is produced. See also surf, cont, contf, boxs, tile, dens[xyz]. 
+# The function draws density plot for surface specified parametrically (x(i,j), y(i,j), z(i,j)) at z = Min.z. If string sch have symbol '#' then grid lines are drawn. If string sch have symbol '.' then plot by dots is produced. See also surf, cont, contf, boxs, tile, dens(xyz). Dens sample
 # @overload dens(z,sch="",opt="",zval=NAN)
 #  @param [MglData] z 
 #  @param [String] sch default=""
@@ -2285,7 +2289,7 @@ end
 
 
 # 2D plotting.
-# The function draws contour lines for surface specified parametrically (x[i,j], y[i,j], z[i,j]) at z=v[k] or at z = Min.z if sch contain symbol . Contours are plotted for z[i,j]=v[k] where v[k] are values of data array v. If string sch have symbol  or  then contour labels v[k] will be drawn below (or above) the contours. See also dens, contf, contd, axial, cont[xyz]. 
+# The function draws contour lines for surface specified parametrically (x(i,j), y(i,j), z(i,j)) at z=v(k) or at z = Min.z if sch contain symbol '_'. Contours are plotted for z(i,j)=v(k) where v(k) are values of data array v. If string sch have symbol 't' or 'T' then contour labels v(k) will be drawn below (or above) the contours. See also dens, contf, contd, axial, cont(xyz). Cont sample
 # @overload cont(v,z,sch="",opt="")
 #  @param [MglData] v 
 #  @param [MglData] z 
@@ -2323,7 +2327,7 @@ end
 
 
 # 2D plotting.
-# The function draws solid (or filled) contour lines for surface specified parametrically (x[i,j], y[i,j], z[i,j]) at z=v[k] or at z = Min.z if sch contain symbol . Contours are plotted for z[i,j]=v[k] where v[k] are values of data array v (must be v.nx>2). See also dens, cont, contd, contf[xyz]. 
+# The function draws solid (or filled) contour lines for surface specified parametrically (x(i,j), y(i,j), z(i,j)) at z=v(k) or at z = Min.z if sch contain symbol '_'. Contours are plotted for z(i,j)=v(k) where v(k) are values of data array v (must be v.nx>2). See also dens, cont, contd, contf(xyz). ContF sample
 # @overload cont_f(v,z,sch="",opt="")
 #  @param [MglData] v 
 #  @param [MglData] z 
@@ -2361,7 +2365,7 @@ end
 
 
 # 2D plotting.
-# The function draws solid (or filled) contour lines for surface specified parametrically (x[i,j], y[i,j], z[i,j]) at z=v[k] (or at z = Min.z if sch contain symbol ) with manual colors. Contours are plotted for z[i,j]=v[k] where v[k] are values of data array v (must be v.nx>2). String sch sets the contour colors: the color of k-th contour is determined by character sch[k%strlen(sch)]. See also dens, cont, contf. 
+# The function draws solid (or filled) contour lines for surface specified parametrically (x(i,j), y(i,j), z(i,j)) at z=v(k) (or at z = Min.z if sch contain symbol '_') with manual colors. Contours are plotted for z(i,j)=v(k) where v(k) are values of data array v (must be v.nx>2). String sch sets the contour colors: the color of k-th contour is determined by character sch(k%strlen(sch)). See also dens, cont, contf. ContD sample
 # @overload cont_d(v,z,sch="",opt="")
 #  @param [MglData] v 
 #  @param [MglData] z 
@@ -2399,7 +2403,7 @@ end
 
 
 # 2D plotting.
-# The function draws vertical cylinder (tube) at contour lines for surface specified parametrically (x[i,j], y[i,j], z[i,j]) at z=v[k] or at z = Min.z if sch contain symbol . Contours are plotted for z[i,j]=v[k] where v[k] are values of data array v. See also cont, contf. 
+# The function draws vertical cylinder (tube) at contour lines for surface specified parametrically (x(i,j), y(i,j), z(i,j)) at z=v(k) or at z = Min.z if sch contain symbol '_'. Contours are plotted for z(i,j)=v(k) where v(k) are values of data array v. See also cont, contf. ContV sample
 # @overload cont_v(v,z,sch="",opt="")
 #  @param [MglData] v 
 #  @param [MglData] z 
@@ -2437,7 +2441,7 @@ end
 
 
 # 2D plotting.
-# The function draws surface which is result of contour plot rotation for surface specified parametrically (x[i,j], y[i,j], z[i,j]). Contours are plotted for z[i,j]=v[k] where v[k] are values of data array v. If string sch have symbol  then wire plot is produced. If string sch have symbol  then plot by dots is produced. If string contain symbols  or  then rotation axis will be set to specified direction (default is ). See also cont, contf, torus, surf3. 
+# The function draws surface which is result of contour plot rotation for surface specified parametrically (x(i,j), y(i,j), z(i,j)). Contours are plotted for z(i,j)=v(k) where v(k) are values of data array v. If string sch have symbol '#' then wire plot is produced. If string sch have symbol '.' then plot by dots is produced. If string contain symbols 'x' or 'z' then rotation axis will be set to specified direction (default is 'y'). See also cont, contf, torus, surf3. Axial sample
 # @overload axial(v,z,sch="",opt="")
 #  @param [MglData] v 
 #  @param [MglData] z 
@@ -2477,7 +2481,7 @@ end
 
 
 # 2D plotting.
-# The function draws grid lines for density plot of surface specified parametrically (x[i,j], y[i,j], z[i,j]) at z = Min.z. See also dens, cont, contf, meshnum.
+# The function draws grid lines for density plot of surface specified parametrically (x(i,j), y(i,j), z(i,j)) at z = Min.z. See also dens, cont, contf, meshnum.
 # @overload grid(z,sch="",opt="")
 #  @param [MglData] z 
 #  @param [String] sch default=""
@@ -2495,7 +2499,7 @@ end
 
 
 # 3D plotting.
-# The function draws isosurface plot for 3d array specified parametrically a[i,j,k](x[i,j,k], y[i,j,k], z[i,j,k]) at a(x,y,z)=val. If string contain  then wire plot is produced. If string sch have symbol  then plot by dots is produced. Note, that there is possibility of incorrect plotting due to uncertainty of cross-section defining if there are two or more isosurface intersections inside one cell. See also cloud, dens3, surf3c, surf3a, axial. 
+# The function draws isosurface plot for 3d array specified parametrically a(i,j,k)(x(i,j,k), y(i,j,k), z(i,j,k)) at a(x,y,z)=val. If string contain '#' then wire plot is produced. If string sch have symbol '.' then plot by dots is produced. Note, that there is possibility of incorrect plotting due to uncertainty of cross-section defining if there are two or more isosurface intersections inside one cell. See also cloud, dens3, surf3c, surf3a, axial. Surf3 sample
 # @overload surf3(val,a,sch="",opt="")
 #  @param [Float] val 
 #  @param [MglData] a 
@@ -2535,7 +2539,7 @@ end
 
 
 # 3D plotting.
-# The function draws cloud plot for 3d data specified parametrically a[i,j,k](x[i,j,k], y[i,j,k], z[i,j,k]). This plot is a set of cubes with color and transparency proportional to value of a. The resulting plot is like cloud -- low value is transparent but higher ones are not. The number of plotting cells depend on meshnum. If string sch contain symbol  then lower quality plot will produced with much low memory usage. If string sch contain symbol  then transparency will be inversed, i.e. higher become transparent and lower become not transparent. See also surf3, meshnum. 
+# The function draws cloud plot for 3d data specified parametrically a(i,j,k)(x(i,j,k), y(i,j,k), z(i,j,k)). This plot is a set of cubes with color and transparency proportional to value of a. The resulting plot is like cloud -- low value is transparent but higher ones are not. The number of plotting cells depend on meshnum. If string sch contain symbol '.' then lower quality plot will produced with much low memory usage. If string sch contain symbol 'i' then transparency will be inversed, i.e. higher become transparent and lower become not transparent. See also surf3, meshnum. Cloud sample
 # @overload cloud(a,sch="",opt="")
 #  @param [MglData] a 
 #  @param [String] sch default=""
@@ -2554,7 +2558,7 @@ end
 
 
 # 3D plotting.
-# The function draws density plot for 3d data specified parametrically a[i,j,k](x[i,j,k], y[i,j,k], z[i,j,k]). Density is plotted at slice sVal in direction (, , ) if sch contain corresponding symbol (by default,  direction is used). If string stl have symbol  then grid lines are drawn. See also cont3, contf3, dens, grid3. 
+# The function draws density plot for 3d data specified parametrically a(i,j,k)(x(i,j,k), y(i,j,k), z(i,j,k)). Density is plotted at slice sVal in direction ('x', 'y', 'z') if sch contain corresponding symbol (by default, 'y' direction is used). If string stl have symbol '#' then grid lines are drawn. See also cont3, contf3, dens, grid3. Dens3 sample
 # @overload dens3(a,sch="",sval=-1,opt="")
 #  @param [MglData] a 
 #  @param [String] sch default=""
@@ -2575,7 +2579,7 @@ end
 
 
 # 3D plotting.
-# The function draws contour plot for 3d data specified parametrically a[i,j,k](x[i,j,k], y[i,j,k], z[i,j,k]). Contours are plotted for values specified in array v at slice sVal in direction (, , ) if sch contain corresponding symbol (by default,  direction is used). If string sch have symbol  then grid lines are drawn. If string sch have symbol  or  then contour labels will be drawn below (or above) the contours. See also dens3, contf3, cont, grid3. 
+# The function draws contour plot for 3d data specified parametrically a(i,j,k)(x(i,j,k), y(i,j,k), z(i,j,k)). Contours are plotted for values specified in array v at slice sVal in direction ('x', 'y', 'z') if sch contain corresponding symbol (by default, 'y' direction is used). If string sch have symbol '#' then grid lines are drawn. If string sch have symbol 't' or 'T' then contour labels will be drawn below (or above) the contours. See also dens3, contf3, cont, grid3. Cont3 sample
 # @overload cont3(v,a,sch="",sval=-1,opt="")
 #  @param [MglData] v 
 #  @param [MglData] a 
@@ -2620,7 +2624,7 @@ end
 
 
 # 3D plotting.
-# The function draws solid (or filled) contour plot for 3d data specified parametrically a[i,j,k](x[i,j,k], y[i,j,k], z[i,j,k]). Contours are plotted for values specified in array v at slice sVal in direction (, , ) if sch contain corresponding symbol (by default,  direction is used). If string sch have symbol  then grid lines are drawn. See also dens3, cont3, contf, grid3. 
+# The function draws solid (or filled) contour plot for 3d data specified parametrically a(i,j,k)(x(i,j,k), y(i,j,k), z(i,j,k)). Contours are plotted for values specified in array v at slice sVal in direction ('x', 'y', 'z') if sch contain corresponding symbol (by default, 'y' direction is used). If string sch have symbol '#' then grid lines are drawn. See also dens3, cont3, contf, grid3. ContF3 sample
 # @overload contf3(v,a,sch="",sval=-1,opt="")
 #  @param [MglData] v 
 #  @param [MglData] a 
@@ -2665,7 +2669,7 @@ end
 
 
 # 3D plotting.
-# The function draws grid for 3d data specified parametrically a[i,j,k](x[i,j,k], y[i,j,k], z[i,j,k]). Grid is plotted at slice sVal in direction (, , ) if sch contain corresponding symbol (by default,  direction is used). See also cont3, contf3, dens3, grid2, meshnum.
+# The function draws grid for 3d data specified parametrically a(i,j,k)(x(i,j,k), y(i,j,k), z(i,j,k)). Grid is plotted at slice sVal in direction ('x', 'y', 'z') if sch contain corresponding symbol (by default, 'y' direction is used). See also cont3, contf3, dens3, grid2, meshnum.
 # @overload grid3(a,sch="",sval=-1,opt="")
 #  @param [MglData] a 
 #  @param [String] sch default=""
@@ -2686,7 +2690,7 @@ end
 
 
 # 3D plotting.
-# Draws the isosurface for 3d array a at constant values of a=val. This is special kind of plot for a specified in accompanied coordinates along curve tr with orts g1, g2 and with transverse scale r. Variable flag is bitwise:  - draw in accompanied (not laboratory) coordinates;  - draw projection to  plane;  - draw normalized in each slice field. The x-size of data arrays tr, g1, g2 must be nx>2. The y-size of data arrays tr, g1, g2 and z-size of the data array a must be equal. See also surf3.
+# Draws the isosurface for 3d array a at constant values of a=val. This is special kind of plot for a specified in accompanied coordinates along curve tr with orts g1, g2 and with transverse scale r. Variable flag is bitwise: '0x1' - draw in accompanied (not laboratory) coordinates; '0x2' - draw projection to \rho-z plane; '0x4' - draw normalized in each slice field. The x-size of data arrays tr, g1, g2 must be nx>2. The y-size of data arrays tr, g1, g2 and z-size of the data array a must be equal. See also surf3.
 # @overload beam(tr,g1,g2,a,r,stl="",flag=0,num=3)
 #  @param [MglData] tr 
 #  @param [MglData] g1 
@@ -2712,7 +2716,7 @@ end
 
 
 # Dual plotting.
-# The function draws surface specified parametrically (x[i,j], y[i,j], z[i,j]) and color it by matrix c[i,j]. If string sch have symbol  then grid lines are drawn. If string sch have symbol  then plot by dots is produced. All dimensions of arrays z and c must be equal. Surface is plotted for each z slice of the data. See also surf, surfa, surf3c. 
+# The function draws surface specified parametrically (x(i,j), y(i,j), z(i,j)) and color it by matrix c(i,j). If string sch have symbol '#' then grid lines are drawn. If string sch have symbol '.' then plot by dots is produced. All dimensions of arrays z and c must be equal. Surface is plotted for each z slice of the data. See also surf, surfa, surf3c. SurfC sample
 # @overload surf_c(z,c,sch="",opt="")
 #  @param [MglData] z 
 #  @param [MglData] c 
@@ -2732,7 +2736,7 @@ end
 
 
 # Dual plotting.
-# The function draws isosurface plot for 3d array specified parametrically a[i,j,k](x[i,j,k], y[i,j,k], z[i,j,k]) at a(x,y,z)=val. It is mostly the same as surf3 function but the color of isosurface depends on values of array c. If string sch contain  then wire plot is produced. If string sch have symbol  then plot by dots is produced. See also surf3, surfc, surf3a. 
+# The function draws isosurface plot for 3d array specified parametrically a(i,j,k)(x(i,j,k), y(i,j,k), z(i,j,k)) at a(x,y,z)=val. It is mostly the same as surf3 function but the color of isosurface depends on values of array c. If string sch contain '#' then wire plot is produced. If string sch have symbol '.' then plot by dots is produced. See also surf3, surfc, surf3a. Surf3C sample
 # @overload surf_3c(val,a,c,sch="",opt="")
 #  @param [Float] val 
 #  @param [MglData] a 
@@ -2776,7 +2780,7 @@ end
 
 
 # Dual plotting.
-# The function draws surface specified parametrically (x[i,j], y[i,j], z[i,j]) and transparent it by matrix c[i,j]. If string sch have symbol  then grid lines are drawn. If string sch have symbol  then plot by dots is produced. All dimensions of arrays z and c must be equal. Surface is plotted for each z slice of the data. See also surf, surfc, surf3a. 
+# The function draws surface specified parametrically (x(i,j), y(i,j), z(i,j)) and transparent it by matrix c(i,j). If string sch have symbol '#' then grid lines are drawn. If string sch have symbol '.' then plot by dots is produced. All dimensions of arrays z and c must be equal. Surface is plotted for each z slice of the data. See also surf, surfc, surf3a. SurfA sample
 # @overload surf_a(z,c,sch="",opt="")
 #  @param [MglData] z 
 #  @param [MglData] c 
@@ -2796,7 +2800,7 @@ end
 
 
 # Dual plotting.
-# The function draws isosurface plot for 3d array specified parametrically a[i,j,k](x[i,j,k], y[i,j,k], z[i,j,k]) at a(x,y,z)=val. It is mostly the same as surf3 function but the color of isosurface depends on values of array c. If string sch contain  then wire plot is produced. If string sch have symbol  then plot by dots is produced. See also surf3, surfc, surf3a. 
+# The function draws isosurface plot for 3d array specified parametrically a(i,j,k)(x(i,j,k), y(i,j,k), z(i,j,k)) at a(x,y,z)=val. It is mostly the same as surf3 function but the color of isosurface depends on values of array c. If string sch contain '#' then wire plot is produced. If string sch have symbol '.' then plot by dots is produced. See also surf3, surfc, surf3a. Surf3A sample
 # @overload surf_3a(val,a,c,sch="",opt="")
 #  @param [Float] val 
 #  @param [MglData] a 
@@ -2840,7 +2844,7 @@ end
 
 
 # Dual plotting.
-# The function draws horizontal tiles for surface specified parametrically (x[i,j], y[i,j], z[i,j]). It is mostly the same as tile but the size of tiles is determined by r array. This is some kind of ``transparency'' useful for exporting to EPS files. Tiles is plotted for each z slice of the data. See also surfa, tile. 
+# The function draws horizontal tiles for surface specified parametrically (x(i,j), y(i,j), z(i,j)). It is mostly the same as tile but the size of tiles is determined by r array. This is some kind of ``transparency'' useful for exporting to EPS files. Tiles is plotted for each z slice of the data. See also surfa, tile. TileS sample
 # @overload tile_s(z,c,sch="",opt="")
 #  @param [MglData] z 
 #  @param [MglData] c 
@@ -2860,7 +2864,7 @@ end
 
 
 # Dual plotting.
-# The function draws mapping plot for matrices (ax, ay ) which parametrically depend on coordinates x, y. The initial position of the cell (point) is marked by color. Height is proportional to Jacobian(ax,ay). This plot is like Arnold diagram ??? If string sch contain symbol  then the color ball at matrix knots are drawn otherwise face is drawn. 
+# The function draws mapping plot for matrices (ax, ay ) which parametrically depend on coordinates x, y. The initial position of the cell (point) is marked by color. Height is proportional to Jacobian(ax,ay). This plot is like Arnold diagram ??? If string sch contain symbol '.' then the color ball at matrix knots are drawn otherwise face is drawn. Mapping visualization
 # @overload map(ax,ay,sch="",opt="")
 #  @param [MglData] ax 
 #  @param [MglData] ay 
@@ -2880,7 +2884,7 @@ end
 
 
 # Dual plotting.
-# Draws spectrogram of complex array re+i*im for Fourier size of dn points at plane z=Min.z. For example in 1D case, result is density plot of data  with size (int(nx/dn), dn, ny). At this array re, im parametrically depend on coordinates x, y. The size of re and im must be the same. The minor dimensions of arrays x, y, re should be equal. Arrays x, y can be vectors (not matrix as re).  
+# Draws spectrogram of complex array re+i*im for Fourier size of dn points at plane z=Min.z. For example in 1D case, result is density plot of data res(i,j)=|\sum_d^dn exp(I*j*d)*(re(i*dn+d)+I*im(i*dn+d))|/dn with size (int(nx/dn), dn, ny). At this array re, im parametrically depend on coordinates x, y. The size of re and im must be the same. The minor dimensions of arrays x, y, re should be equal. Arrays x, y can be vectors (not matrix as re).  STFA sample
 # @overload stfa(re,im,dn,sch="",opt="")
 #  @param [MglData] re 
 #  @param [MglData] im 
@@ -2902,7 +2906,7 @@ end
 
 
 # Vector fields.
-# The function draws vectors (ax, ay, az) along a curve (x, y, z). The length of arrows are proportional to }. String pen specifies the color (see Line styles). By default (pen="") color from palette is used (see Palette and colors). Option value set the vector length factor (if non-zero) or vector length to be proportional the distance between curve points (if value=0). The minor sizes of all arrays must be equal and large 2. The plots are drawn for each row if one of the data is the matrix. See also vect. 
+# The function draws vectors (ax, ay, az) along a curve (x, y, z). The length of arrows are proportional to \sqrt(ax^2+ay^2+az^2). String pen specifies the color (see Line styles). By default (pen="") color from palette is used (see Palette and colors). Option value set the vector length factor (if non-zero) or vector length to be proportional the distance between curve points (if value=0). The minor sizes of all arrays must be equal and large 2. The plots are drawn for each row if one of the data is the matrix. See also vect. Traj sample
 # @overload traj(x,y,ax,ay,sch="",opt="")
 #  @param [MglData] x 
 #  @param [MglData] y 
@@ -2926,8 +2930,8 @@ end
 
 
 # Vector fields.
-# The function draws plane vector field plot for the field (ax, ay) depending parametrically on coordinates x, y at level z=Min.z. The length and color of arrows are proportional to }. The number of arrows depend on meshnum. The appearance of the hachures (arrows) can be changed by symbols:
-# See also flow, dew. 
+# The function draws plane vector field plot for the field (ax, ay) depending parametrically on coordinates x, y at level z=Min.z. The length and color of arrows are proportional to \sqrt(ax^2+ay^2). The number of arrows depend on meshnum. The appearance of the hachures (arrows) can be changed by symbols:
+# See also flow, dew. Vect sample
 # @overload vect(ax,ay,sch="",opt="")
 #  @param [MglData] ax 
 #  @param [MglData] ay 
@@ -2947,7 +2951,7 @@ end
 
 
 # Vector fields.
-# This is 3D version of the first functions. Here arrays ax, ay, az must be 3-ranged tensors with equal sizes and the length and color of arrows is proportional to }.
+# This is 3D version of the first functions. Here arrays ax, ay, az must be 3-ranged tensors with equal sizes and the length and color of arrows is proportional to \sqrt(ax^2+ay^2+az^2).
 # @overload vect(ax,ay,az,sch="",opt="")
 #  @param [MglData] ax 
 #  @param [MglData] ay 
@@ -2970,8 +2974,8 @@ end
 
 
 # Vector fields.
-# The function draws 3D vector field plot for the field (ax, ay, az) depending parametrically on coordinates x, y, z. Vector field is drawn at slice sVal in direction (, , ) if sch contain corresponding symbol (by default,  direction is used). The length and color of arrows are proportional to }. The number of arrows depend on meshnum. The appearance of the hachures (arrows) can be changed by symbols:
-# See also vect, flow, dew. 
+# The function draws 3D vector field plot for the field (ax, ay, az) depending parametrically on coordinates x, y, z. Vector field is drawn at slice sVal in direction ('x', 'y', 'z') if sch contain corresponding symbol (by default, 'y' direction is used). The length and color of arrows are proportional to \sqrt(ax^2+ay^2+az^2). The number of arrows depend on meshnum. The appearance of the hachures (arrows) can be changed by symbols:
+# See also vect, flow, dew. Vect3 sample
 # @overload vect3(ax,ay,az,sch="",sval=-1,opt="")
 #  @param [MglData] ax 
 #  @param [MglData] ay 
@@ -2996,7 +3000,7 @@ end
 
 
 # Vector fields.
-# The function draws dew-drops for plane vector field (ax, ay) depending parametrically on coordinates x, y at level z=Min.z. Note that this is very expensive plot in memory usage and creation time! The color of drops is proportional to }. The number of drops depend on meshnum. See also vect. 
+# The function draws dew-drops for plane vector field (ax, ay) depending parametrically on coordinates x, y at level z=Min.z. Note that this is very expensive plot in memory usage and creation time! The color of drops is proportional to \sqrt(ax^2+ay^2). The number of drops depend on meshnum. See also vect. Dew sample
 # @overload dew(ax,ay,sch="",opt="")
 #  @param [MglData] ax 
 #  @param [MglData] ay 
@@ -3017,7 +3021,7 @@ end
 
 # Vector fields.
 # The function draws flow threads for the plane vector field (ax, ay) parametrically depending on coordinates x, y at level z = Min.z. Number of threads is proportional to value option (default is 5). String sch may contain:
-# See also pipe, vect, tape, barwidth. 
+# See also pipe, vect, tape, barwidth. Flow sample
 # @overload flow(ax,ay,sch="",opt="")
 #  @param [MglData] ax 
 #  @param [MglData] ay 
@@ -3037,7 +3041,7 @@ end
 
 
 # Vector fields.
-# This is 3D version of the first functions. Here arrays ax, ay, az must be 3-ranged tensors with equal sizes and the color of line is proportional to }.
+# This is 3D version of the first functions. Here arrays ax, ay, az must be 3-ranged tensors with equal sizes and the color of line is proportional to \sqrt(ax^2+ay^2+az^2).
 # @overload flow(ax,ay,az,sch="",opt="")
 #  @param [MglData] ax 
 #  @param [MglData] ay 
@@ -3107,7 +3111,7 @@ end
 
 
 # Vector fields.
-# The function draws gradient lines for scalar field phi[i,j] (or phi[i,j,k] in 3d case) specified parametrically (x[i,j,k], y[i,j,k], z[i,j,k]). Number of lines is proportional to value option (default is 5). See also dens, cont, flow.
+# The function draws gradient lines for scalar field phi(i,j) (or phi(i,j,k) in 3d case) specified parametrically (x(i,j,k), y(i,j,k), z(i,j,k)). Number of lines is proportional to value option (default is 5). See also dens, cont, flow.
 # @overload grad(phi,sch="",opt="")
 #  @param [MglData] phi 
 #  @param [String] sch default=""
@@ -3133,7 +3137,7 @@ end
 
 
 # Vector fields.
-# The function draws flow pipes for the plane vector field (ax, ay) parametrically depending on coordinates x, y at level z = Min.z. Number of pipes is proportional to value option (default is 5). If  symbol is specified then pipes start only from edges of axis range. The color of lines is proportional to }. Warm color corresponds to normal flow (like attractor). Cold one corresponds to inverse flow (like source). Parameter r0 set the base pipe radius. If r0<0 or symbol  is specified then pipe radius is inverse proportional to amplitude. The vector field is plotted for each z slice of ax, ay. See also flow, vect. 
+# The function draws flow pipes for the plane vector field (ax, ay) parametrically depending on coordinates x, y at level z = Min.z. Number of pipes is proportional to value option (default is 5). If '#' symbol is specified then pipes start only from edges of axis range. The color of lines is proportional to \sqrt(ax^2+ay^2). Warm color corresponds to normal flow (like attractor). Cold one corresponds to inverse flow (like source). Parameter r0 set the base pipe radius. If r0<0 or symbol 'i' is specified then pipe radius is inverse proportional to amplitude. The vector field is plotted for each z slice of ax, ay. See also flow, vect. Pipe sample
 # @overload pipe(ax,ay,sch="",r0=0.05,opt="")
 #  @param [MglData] ax 
 #  @param [MglData] ay 
@@ -3155,7 +3159,7 @@ end
 
 
 # Vector fields.
-# This is 3D version of the first functions. Here arrays ax, ay, az must be 3-ranged tensors with equal sizes and the color of line is proportional to }.
+# This is 3D version of the first functions. Here arrays ax, ay, az must be 3-ranged tensors with equal sizes and the color of line is proportional to \sqrt(ax^2+ay^2+az^2).
 # @overload pipe(ax,ay,az,sch="",r0=0.05,opt="")
 #  @param [MglData] ax 
 #  @param [MglData] ay 
@@ -3180,7 +3184,7 @@ end
 
 
 # Other plotting.
-# These plotting functions draw density plot in x, y, or z plain. If a is a tensor (3-dimensional data) then interpolation to a given sVal is performed. These functions are useful for creating projections of the 3D data array to the bounding box. See also ContXYZ, ContFXYZ, dens, Data manipulation. 
+# These plotting functions draw density plot in x, y, or z plain. If a is a tensor (3-dimensional data) then interpolation to a given sVal is performed. These functions are useful for creating projections of the 3D data array to the bounding box. See also ContXYZ, ContFXYZ, dens, Data manipulation. Dens projection sample
 # @overload dens_x(a,stl="",sval=NAN,opt="")
 #  @param [MglData] a 
 #  @param [String] stl default=""
@@ -3199,12 +3203,12 @@ end
 #  @param [Float] sval default=NAN
 #  @param [String] opt default=""
 #  @return [nil]
-def dens_z
+def dens_x
 end
 
 
 # Other plotting.
-# These plotting functions draw contour lines in x, y, or z plain. If a is a tensor (3-dimensional data) then interpolation to a given sVal is performed. These functions are useful for creating projections of the 3D data array to the bounding box. See also ContFXYZ, DensXYZ, cont, Data manipulation. 
+# These plotting functions draw contour lines in x, y, or z plain. If a is a tensor (3-dimensional data) then interpolation to a given sVal is performed. These functions are useful for creating projections of the 3D data array to the bounding box. See also ContFXYZ, DensXYZ, cont, Data manipulation. Cont projection sample
 # @overload cont_x(a,stl="",sval=NAN,opt="")
 #  @param [MglData] a 
 #  @param [String] stl default=""
@@ -3223,7 +3227,7 @@ end
 #  @param [Float] sval default=NAN
 #  @param [String] opt default=""
 #  @return [nil]
-def cont_z
+def cont_x
 end
 
 
@@ -3250,12 +3254,12 @@ end
 #  @param [Float] sval default=NAN
 #  @param [String] opt default=""
 #  @return [nil]
-def cont_z
+def cont_x
 end
 
 
 # Other plotting.
-# These plotting functions draw solid contours in x, y, or z plain. If a is a tensor (3-dimensional data) then interpolation to a given sVal is performed. These functions are useful for creating projections of the 3D data array to the bounding box. See also ContFXYZ, DensXYZ, cont, Data manipulation. 
+# These plotting functions draw solid contours in x, y, or z plain. If a is a tensor (3-dimensional data) then interpolation to a given sVal is performed. These functions are useful for creating projections of the 3D data array to the bounding box. See also ContFXYZ, DensXYZ, cont, Data manipulation. ContF projection sample
 # @overload cont_fx(a,stl="",sval=NAN,opt="")
 #  @param [MglData] a 
 #  @param [String] stl default=""
@@ -3274,7 +3278,7 @@ end
 #  @param [Float] sval default=NAN
 #  @param [String] opt default=""
 #  @return [nil]
-def cont_fz
+def cont_fx
 end
 
 
@@ -3301,12 +3305,12 @@ end
 #  @param [Float] sval default=NAN
 #  @param [String] opt default=""
 #  @return [nil]
-def cont_fz
+def cont_fx
 end
 
 
 # Other plotting.
-# Draws command function  at plane z=Min.z where  variable is changed in xrange. You do not need to create the data arrays to plot it.  See also plot.
+# Draws command function 'y(x)' at plane z=Min.z where 'x' variable is changed in xrange. You do not need to create the data arrays to plot it.  See also plot.
 # @overload fplot(eqy,pen="",opt="")
 #  @param [String] eqy 
 #  @param [String] pen default=""
@@ -3317,7 +3321,7 @@ end
 
 
 # Other plotting.
-# Draws command parametrical curve (, , ) where  variable is changed in range [0, 1]. You do not need to create the data arrays to plot it. See also plot.
+# Draws command parametrical curve ('x(t)', 'y(t)', 'z(t)') where 't' variable is changed in range (0, 1). You do not need to create the data arrays to plot it. See also plot.
 # @overload fplot(eqx,eqy,eqz,pen,opt="")
 #  @param [String] eqx 
 #  @param [String] eqy 
@@ -3330,7 +3334,7 @@ end
 
 
 # Other plotting.
-# Draws command surface for function  where ,  variable are changed in xrange, yrange. You do not need to create the data arrays to plot it. See also surf.
+# Draws command surface for function 'z(x,y)' where 'x', 'y' variable are changed in xrange, yrange. You do not need to create the data arrays to plot it. See also surf.
 # @overload fsurf(eqz,sch="",opt="")
 #  @param [String] eqz 
 #  @param [String] sch default=""
@@ -3341,7 +3345,7 @@ end
 
 
 # Other plotting.
-# Draws command parametrical surface (, , ) where ,  variable are changed in range [0, 1]. You do not need to create the data arrays to plot it. See also surf.
+# Draws command parametrical surface ('x(u,v)', 'y(u,v)', 'z(u,v)') where 'u', 'v' variable are changed in range (0, 1). You do not need to create the data arrays to plot it. See also surf.
 # @overload fsurf(eqx,eqy,eqz,sch="",opt="")
 #  @param [String] eqx 
 #  @param [String] eqy 
@@ -3354,7 +3358,7 @@ end
 
 
 # Other plotting.
-# The function draws the surface of triangles. Triangle vertexes are set by indexes id of data points (x[i], y[i], z[i]). String sch sets the color scheme. If string contain  then wire plot is produced. First dimensions of id must be 3 or greater. Arrays x, y, z must have equal sizes. Parameter c set the colors of triangles (if id.ny=c.nx) or colors of vertexes (if x.nx=c.nx). See also dots, crust, quadplot, triangulation. 
+# The function draws the surface of triangles. Triangle vertexes are set by indexes id of data points (x(i), y(i), z(i)). String sch sets the color scheme. If string contain '#' then wire plot is produced. First dimensions of id must be 3 or greater. Arrays x, y, z must have equal sizes. Parameter c set the colors of triangles (if id.ny=c.nx) or colors of vertexes (if x.nx=c.nx). See also dots, crust, quadplot, triangulation. TriPlot and QuadPlot
 # @overload tri_plot(id,x,y,sch="",opt="")
 #  @param [MglData] id 
 #  @param [MglData] x 
@@ -3384,7 +3388,7 @@ end
 
 
 # Other plotting.
-# The function draws contour lines for surface of triangles at z=v[k] (or at  z = Min.z if sch contain symbol ). Triangle vertexes are set by indexes id of data points (x[i], y[i], z[i]). Contours are plotted for z[i,j]=v[k] where v[k] are values of data array v. String sch sets the color scheme. Array c (if specified) is used for contour coloring. First dimensions of id must be 3 or greater. Arrays x, y, z must have equal sizes. Parameter c set the colors of triangles (if id.ny=c.nx) or colors of vertexes (if x.nx=c.nx). See also triplot, cont, triangulation.
+# The function draws contour lines for surface of triangles at z=v(k) (or at  z = Min.z if sch contain symbol '_'). Triangle vertexes are set by indexes id of data points (x(i), y(i), z(i)). Contours are plotted for z(i,j)=v(k) where v(k) are values of data array v. String sch sets the color scheme. Array c (if specified) is used for contour coloring. First dimensions of id must be 3 or greater. Arrays x, y, z must have equal sizes. Parameter c set the colors of triangles (if id.ny=c.nx) or colors of vertexes (if x.nx=c.nx). See also triplot, cont, triangulation.
 # @overload tri_cont(id,x,y,z,c,sch="",opt="")
 #  @param [MglData] id 
 #  @param [MglData] x 
@@ -3421,12 +3425,12 @@ end
 #  @param [String] sch default=""
 #  @param [String] opt default=""
 #  @return [nil]
-def tri_cont_v
+def tri_cont
 end
 
 
 # Other plotting.
-# The function draws the surface of quadrangles. Quadrangles vertexes are set by indexes id of data points (x[i], y[i], z[i]). String sch sets the color scheme. If string contain  then wire plot is produced. First dimensions of id must be 4 or greater. Arrays x, y, z must have equal sizes. Parameter c set the colors of quadrangles (if id.ny=c.nx) or colors of vertexes (if x.nx=c.nx). See also triplot. 
+# The function draws the surface of quadrangles. Quadrangles vertexes are set by indexes id of data points (x(i), y(i), z(i)). String sch sets the color scheme. If string contain '#' then wire plot is produced. First dimensions of id must be 4 or greater. Arrays x, y, z must have equal sizes. Parameter c set the colors of quadrangles (if id.ny=c.nx) or colors of vertexes (if x.nx=c.nx). See also triplot. TriPlot and QuadPlot
 # @overload quad_plot(id,x,y,sch="",opt="")
 #  @param [MglData] id 
 #  @param [MglData] x 
@@ -3456,7 +3460,7 @@ end
 
 
 # Other plotting.
-# The function draws the arbitrary placed points (x[i], y[i], z[i]). String sch sets the color scheme. If array a is specified then it define colors of dots. Arrays x, y, z, a must have equal sizes. See also crust, mark, plot. 
+# The function draws the arbitrary placed points (x(i), y(i), z(i)). String sch sets the color scheme. If array a is specified then it define colors of dots. Arrays x, y, z, a must have equal sizes. See also crust, mark, plot. Dots sample
 # @overload dots(x,y,z,sch="",opt="")
 #  @param [MglData] x 
 #  @param [MglData] y 
@@ -3477,7 +3481,7 @@ end
 
 
 # Other plotting.
-# The function reconstruct and draws the surface for arbitrary placed points (x[i], y[i], z[i]). String sch sets the color scheme. If string contain  then wire plot is produced. Arrays x, y, z must have equal sizes. See also dots, triplot. @c 
+# The function reconstruct and draws the surface for arbitrary placed points (x(i), y(i), z(i)). String sch sets the color scheme. If string contain '#' then wire plot is produced. Arrays x, y, z must have equal sizes. See also dots, triplot. @c Crust sample
 # @overload crust(x,y,z,sch="",opt="")
 #  @param [MglData] x 
 #  @param [MglData] y 
@@ -3490,7 +3494,7 @@ end
 
 
 # Nonlinear fitting.
-# Fit data along x-, y- and z-directions for array specified parametrically a[i,j,k](x[i,j,k], y[i,j,k], z[i,j,k]) with weight factor s[i,j,k].
+# Fit data along x-, y- and z-directions for array specified parametrically a(i,j,k)(x(i,j,k), y(i,j,k), z(i,j,k)) with weight factor s(i,j,k).
 # @overload fit_s(a,s,func,var,opt="")
 #  @param [MglData] a 
 #  @param [MglData] s 
@@ -3568,7 +3572,7 @@ end
 
 
 # Nonlinear fitting.
-# Fit data along x-, y- and z-directions for array specified parametrically a[i,j,k](x[i,j,k], y[i,j,k], z[i,j,k]) with weight factor 1.
+# Fit data along x-, y- and z-directions for array specified parametrically a(i,j,k)(x(i,j,k), y(i,j,k), z(i,j,k)) with weight factor 1.
 # @overload fit(a,func,var,opt="")
 #  @param [MglData] a 
 #  @param [String] func 
@@ -3638,7 +3642,7 @@ end
 
 
 # Nonlinear fitting.
-# Fit data along all directions for 2d or 3d arrays a with s=1 and x, y, z equidistantly distributed in interval [Min, Max].
+# Fit data along all directions for 2d or 3d arrays a with s=1 and x, y, z equidistantly distributed in interval (Min, Max).
 # @overload fit2(a,func,var,opt="")
 #  @param [MglData] a 
 #  @param [String] func 
@@ -3668,7 +3672,7 @@ end
 #  @param [MglData] ini 
 #  @param [String] opt default=""
 #  @return [MglData]
-def fit3
+def fit2
 end
 
 
@@ -3717,7 +3721,7 @@ end
 
 
 # Data manipulation.
-# Fills the value of array  according to the formula in string eq. Formula is an arbitrary expression depending  on variables , , , , , . Coordinates , ,  are supposed to be normalized in axis range. Variable  is the original value of the array. Variables  and  are values of arrays v, w which can be NULL (i.e. can be omitted).
+# Fills the value of array 'u' according to the formula in string eq. Formula is an arbitrary expression depending  on variables 'x', 'y', 'z', 'u', 'v', 'w'. Coordinates 'x', 'y', 'z' are supposed to be normalized in axis range. Variable 'u' is the original value of the array. Variables 'v' and 'w' are values of arrays v, w which can be NULL (i.e. can be omitted).
 # @overload fill(u,eq,opt="")
 #  @param [MglData] u 
 #  @param [String] eq 
@@ -3741,7 +3745,7 @@ end
 
 
 # Data manipulation.
-# Fills the value of array  according to the linear interpolation of triangulated surface, found for arbitrary placed points , , . Interpolation is done at points equidistantly distributed in axis range. NAN value is used for grid points placed outside of triangulated surface.
+# Fills the value of array 'u' according to the linear interpolation of triangulated surface, found for arbitrary placed points 'x', 'y', 'z'. Interpolation is done at points equidistantly distributed in axis range. NAN value is used for grid points placed outside of triangulated surface.
 # @overload data_grid(u,x,y,z,opt="")
 #  @param [MglData] u 
 #  @param [MglData] x 
@@ -3754,7 +3758,7 @@ end
 
 
 # Data manipulation.
-# Solves equation du/dz = i*k0*ham(p,q,x,y,z,|u|)[u], where p=-i/k0*d/dx, q=-i/k0*d/dy are pseudo-differential operators. Parameters ini_re, ini_im specify real and imaginary part of initial field distribution. Coordinates , ,  are supposed to be normalized in axis range. Note, that really this ranges are increased by factor 3/2 for purpose of reducing reflection from boundaries. Parameter dz set the step along evolutionary coordinate z. At this moment, simplified form of function ham is supported -- all ``mixed'' terms (like ->x*d/dx) are excluded. For example, in 2D case this function is effectively . However commutable combinations (like ->x*d/dy) are allowed. Here variable  is used for field amplitude |u|. This allow one solve nonlinear problems -- for example, for nonlinear Shrodinger equation you may set ham="p^2 + q^2 - u^2". You may specify imaginary part for wave absorption, like ham = "p^2 + i*x*(x>0)", but only if dependence on variable  is linear (i.e. ). 
+# Solves equation du/dz = i*k0*ham(p,q,x,y,z,|u|)(u), where p=-i/k0*d/dx, q=-i/k0*d/dy are pseudo-differential operators. Parameters ini_re, ini_im specify real and imaginary part of initial field distribution. Coordinates 'x', 'y', 'z' are supposed to be normalized in axis range. Note, that really this ranges are increased by factor 3/2 for purpose of reducing reflection from boundaries. Parameter dz set the step along evolutionary coordinate z. At this moment, simplified form of function ham is supported -- all ``mixed'' terms (like 'x*p'->x*d/dx) are excluded. For example, in 2D case this function is effectively ham = f(p,z) + g(x,z,u). However commutable combinations (like 'x*q'->x*d/dy) are allowed. Here variable 'u' is used for field amplitude |u|. This allow one solve nonlinear problems -- for example, for nonlinear Shrodinger equation you may set ham="p^2 + q^2 - u^2". You may specify imaginary part for wave absorption, like ham = "p^2 + i*x*(x>0)", but only if dependence on variable 'i' is linear (i.e. ham = hre+i*him). PDE solving hints
 # @overload pde(ham,ini_re,ini_im,dz=0.1,k0=100,opt="")
 #  @param [String] ham 
 #  @param [MglData] ini_re 

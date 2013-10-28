@@ -1,7 +1,9 @@
 # This document is converted from other_en.texi.
+
+# MglColor class
 class MglColor
 
-# Sets color from values of Red, Green, Blue and Alpha channels. These values should be in interval [0,1].
+# Sets color from values of Red, Green, Blue and Alpha channels. These values should be in interval (0,1).
 # @overload set(r,g,b,a=1)
 #  @param [Float] r 
 #  @param [Float] g 
@@ -78,6 +80,8 @@ end
 
 end # MglColor
 
+
+# MglPoint class
 class MglPoint
 
 # Returns true if point contain NAN values.
@@ -87,7 +91,7 @@ def is_nan
 end
 
 
-# Returns the norm } of vector.
+# Returns the norm \sqrt(x^2+y^2+z^2) of vector.
 # @overload norm()
 #  @return [Float]
 def norm
@@ -178,13 +182,6 @@ end
 #  @param [MglPoint] b 
 #  @return [MglPoint]
 def |
-end
-
-
-# Return the norm sqrt(|a|^2) of vector a.
-# @overload mgl_norm()
-#  @return [MglPoint]
-def mgl_norm
 end
 
 

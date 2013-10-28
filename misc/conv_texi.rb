@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class MethodType
 
   class Args
@@ -30,7 +31,7 @@ class MethodType
       s = s.gsub(/(\*|&)/,"")
       s.strip!
       case s
-      when /mglData.\b/
+      when /mglDataA/
         "MglData"
       when /mgl(\w+)\b/
         "Mgl"+$1
@@ -106,8 +107,6 @@ class MethodType
 
 
   def parse(line)
-    #p line
-    #if line.nil?
     if /(.*)\((.*)\)/ =~ line.strip
       m,parms = $1,$2
       if /(\S.*[\s*&])(\w+\S+)/ =~ m
@@ -153,14 +152,14 @@ class MethodType
   end
 
   def valid
+    re_ignore = /\b(HMGL|HCDT|HMPR|HMDT|HADT)\b/
     @name !~ /=$/ and
+      @name !~ /^mgl_/ and
       @name != "!" and
       @name != "unknown_method" and
       @clss =~ /^mgl/i and
-      @return_type !~ /\b(HMGL|HCDT|HMPR)\b/ and
-      @args.all? do |a|
-      /\b(HMGL|HCDT|HMPR)\b/ !~ a.type
-    end
+      @return_type !~ re_ignore and
+      @args.all?{|a| re_ignore !~ a.type}
   end
 
   def ruby_def
@@ -174,10 +173,10 @@ class TexiParse
   end
 
   def parse(src_str)
-    @re_ignore_param = /\b(HMGL|HCDT|HMPR)\b/
     @tags = {}
     @defs = []
     @docs = {}
+    @classes = {}
     @block_nest = []
     @s = src_str
     @a = @s.scan(/^.*$/).map{|x| x}
@@ -187,7 +186,9 @@ class TexiParse
     tags = tags.keys
     @re_tag = /^@(#{tags.join('|')})\b\s*(.*)/
 
-    block_loop()
+    s=block_loop()
+    #s.each do |x| puts x if !x.empty? end
+    #print "\n\n"
   end
 
   def empty?
@@ -197,17 +198,13 @@ class TexiParse
   def write(io)
     @docs.each do |clss,docs|
       if clss
-        io.print "class #{clss}\n\n"
+        io.print "\n# #{clss} class\nclass #{clss}\n\n"
         docs.each do |x|
           io.print x+"\n\n"
         end
         io.print "end # #{clss}\n\n"
       end
     end
-  end
-
-  def c(a)
-    ""
   end
 
   def block_loop(tag="_top_",arg=nil)
@@ -236,23 +233,31 @@ class TexiParse
 
   def default_tag(tag,arg)
     tag = "section" if tag == "subsection"
+    arg = arg.gsub(/\{([^{}]+)\}/,'\1')
     @tags[tag] = arg
-    "#{tag}:#{arg}"
-    nil
+    arg
   end
 
   def parse_tag(tag,arg)
     if respond_to?(tag)
       send(tag,arg)
     else
+      #puts "unknown tag: #{tag} arg: #{arg}"
       default_tag(tag,arg)
     end
   end
 
   def parse_inline(a)
     a = a.gsub(/@(\w+)\{([^}]*)\}/){|x| parse_tag($1,$2)}
-    a.gsub!(/@\{/,"(")
-    a.gsub!(/@\}/,")")
+    #a.gsub!(/@\{/,"&#123;")
+    #a.gsub!(/@\}/,"&#125;")
+    #a.gsub!(/\[/,'&#91;')
+    #a.gsub!(/\]/,'&#93;')
+    a.gsub!(/@\{/,'(')
+    a.gsub!(/@\}/,')')
+    a.gsub!(/\[/,'(')
+    a.gsub!(/\]/,')')
+    a.gsub!(/@@/,"@")
     a
   end
 
@@ -267,6 +272,10 @@ class TexiParse
     if line
       @block_nest.last.push(line)
     end
+  end
+
+  def c(a)
+    ""
   end
 
   def ifclear(arg)
@@ -303,21 +312,24 @@ class TexiParse
       s << "# #{x}\n"
     end
     mm = nil
+    h = {}
     @method.each do |m|
       if m and m.valid
-        s << m.mkdoc
-        mm = m
+        clss = m.clss
+        a = h[clss]
+        h[clss] = a = [] if a.nil?
+        a << m
       end
     end
-    if mm and mm.valid
-      s << mm.ruby_def
-      #puts s
-      clss = mm.clss
+    h.each do |clss,a|
+      d = s.dup
+      a.each do |m|
+        d << m.mkdoc
+      end
+      d << a[0].ruby_def
       b = @docs[clss]
       @docs[clss] = b = [] unless b
-      b.push s
-    elsif mm
-      puts "undoc: "+mm.name
+      b << d
     end
     nil
   end
@@ -327,53 +339,33 @@ class TexiParse
     a = parse_inline(a)
     a = a.strip
     #puts "- deftypefnx #{a}"
-    if /\{(\w+) on ([^}]+)\}(.*)/ =~ a
+    case a
+    when /\{(\w+) on ([^}]+)\}(.*)/
       type,clss,args = $1,$2,$3
       case type
       when "Method"
         @method << MethodType.new(clss,args)
-        #a = [type,clss,*parse_param(args)]
-        #a[4].unshift "# @overload #{a[2]}(#{a[3].join(',')})"
-        #if a[4].all?{|x| @re_ignore_param !~ x}
-        #  @method << a
-        #end
       when "Constructor"
         @method << MethodType.new(clss,args)
-        #a = [type,clss,*parse_param(args)]
-        #a[4].unshift "# @overload initialize(#{a[3].join(',')})"
-        #if a[4].all?{|x| @re_ignore_param !~ x}
-        #  @method << a
-        #end
       when "Destructor"
       when "Slot"
       when "Signal"
       else
         raise "unknown method type : #{type}"
       end
-    elsif /\{Library Function\}(.*)/ =~ a
+    when /\{Library Function\}(.*)/
       clss,args = nil,$1
       @method << MethodType.new(clss,args)
-      #a = library_function($1)
-      #if a and a[4].all?{|x| @re_ignore_param !~ x}
-      #  @method << a
-      #end
-    elsif /^(mgl\w+) (.*)/ =~ a
+    when /^(mgl\w+) (.*)/
       clss,args = $1,$2
-      #p [clss,args]
       m = MethodType.new(clss,args)
-      #p m
-      #p m.mkdoc
       @method << m
-      #a = ["Method",clss,*library_method(args)]
-      #if a and a[4].all?{|x| @re_ignore_param !~ x}
-      #  @method << a
-      #end
-    elsif /\{MGL command\}/ =~ a
-    elsif /\{C function\}/ =~ a
-    elsif /\{Global function\}/ =~ a
-    elsif /\{MGL suffix\}/ =~ a
-    elsif /QMathGL/ =~ a
-    elsif /Fl_MathGL/ =~ a
+    when /\{MGL command\}/
+    when /\{C function\}/
+    when /\{Global function\}/
+    when /\{MGL suffix\}/
+    when /QMathGL/
+    when /Fl_MathGL/
     else
       puts "undoc: "+a
     end
@@ -385,12 +377,20 @@ class TexiParse
     s
   end
 
+  def samp(s)
+    "'"+s+"'"
+  end
+
   def var(s)
     s
   end
 
   def emph(x)
-    "*"+x+"*"
+    if /^\w+$/ =~ x
+      "*"+x+"*"
+    else
+      x
+    end
   end
 
   def code(x)
@@ -407,8 +407,8 @@ end
 srcdir = ENV["HOME"]+"/2013/src/mathgl-2.1.3.1/texinfo/"
 dstdir = ENV["HOME"]+"/2013/git/ruby-mathgl/lib/mathgl/"
 
-Dir.glob(srcdir+"*_en.texi") do |rf|
-#[ENV["HOME"]+"/2013/src/mathgl-2.1.3.1/texinfo/core_en.texi"].each do |rf|
+%w[core data other parse].each do |b|
+  rf = srcdir+b+'_en.texi'
   src = nil
   open(rf,"r"){|io| src = io.read}
   if /deftypefn/=~src
