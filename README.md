@@ -1,11 +1,15 @@
 # Ruby/MathGL
 
-Ruby wrapper of [MathGL - library for scientific data visualization](http://mathgl.sourceforge.net/) made using SWIG.
+Ruby wrapper of [MathGL](http://mathgl.sourceforge.net/), made using SWIG.
+
+MathGL is a library for scientific data visualization developed by Alexey Balakin.
 
 (This package is under construction.)
 
-- [Ruby/MathGL Plot Samples](https://github.com/masa16/ruby-mathgl-sample)
-- [Ruby/MathGL API Document](http://masa16.github.io/ruby-mathgl/doc/frames.html)
+- [Plot Samples](https://github.com/masa16/ruby-mathgl-sample)
+- [API Document](http://masa16.github.io/ruby-mathgl/doc/frames.html)
+- [GitHub](https://github.com/masa16/ruby-mathgl)
+- [RubyGems](https://rubygems.org/gems/mathgl)
 
 ## Installation
 
