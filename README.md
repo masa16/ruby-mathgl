@@ -28,7 +28,7 @@ MathGL is a library for scientific data visualization developed by Alexey Balaki
 
 ## Usage
 
-Write to PNG
+Write a plot to PNG file:
 
     require 'mathgl'
 
@@ -45,7 +45,7 @@ Write to PNG
     gr.instance_eval(&prc)
     gr.write_png("test.png","",false)
 
-Qt window:
+Display a plot on Qt window:
 
     require 'mathgl'
 
