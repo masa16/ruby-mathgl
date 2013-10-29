@@ -7,6 +7,7 @@ MathGL is a library for scientific data visualization developed by Alexey Balaki
 (This package is under construction.)
 
 - [Plot Samples](https://github.com/masa16/ruby-mathgl-sample)
+  ([Single page](https://github.com/masa16/ruby-mathgl-sample/blob/master/single_page/README.md))
 - [API Document](http://masa16.github.io/ruby-mathgl/doc/frames.html)
 - [GitHub](https://github.com/masa16/ruby-mathgl)
 - [RubyGems](https://rubygems.org/gems/mathgl)
