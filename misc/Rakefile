@@ -2,7 +2,7 @@ require 'rake/clean'
 
 task :mkdoc do
   sh "ruby conv_texi.rb"
-  sh "yard -r ../README.md --title 'Ruby/MathGL document'"
+  sh "yard doc -r ../README.md --title 'Ruby/MathGL document' '../lib/**/*.rb'"
 end
 
 task :default => :mkdoc

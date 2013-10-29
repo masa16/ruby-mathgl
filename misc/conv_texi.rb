@@ -422,7 +422,7 @@ class TexiParse
 end
 
 srcdir = ENV["HOME"]+"/2013/src/mathgl-2.1.3.1/texinfo/"
-dstdir = "lib/mathgl/"
+dstdir = "../lib/mathgl/doc/"
 
 %w[core data other parse].each do |b|
   rf = srcdir+b+'_en.texi'

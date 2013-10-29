@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["masa16.tanaka@gmail.com"]
   spec.description   = %q{Ruby wrapper for MathGL - library for scientific data visualization}
   spec.summary       = %q{Ruby wrapper for MathGL - library for scientific data visualization}
-  spec.homepage      = "https://github.com/masa16/ruby-mathgl"
+  spec.homepage      = "http://masa16.github.io/ruby-mathgl/"
   spec.license       = "LGPL"
   spec.extensions    = ["ext/mathgl/extconf.rb"]
 
