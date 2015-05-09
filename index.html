@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Ruby/MathGL : Ruby wrapper for MathGL - library for scientific data visualization" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Ruby/MathGL</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/masa16/ruby-mathgl">View on GitHub</a>
+
+          <h1 id="project_title">Ruby/MathGL</h1>
+          <h2 id="project_tagline">Ruby wrapper for MathGL - library for scientific data visualization</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/masa16/ruby-mathgl/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/masa16/ruby-mathgl/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="rubymathgl" class="anchor" href="#rubymathgl"><span class="octicon octicon-link"></span></a>Ruby/MathGL</h1>
+
+<p>Ruby wrapper of <a href="http://mathgl.sourceforge.net/">MathGL</a>, made using SWIG.</p>
+
+<p>MathGL is a library for scientific data visualization developed by Alexey Balakin.</p>
+
+<p>(This package is under construction.)</p>
+
+<ul>
+<li>
+<a href="https://github.com/masa16/ruby-mathgl-sample">Plot Samples</a>
+(<a href="https://github.com/masa16/ruby-mathgl-sample/blob/master/single_page/README.md">Single page</a>)</li>
+<li><a href="http://masa16.github.io/ruby-mathgl/doc/frames.html">API Document</a></li>
+<li><a href="https://github.com/masa16/ruby-mathgl">GitHub</a></li>
+<li><a href="https://rubygems.org/gems/mathgl">RubyGems</a></li>
+</ul><h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<ol>
+<li><p>Install MathGL2 library: <a href="http://mathgl.sourceforge.net/">http://mathgl.sourceforge.net/</a></p></li>
+<li>
+<p>Install Ruby/MathGL from source:</p>
+
+<pre><code>ruby setup.rb config -- --with-mathgl-dir=/usr/local
+ruby setup.rb setup
+ruby setup.rb install
+</code></pre>
+
+<p>Or install with gem:</p>
+
+<pre><code>gem install mathgl -- --with-mathgl-dir=/usr/local
+</code></pre>
+</li>
+</ol><h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Write a plot to PNG file:</p>
+
+<pre><code>require 'mathgl'
+
+prc = proc{
+  x = (0..100).map{|i| i*0.1}
+  y = x.map{|i| Math.sin(i)}
+  set_ranges(0,10,-1,1)
+  box
+  axis
+  plot(x,y)
+}
+
+gr = MathGL::MglGraph.new
+gr.instance_eval(&amp;prc)
+gr.write_png("test.png","",false)
+</code></pre>
+
+<p>Display a plot on Qt window:</p>
+
+<pre><code>require 'mathgl'
+
+prc = proc{
+  x = (0..100).map{|i| i*0.1}
+  y = x.map{|i| Math.sin(i)}
+  set_ranges(0,10,-1,1)
+  box
+  axis
+  plot(x,y)
+}
+
+qt = MathGL::MglQT.new(&amp;prc)
+qt.run
+</code></pre>
+
+<h2>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<ol>
+<li>Fork it</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Ruby/MathGL maintained by <a href="https://github.com/masa16">masa16</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>

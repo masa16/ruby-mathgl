@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: README
+  
+    &mdash; Ruby/MathGL document
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'><h1>Ruby/MathGL</h1>
+
+<p>Ruby wrapper of <a href="http://mathgl.sourceforge.net/">MathGL</a>, made using SWIG.</p>
+
+<p>MathGL is a library for scientific data visualization developed by Alexey Balakin.</p>
+
+<p>(This package is under construction.)</p>
+
+<ul>
+<li><a href="https://github.com/masa16/ruby-mathgl-sample">Plot Samples</a>
+(<a href="https://github.com/masa16/ruby-mathgl-sample/blob/master/single_page/README.md">Single page</a>)</li>
+<li><a href="http://masa16.github.io/ruby-mathgl/doc/frames.html">API Document</a></li>
+<li><a href="https://github.com/masa16/ruby-mathgl">GitHub</a></li>
+<li><a href="https://rubygems.org/gems/mathgl">RubyGems</a></li>
+</ul>
+
+<h2>Installation</h2>
+
+<ol>
+<li><p>Install MathGL2 library: <a href="http://mathgl.sourceforge.net/">http://mathgl.sourceforge.net/</a></p></li>
+<li><p>Install Ruby/MathGL from source:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_ruby'>ruby</span> <span class='id identifier rubyid_setup'>setup</span><span class='period'>.</span><span class='id identifier rubyid_rb'>rb</span> <span class='id identifier rubyid_config'>config</span> <span class='op'>-</span><span class='op'>-</span> <span class='op'>-</span><span class='op'>-</span><span class='id identifier rubyid_with'>with</span><span class='op'>-</span><span class='id identifier rubyid_mathgl'>mathgl</span><span class='op'>-</span><span class='id identifier rubyid_dir'>dir</span><span class='op'>=</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>usr</span><span class='regexp_end'>/local</span></span>
+<span class='id identifier rubyid_ruby'>ruby</span> <span class='id identifier rubyid_setup'>setup</span><span class='period'>.</span><span class='id identifier rubyid_rb'>rb</span> <span class='id identifier rubyid_setup'>setup</span>
+<span class='id identifier rubyid_ruby'>ruby</span> <span class='id identifier rubyid_setup'>setup</span><span class='period'>.</span><span class='id identifier rubyid_rb'>rb</span> <span class='id identifier rubyid_install'>install</span>
+</code></pre>
+
+<p>Or install with gem:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_mathgl'>mathgl</span> <span class='op'>-</span><span class='op'>-</span> <span class='op'>-</span><span class='op'>-</span><span class='id identifier rubyid_with'>with</span><span class='op'>-</span><span class='id identifier rubyid_mathgl'>mathgl</span><span class='op'>-</span><span class='id identifier rubyid_dir'>dir</span><span class='op'>=</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>usr</span><span class='regexp_end'>/local</span></span>
+</code></pre></li>
+</ol>
+
+<h2>Usage</h2>
+
+<p>Write to PNG</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>mathgl</span><span class='tstring_end'>&#39;</span></span>
+
+<span class='id identifier rubyid_prc'>prc</span> <span class='op'>=</span> <span class='id identifier rubyid_proc'>proc</span><span class='lbrace'>{</span>
+  <span class='id identifier rubyid_x'>x</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='int'>0</span><span class='op'>..</span><span class='int'>100</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='id identifier rubyid_i'>i</span><span class='op'>*</span><span class='float'>0.1</span><span class='rbrace'>}</span>
+  <span class='id identifier rubyid_y'>y</span> <span class='op'>=</span> <span class='id identifier rubyid_x'>x</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_sin'>sin</span><span class='lparen'>(</span><span class='id identifier rubyid_i'>i</span><span class='rparen'>)</span><span class='rbrace'>}</span>
+  <span class='id identifier rubyid_set_ranges'>set_ranges</span><span class='lparen'>(</span><span class='int'>0</span><span class='comma'>,</span><span class='int'>10</span><span class='comma'>,</span><span class='op'>-</span><span class='int'>1</span><span class='comma'>,</span><span class='int'>1</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_box'>box</span>
+  <span class='id identifier rubyid_axis'>axis</span>
+  <span class='id identifier rubyid_plot'>plot</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span><span class='id identifier rubyid_y'>y</span><span class='rparen'>)</span>
+<span class='rbrace'>}</span>
+
+<span class='id identifier rubyid_gr'>gr</span> <span class='op'>=</span> <span class='const'>MathGL</span><span class='op'>::</span><span class='const'>MglGraph</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_gr'>gr</span><span class='period'>.</span><span class='id identifier rubyid_instance_eval'>instance_eval</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_prc'>prc</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_gr'>gr</span><span class='period'>.</span><span class='id identifier rubyid_write_png'>write_png</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>test.png</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='kw'>false</span><span class='rparen'>)</span>
+</code></pre>
+
+<p>Qt window:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>mathgl</span><span class='tstring_end'>&#39;</span></span>
+
+<span class='id identifier rubyid_prc'>prc</span> <span class='op'>=</span> <span class='id identifier rubyid_proc'>proc</span><span class='lbrace'>{</span>
+  <span class='id identifier rubyid_x'>x</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='int'>0</span><span class='op'>..</span><span class='int'>100</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='id identifier rubyid_i'>i</span><span class='op'>*</span><span class='float'>0.1</span><span class='rbrace'>}</span>
+  <span class='id identifier rubyid_y'>y</span> <span class='op'>=</span> <span class='id identifier rubyid_x'>x</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_sin'>sin</span><span class='lparen'>(</span><span class='id identifier rubyid_i'>i</span><span class='rparen'>)</span><span class='rbrace'>}</span>
+  <span class='id identifier rubyid_set_ranges'>set_ranges</span><span class='lparen'>(</span><span class='int'>0</span><span class='comma'>,</span><span class='int'>10</span><span class='comma'>,</span><span class='op'>-</span><span class='int'>1</span><span class='comma'>,</span><span class='int'>1</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_box'>box</span>
+  <span class='id identifier rubyid_axis'>axis</span>
+  <span class='id identifier rubyid_plot'>plot</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span><span class='id identifier rubyid_y'>y</span><span class='rparen'>)</span>
+<span class='rbrace'>}</span>
+
+<span class='id identifier rubyid_qt'>qt</span> <span class='op'>=</span> <span class='const'>MathGL</span><span class='op'>::</span><span class='const'>MglQT</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_prc'>prc</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_qt'>qt</span><span class='period'>.</span><span class='id identifier rubyid_run'>run</span>
+</code></pre>
+
+<h2>Contributing</h2>
+
+<ol>
+<li>Fork it</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am &#39;Add some feature&#39;</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol>
+</div></div>
+
+    <div id="footer">
+  Generated on Tue Oct 29 09:19:21 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.2 (ruby-2.0.0).
+</div>
+
+  </body>
+</html>
