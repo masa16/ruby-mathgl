@@ -1,0 +1,38 @@
+$ diff -u ~/2015/src/mathgl-2.3.2/lang/mathgl.i ruby-mathgl/ext/mathgl/mathgl.i
+--- /home/masa/2015/src/mathgl-2.3.2/lang/mathgl.i	2015-02-02 20:13:21.000000000 +0900
++++ ruby-mathgl/ext/mathgl/mathgl.i	2015-05-09 18:57:29.798078188 +0900
+@@ -21,13 +21,23 @@
+  ***************************************************************************/
+
+
++#ifdef SWIGRUBY
++%module MathGL
++#else
+ %module mathgl
++#endif
++
+ #ifdef SWIGOCTAVE
+ %feature("autodoc", 1);
+ #endif // SWIGOCTAVE
+
++#ifdef SWIGRUBY
++%feature("autodoc", 2);
++#endif
++
+ %ignore operator!;
+ %ignore operator=;
++%ignore operator!=;
+ %ignore *::operator=;
+ %ignore *::operator+=;
+ %ignore *::operator-=;
+@@ -87,6 +97,10 @@
+ %apply (int DIM1, int DIM2, int DIM3, double* IN_ARRAY3) {(int rows, int cols, int slc, const double* d)};
+ #endif
+
++#ifdef SWIGRUBY
++%include "rubymgl.i"
++#endif
++
+ %include "type.i"
+ %include "data.i"
+ %include "mgl.i"
