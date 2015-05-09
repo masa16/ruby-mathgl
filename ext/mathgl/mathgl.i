@@ -20,6 +20,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+
 #ifdef SWIGRUBY
 %module MathGL
 #else
@@ -42,15 +43,16 @@
 %ignore *::operator-=;
 %ignore *::operator*=;
 %ignore *::operator/=;
-//%ignore mglDataA;
+//%ignore mglDataA
 
 %{
 #define SWIG_FILE_WITH_INIT
-//#include "mgl2/config.h"
 #include "mgl2/type.h"
 #include "mgl2/data.h"
 #include "mgl2/mgl.h"
-//#include "mgl2/window.h"
+const double Pi = M_PI;
+const double NaN = NAN;
+const double Inf = INFINITY;
 %}
 
 #if MGL_USE_DOUBLE
@@ -99,16 +101,13 @@ import_array();
 %include "rubymgl.i"
 #endif
 
-%include "mgl2/config.h"
-//%include "mgl2/define.h"
-%include "mgl2/type.h"
-%include "mgl2/data.h"
-%include "mgl2/mgl.h"
-//%include "mgl2/window.h"
+%include "type.i"
+%include "data.i"
+%include "mgl.i"
 %extend mglData
 {
-	float __getitem__( int i)	{	return self->GetVal(i);	};
-	float __paren( int i)		{	return self->GetVal(i);	};
-	void __setitem__( int i, float y)	{	self->SetVal(y,i);	};
-	void __paren_asgn( int i, float y)	{	self->SetVal(y,i);	};
+	mreal __getitem__( int i)	{	return self->GetVal(i);	};
+	mreal __paren( int i)		{	return self->GetVal(i);	};
+	void __setitem__( int i, mreal y)	{	self->SetVal(y,i);	};
+	void __paren_asgn( int i, mreal y)	{	self->SetVal(y,i);	};
 };
