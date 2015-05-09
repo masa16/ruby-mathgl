@@ -39,3 +39,4 @@ ext/mathgl/fltk.cxx
 ext/mathgl/glut.cxx
 ext/mathgl/mathgl.so
 ext/mathgl/Makefile
+ext/mathgl/.RUBYARCHDIR.time
