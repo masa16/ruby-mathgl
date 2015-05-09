@@ -9,4 +9,4 @@ qt.cxx: tmpl/mkwin.rb tmpl/win.erb.cxx
 
 .PHONY : cleancxx
 cleancxx: clean
-	rm -f qt.cxx fltk.cxx glut.cxx
+	rm -f mathgl.cxx qt.cxx fltk.cxx glut.cxx
