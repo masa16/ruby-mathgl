@@ -27,7 +27,7 @@ def execute
 end
 
 
-# Function parses the string str and executes it by  using gr as a graphics plotter. Returns the value depending on an error presence in the string str: 0 -- no error, 1 -- wrong command argument(s), 2 -- unknown command, 3 -- string is too long. Optional argument pos allows to save the string position in the document (or file) for using for|next command.
+# Function parses the string str and executes it by  using gr as a graphics plotter. Returns the value depending on an error presence in the string str: 0 -- no error, 1 -- wrong command argument(s), 2 -- unknown command, 3 -- string is too long, 4 -- strings is not closed. Optional argument pos allows to save the string position in the document (or file) for using for|next command.
 #
 # @overload parse(gr,str,pos=0)
 #  @param [MglGraph] gr 
@@ -75,7 +75,7 @@ def add_var
 end
 
 
-# Function delete the variable specified by its name or by its pointer.
+# Function delete the variable with given name.
 #
 # @overload delete_var(name)
 #  @param [String] name 
@@ -84,7 +84,7 @@ def delete_var
 end
 
 
-# Function delete all variables in this parser.
+# Function delete all variables and reset list of commands to default one in this parser.
 #
 # @overload delete_all()
 #  @return [nil]
@@ -100,7 +100,7 @@ def restore_once
 end
 
 
-# Allow to parse 'setsize' command or not.
+# Allow to parse setsize command or not.
 #
 # @overload allow_set_size(a)
 #  @param [bool] a 
@@ -115,6 +115,15 @@ end
 #  @param [bool] a 
 #  @return [nil]
 def allow_file_io
+end
+
+
+# Allow to parse load command or not.
+#
+# @overload allow_dll_call(a)
+#  @param [bool] a 
+#  @return [nil]
+def allow_dll_call
 end
 
 

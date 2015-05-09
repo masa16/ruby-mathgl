@@ -108,7 +108,7 @@ class MethodType
 
 
   def parse(line)
-    if /(.*)\((.*)\)/ =~ line.strip
+    if /([^()]*)\((.*)\)/ =~ line.strip
       m,parms = $1,$2
       if /(\S.*[\s*&])(\w+\S+)/ =~ m
         ret, meth = $1,$2
@@ -132,8 +132,10 @@ class MethodType
   def decomp_parms(parms)
     parms.split(/,/).each_with_index do |x,i|
       x.strip!
-      if /(\S.*[\s*&])(\w+)(=([^=]+))?/ =~ x
-        @args[i] = Args.new($1,$2,$4)
+      if /(\S.*[\s*&])\(\*(\w+)\)\([^()]*\)$/ =~ x
+        @args[i] = a = Args.new("function",$2,$4)
+      elsif /(\S.*[\s*&])(\w+)(=([^=]+))?/ =~ x
+          @args[i] = a = Args.new($1,$2,$4)
       elsif x=="num"
         @args[i] = Args.new("Numeric",x)
       else
@@ -312,12 +314,12 @@ class TexiParse
   end
 
   def deftype(tag,arg)
-    #p arg
+    #p [tag,arg]
     @method = []
     deftypefnx(parse_inline(arg))
     lines = block_loop(tag,arg)
     s = ""
-    section = @tags['section'].strip
+    section = (@tags['section']||"").strip
     if /^mgl.*class$/ !~ section
       s << "# #{section}.\n"
     end
@@ -421,8 +423,9 @@ class TexiParse
   end
 end
 
-srcdir = ENV["HOME"]+"/2013/src/mathgl-2.1.3.1/texinfo/"
-dstdir = "../lib/mathgl/doc/"
+#srcdir = ENV["HOME"]+"/2013/src/mathgl-2.1.3.1/texinfo/"
+#dstdir = "../lib/mathgl/doc/"
+srcdir,dstdir = *ARGV
 
 %w[core data other parse].each do |b|
   rf = srcdir+b+'_en.texi'

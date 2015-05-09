@@ -27,33 +27,6 @@ def set_val
 end
 
 
-# Public variables.
-# Gets the x-, y-, z-size of the data.
-#
-# @overload get_nx()
-#  @return [long]
-def get_nx
-end
-
-
-# Public variables.
-# Gets the x-, y-, z-size of the data.
-#
-# @overload get_ny()
-#  @return [long]
-def get_ny
-end
-
-
-# Public variables.
-# Gets the x-, y-, z-size of the data.
-#
-# @overload get_nz()
-#  @return [long]
-def get_nz
-end
-
-
 # Data constructor.
 # Default constructor. Allocates the memory for data array and initializes it by zero. If string eq is specified then data will be filled by corresponding formula as in fill.
 #
@@ -427,6 +400,20 @@ end
 
 
 # Data filling.
+# Fills the value of array according to the linear interpolation of triangulated surface assuming x-,y-coordinates equidistantly distributed in axis range (or in range (x1,x2)*(y1,y2)). Triangulated surface is found for arbitrary placed points 'x', 'y', 'z'. NAN value is used for grid points placed outside of triangulated surface. Making regular data
+#
+# @overload grid(x,y,z,p1,p2)
+#  @param [MglData] x 
+#  @param [MglData] y 
+#  @param [MglData] z 
+#  @param [MglPoint] p1 
+#  @param [MglPoint] p2 
+#  @return [MglData]
+def grid
+end
+
+
+# Data filling.
 # Sets value(s) of array a(i, j, k) = val. Negative indexes i, j, k=-1 set the value val to whole range in corresponding direction(s). For example, Put(val,-1,0,-1); sets a(i,0,j)=val for i=0...(nx-1), j=0...(nz-1).
 #
 # @overload put(val,i=-1,j=-1,k=-1)
@@ -449,6 +436,60 @@ end
 #  @param [Integer] k default=-1
 #  @return [nil]
 def put
+end
+
+
+# Data filling.
+# Fills by interpolated values of array v at the point (x, y, z)=(X(i), Y(j), Z(k)) (or (x, y, z)=(X(i,j,k), Y(i,j,k), Z(i,j,k)) if x, y, z are not 1d arrays), where X,Y,Z are equidistantly distributed in range (x1,x2)*(y1,y2)*(z1,z2) and have the same sizes as this array. If parameter sl is 0 or positive then changes will be applied only for slice sl.
+#
+# @overload refill(x,v,x1,x2,sl=-1)
+#  @param [MglData] x 
+#  @param [MglData] v 
+#  @param [Float] x1 
+#  @param [Float] x2 
+#  @param [long] sl default=-1
+#  @return [nil]
+#
+# @overload refill(x,v,p1,p2,sl=-1)
+#  @param [MglData] x 
+#  @param [MglData] v 
+#  @param [MglPoint] p1 
+#  @param [MglPoint] p2 
+#  @param [long] sl default=-1
+#  @return [nil]
+#
+# @overload refill(x,y,v,p1,p2,sl=-1)
+#  @param [MglData] x 
+#  @param [MglData] y 
+#  @param [MglData] v 
+#  @param [MglPoint] p1 
+#  @param [MglPoint] p2 
+#  @param [long] sl default=-1
+#  @return [nil]
+#
+# @overload refill(x,y,z,v,p1,p2)
+#  @param [MglData] x 
+#  @param [MglData] y 
+#  @param [MglData] z 
+#  @param [MglData] v 
+#  @param [MglPoint] p1 
+#  @param [MglPoint] p2 
+#  @return [nil]
+def refill
+end
+
+
+# Data filling.
+# Fills by global cubic spline values of array v at the point x=X(i), where X are equidistantly distributed in range (x1,x2) and have the same sizes as this array. If parameter sl is 0 or positive then changes will be applied only for slice sl.
+#
+# @overload refill_gs(x,v,x1,x2,sl=-1)
+#  @param [MglData] x 
+#  @param [MglData] v 
+#  @param [Float] x1 
+#  @param [Float] x2 
+#  @param [long] sl default=-1
+#  @return [nil]
+def refill_gs
 end
 
 
@@ -522,17 +563,6 @@ end
 
 
 # File I/O.
-# Saves the whole data array (for ns=-1) or only ns-th slice to text file.
-#
-# @overload save(fname,ns=-1)
-#  @param [String] fname 
-#  @param [Integer] ns default=-1
-#  @return [nil]
-def save
-end
-
-
-# File I/O.
 # Reads data array named dname from HDF5 or HDF4 file. This function does nothing if HDF5|HDF4 was disabled during library compilation.
 #
 # @overload read_hdf(fname,dname)
@@ -540,30 +570,6 @@ end
 #  @param [String] dname 
 #  @return [nil]
 def read_hdf
-end
-
-
-# File I/O.
-# Saves data array named dname to HDF5 file. This function does nothing if HDF5 was disabled during library compilation.
-#
-# @overload save_hdf(fname,dname,rewrite=false)
-#  @param [String] fname 
-#  @param [String] dname 
-#  @param [bool] rewrite default=false
-#  @return [nil]
-def save_hdf
-end
-
-
-# File I/O.
-# Put data names from HDF5 file fname into buf as '\t' separated fields. In MGL version the list of data names will be printed as message. This function does nothing if HDF5 was disabled during library compilation.
-#
-# @overload datas_hdf(fname,buf,size)
-#  @param [String] fname 
-#  @param [String] buf 
-#  @param [long] size 
-#  @return [Integer]
-def datas_hdf
 end
 
 
@@ -580,22 +586,8 @@ def import
 end
 
 
-# File I/O.
-# Saves data matrix (or ns-th slice for 3d data) to bitmap file (now support only PNG format). The data values are transformed from range (v1, v2) to RGB pixels of bitmap using color scheme scheme (Color scheme). If v1>=v2 then the values of v1, v2 are automatically determined as minimal and maximal value of the data array.
-#
-# @overload export(fname,scheme,v1=0,v2=0,ns=-1)
-#  @param [String] fname 
-#  @param [String] scheme 
-#  @param [Float] v1 default=0
-#  @param [Float] v2 default=0
-#  @param [Integer] ns default=-1
-#  @return [nil]
-def export
-end
-
-
 # Make another data.
-# Extracts sub-array data from the original data array keeping fixed positive index. For example SubData(-1,2) extracts 3d row (indexes are zero based), SubData(4,-1) extracts 5th column, SubData(-1,-1,3) extracts 4th slice and so on. If argument(s) are non-integer then linear interpolation between slices is used. In MGL version this command usually is used as inline one dat(xx,yy,zz).
+# Extracts sub-array data from the original data array keeping fixed positive index. For example SubData(-1,2) extracts 3d row (indexes are zero based), SubData(4,-1) extracts 5th column, SubData(-1,-1,3) extracts 4th slice and so on. If argument(s) are non-integer then linear interpolation between slices is used. In MGL version this command usually is used as inline one dat(xx,yy,zz). Function return NULL or create empty data if data cannot be created for given arguments.
 #
 # @overload sub_data(xx,yy=-1,zz=-1)
 #  @param [Float] xx 
@@ -607,19 +599,28 @@ end
 
 
 # Make another data.
-# Extracts sub-array data from the original data array for indexes specified by arrays xx, yy, zz (indirect access). This function work like previous one for 1D arguments or numbers, and resulting array dimensions are equal dimensions of 1D arrays for corresponding direction. For 2D and 3D arrays in arguments, the resulting array have the same dimensions as input arrays. The dimensions of all argument must be the same (or to be scalar 1*1*1) if they are 2D or 3D arrays. In MGL version this command usually is used as inline one dat(xx,yy,zz).
+# Extracts sub-array data from the original data array for indexes specified by arrays xx, yy, zz (indirect access). This function work like previous one for 1D arguments or numbers, and resulting array dimensions are equal dimensions of 1D arrays for corresponding direction. For 2D and 3D arrays in arguments, the resulting array have the same dimensions as input arrays. The dimensions of all argument must be the same (or to be scalar 1*1*1) if they are 2D or 3D arrays. In MGL version this command usually is used as inline one dat(xx,yy,zz). Function return NULL or create empty data if data cannot be created for given arguments. In C function some of xx, yy, zz can be NULL.
 #
 # @overload sub_data(xx,yy,zz)
 #  @param [MglData] xx 
 #  @param [MglData] yy 
 #  @param [MglData] zz 
 #  @return [MglData]
+#
+# @overload sub_data(xx,yy)
+#  @param [MglData] xx 
+#  @param [MglData] yy 
+#  @return [MglData]
+#
+# @overload sub_data(xx)
+#  @param [MglData] xx 
+#  @return [MglData]
 def sub_data
 end
 
 
 # Make another data.
-# Get column (or slice) of the data filled by formula eq on column ids. For example, Column("n*w^2/exp(t)");. The column ids must be defined first by idset function or read from files. In MGL version this command usually is used as inline one dat('eq').
+# Get column (or slice) of the data filled by formula eq on column ids. For example, Column("n*w^2/exp(t)");. The column ids must be defined first by idset function or read from files. In MGL version this command usually is used as inline one dat('eq'). Function return NULL or create empty data if data cannot be created for given arguments.
 #
 # @overload column(eq)
 #  @param [String] eq 
@@ -629,12 +630,12 @@ end
 
 
 # Make another data.
-# Resizes the data to new size mx, my, mz from box (part) (x1,x2) x (y1,y2) x (z1,z2) of original array. Initially x,y,z coordinates are supposed to be in (0,1).
+# Resizes the data to new size mx, my, mz from box (part) (x1,x2) x (y1,y2) x (z1,z2) of original array. Initially x,y,z coordinates are supposed to be in (0,1). If one of sizes mx, my or mz is 0 then initial size is used. Function return NULL or create empty data if data cannot be created for given arguments.
 #
-# @overload resize(mx,my=1,mz=1,x1=0,x2=1,y1=0,y2=1,z1=0,z2=1)
+# @overload resize(mx,my=0,mz=0,x1=0,x2=1,y1=0,y2=1,z1=0,z2=1)
 #  @param [Integer] mx 
-#  @param [Integer] my default=1
-#  @param [Integer] mz default=1
+#  @param [Integer] my default=0
+#  @param [Integer] mz default=0
 #  @param [Float] x1 default=0
 #  @param [Float] x2 default=1
 #  @param [Float] y1 default=0
@@ -647,7 +648,7 @@ end
 
 
 # Make another data.
-# Gets array which values is result of interpolation of original array for coordinates from other arrays. All dimensions must be the same for data idat, jdat, kdat. Coordinates from idat, jdat, kdat are supposed to be normalized in range (0,1) (if norm=true) or in ranges (0,nx), (0,ny), (0,nz) correspondingly.
+# Gets array which values is result of interpolation of original array for coordinates from other arrays. All dimensions must be the same for data idat, jdat, kdat. Coordinates from idat, jdat, kdat are supposed to be normalized in range (0,1) (if norm=true) or in ranges (0,nx), (0,ny), (0,nz) correspondingly. Function return NULL or create empty data if data cannot be created for given arguments.
 #
 # @overload evaluate(idat,norm=true)
 #  @param [MglData] idat 
@@ -671,7 +672,7 @@ end
 
 
 # Make another data.
-# Gets array which values is indexes (roots) along given direction dir, where interpolated values of data dat are equal to val. Output data will have the sizes of dat in directions transverse to dir. If data idat is provided then its values are used as starting points. This allows to find several branches by consequentive calls. Indexes are supposed to be normalized in range (0,1) (if norm=true) or in ranges (0,nx), (0,ny), (0,nz) correspondingly. Solve sample
+# Gets array which values is indexes (roots) along given direction dir, where interpolated values of data dat are equal to val. Output data will have the sizes of dat in directions transverse to dir. If data idat is provided then its values are used as starting points. This allows to find several branches by consequentive calls. Indexes are supposed to be normalized in range (0,1) (if norm=true) or in ranges (0,nx), (0,ny), (0,nz) correspondingly. Function return NULL or create empty data if data cannot be created for given arguments. Solve sample
 #
 # @overload solve(val,dir,norm=true)
 #  @param [Float] val 
@@ -690,7 +691,18 @@ end
 
 
 # Make another data.
-# Creates n-th points distribution of the data values in range (v1, v2). Array w specifies weights of the data elements (by default is 1). Parameter nsub define the number of additional interpolated points (for smoothness of histogram). See also Data manipulation
+# Find roots of equation 'func'=0 for variable var with initial guess ini. Secant method is used for root finding. Function return NULL or create empty data if data cannot be created for given arguments.
+#
+# @overload roots(func,var)
+#  @param [String] func 
+#  @param [String] var 
+#  @return [MglData]
+def roots
+end
+
+
+# Make another data.
+# Creates n-th points distribution of the data values in range (v1, v2). Array w specifies weights of the data elements (by default is 1). Parameter nsub define the number of additional interpolated points (for smoothness of histogram). Function return NULL or create empty data if data cannot be created for given arguments. See also Data manipulation
 #
 # @overload hist(n,v1=0,v2=1,nsub=0)
 #  @param [Integer] n 
@@ -712,7 +724,7 @@ end
 
 # Make another data.
 # Gets momentum (1d-array) of the data along direction dir. String how contain kind of momentum. The momentum is defined like as
-# if dir='z' and so on. Coordinates 'x', 'y', 'z' are data indexes normalized in range (0,1).
+# if dir='z' and so on. Coordinates 'x', 'y', 'z' are data indexes normalized in range (0,1). Function return NULL or create empty data if data cannot be created for given arguments.
 #
 # @overload momentum(dir,how)
 #  @param [String] dir 
@@ -723,7 +735,7 @@ end
 
 
 # Make another data.
-# Gets array which is the result of summation in given direction or direction(s).
+# Gets array which is the result of summation in given direction or direction(s). Function return NULL or create empty data if data cannot be created for given arguments.
 #
 # @overload sum(dir)
 #  @param [String] dir 
@@ -733,7 +745,7 @@ end
 
 
 # Make another data.
-# Gets array which is the maximal data values in given direction or direction(s).
+# Gets array which is the maximal data values in given direction or direction(s). Function return NULL or create empty data if data cannot be created for given arguments.
 #
 # @overload max(dir)
 #  @param [String] dir 
@@ -743,7 +755,7 @@ end
 
 
 # Make another data.
-# Gets array which is the maximal data values in given direction or direction(s).
+# Gets array which is the maximal data values in given direction or direction(s). Function return NULL or create empty data if data cannot be created for given arguments.
 #
 # @overload min(dir)
 #  @param [String] dir 
@@ -753,7 +765,7 @@ end
 
 
 # Make another data.
-# Returns direct multiplication of arrays (like, res(i,j) = this(i)*a(j) and so on).
+# Returns direct multiplication of arrays (like, res(i,j) = this(i)*a(j) and so on). Function return NULL or create empty data if data cannot be created for given arguments.
 #
 # @overload combine(a)
 #  @param [MglData] a 
@@ -763,7 +775,7 @@ end
 
 
 # Make another data.
-# Gets array of diagonal elements a(i,i) (for 2D case) or a(i,i,i) (for 3D case) where i=0...nx-1. Function return copy of itself for 1D case. Data array must have dimensions ny,nz >= nx or ny,nz = 1.
+# Gets array of diagonal elements a(i,i) (for 2D case) or a(i,i,i) (for 3D case) where i=0...nx-1. Function return copy of itself for 1D case. Data array must have dimensions ny,nz >= nx or ny,nz = 1. Function return NULL or create empty data if data cannot be created for given arguments.
 #
 # @overload trace()
 #  @return [MglData]
@@ -772,13 +784,23 @@ end
 
 
 # Make another data.
-# Find roots of equation 'func'=0 for variable var with initial guess ini. Secant method is used for root finding.
+# Find correlation between data a (or this in C++) and b along directions dir. Fourier transform is used to find the correlation. So, you may want to use functions swap or norm before plotting it. Function return NULL or create empty data if data cannot be created for given arguments.
 #
-# @overload roots(func,var)
-#  @param [String] func 
-#  @param [String] var 
+# @overload correl(b,dir)
+#  @param [MglData] b 
+#  @param [String] dir 
 #  @return [MglData]
-def roots
+def correl
+end
+
+
+# Make another data.
+# Find correlation between data a (or this in C++) and b along directions dir. Fourier transform is used to find the correlation. So, you may want to use functions swap or norm before plotting it. Function return NULL or create empty data if data cannot be created for given arguments.
+#
+# @overload auto_correl(dir)
+#  @param [String] dir 
+#  @return [MglData]
+def auto_correl
 end
 
 
@@ -1059,6 +1081,144 @@ def linear1
 end
 
 
+# Operators.
+# Adds the other data or the number.
+#
+# @overload +(b)
+#  @param [MglData] b 
+#  @return [MglData]
+#
+# @overload +(b)
+#  @param [Float] b 
+#  @return [MglData]
+def +
+end
+
+
+# Operators.
+# Subtracts the other data or the number.
+#
+# @overload -(b)
+#  @param [MglData] b 
+#  @return [MglData]
+#
+# @overload -(b)
+#  @param [Float] b 
+#  @return [MglData]
+def -
+end
+
+
+# Operators.
+# Multiplies by the other data or the number.
+#
+# @overload *(b)
+#  @param [MglData] b 
+#  @return [MglData]
+#
+# @overload *(b)
+#  @param [Float] b 
+#  @return [MglData]
+def *
+end
+
+
+# Operators.
+# Divides by the other data or the number.
+#
+# @overload /(b)
+#  @param [MglData] b 
+#  @return [MglData]
+#
+# @overload /(b)
+#  @param [Float] b 
+#  @return [MglData]
+def /
+end
+
+
+end # MglData
+
+
+# MglDataA class
+class MglDataA
+
+# Public variables.
+# Gets the x-, y-, z-size of the data.
+#
+# @overload get_nx()
+#  @return [long]
+def get_nx
+end
+
+
+# Public variables.
+# Gets the x-, y-, z-size of the data.
+#
+# @overload get_ny()
+#  @return [long]
+def get_ny
+end
+
+
+# Public variables.
+# Gets the x-, y-, z-size of the data.
+#
+# @overload get_nz()
+#  @return [long]
+def get_nz
+end
+
+
+# File I/O.
+# Saves the whole data array (for ns=-1) or only ns-th slice to text file.
+#
+# @overload save(fname,ns=-1)
+#  @param [String] fname 
+#  @param [Integer] ns default=-1
+#  @return [nil]
+def save
+end
+
+
+# File I/O.
+# Saves data array named dname to HDF5 file. This function does nothing if HDF5 was disabled during library compilation.
+#
+# @overload save_hdf(fname,dname,rewrite=false)
+#  @param [String] fname 
+#  @param [String] dname 
+#  @param [bool] rewrite default=false
+#  @return [nil]
+def save_hdf
+end
+
+
+# File I/O.
+# Put data names from HDF5 file fname into buf as '\t' separated fields. In MGL version the list of data names will be printed as message. This function does nothing if HDF5 was disabled during library compilation.
+#
+# @overload datas_hdf(fname,buf,size)
+#  @param [String] fname 
+#  @param [String] buf 
+#  @param [long] size 
+#  @return [Integer]
+def datas_hdf
+end
+
+
+# File I/O.
+# Saves data matrix (or ns-th slice for 3d data) to bitmap file (now support only PNG format). The data values are transformed from range (v1, v2) to RGB pixels of bitmap using color scheme scheme (Color scheme). If v1>=v2 then the values of v1, v2 are automatically determined as minimal and maximal value of the data array.
+#
+# @overload export(fname,scheme,v1=0,v2=0,ns=-1)
+#  @param [String] fname 
+#  @param [String] scheme 
+#  @param [Float] v1 default=0
+#  @param [Float] v2 default=0
+#  @param [Integer] ns default=-1
+#  @return [nil]
+def export
+end
+
+
 # Data information.
 # Gets or prints to file fp or as message (in MGL) information about the data (sizes, maximum/minimum, momentums and so on).
 #
@@ -1235,63 +1395,7 @@ def find_any
 end
 
 
-# Operators.
-# Adds the other data or the number.
-#
-# @overload +(b)
-#  @param [MglData] b 
-#  @return [MglData]
-#
-# @overload +(b)
-#  @param [Float] b 
-#  @return [MglData]
-def +
-end
-
-
-# Operators.
-# Subtracts the other data or the number.
-#
-# @overload -(b)
-#  @param [MglData] b 
-#  @return [MglData]
-#
-# @overload -(b)
-#  @param [Float] b 
-#  @return [MglData]
-def -
-end
-
-
-# Operators.
-# Multiplies by the other data or the number.
-#
-# @overload *(b)
-#  @param [MglData] b 
-#  @return [MglData]
-#
-# @overload *(b)
-#  @param [Float] b 
-#  @return [MglData]
-def *
-end
-
-
-# Operators.
-# Divides by the other data or the number.
-#
-# @overload /(b)
-#  @param [MglData] b 
-#  @return [MglData]
-#
-# @overload /(b)
-#  @param [Float] b 
-#  @return [MglData]
-def /
-end
-
-
-end # MglData
+end # MglDataA
 
 
 # MglExpr class
@@ -1346,19 +1450,97 @@ end
 end # MglExpr
 
 
-# MglVar class
-class MglVar < MglData
+# MglDataV class
+class MglDataV
 
-# MGL variables.
-# Evaluates the formula for 'x','r'=x, 'y','n'=y, 'z','t'=z, 'a','u'=u.
+# Special data classes.
+# Set "sizes" nxxnyxnz.
 #
-# @overload move_after(var)
-#  @param [MglVar] var 
+# @overload create(nx=1,ny=1,nz=1)
+#  @param [long] nx default=1
+#  @param [long] ny default=1
+#  @param [long] nz default=1
 #  @return [nil]
-def move_after
+def create
 end
 
 
-end # MglVar
+# Special data classes.
+# Set ranges of the variable.
+#
+# @overload fill(x1,x2=NaN,dir='x')
+#  @param [Float] x1 
+#  @param [Float] x2 default=NaN
+#  @param [String] dir default='x'
+#  @return [nil]
+def fill
+end
+
+
+# Special data classes.
+# Set as frequency variable with increment dp.
+#
+# @overload freq(dp,dir='x')
+#  @param [Float] dp 
+#  @param [String] dir default='x'
+#  @return [nil]
+def freq
+end
+
+
+end # MglDataV
+
+
+# MglDataF class
+class MglDataF
+
+# Special data classes.
+# Set "sizes" nxxnyxnz.
+#
+# @overload create(nx=1,ny=1,nz=1)
+#  @param [long] nx default=1
+#  @param [long] ny default=1
+#  @param [long] nz default=1
+#  @return [nil]
+def create
+end
+
+
+# Special data classes.
+# Set ranges for internal x,y,z variables.
+#
+# @overload set_ranges(p1,p2)
+#  @param [MglPoint] p1 
+#  @param [MglPoint] p2 
+#  @return [nil]
+def set_ranges
+end
+
+
+# Special data classes.
+# Set string which will be evaluated at function calls. Note this variant is about 10 times slower than SetFunc() one.
+#
+# @overload set_formula(func)
+#  @param [String] func 
+#  @return [nil]
+def set_formula
+end
+
+
+# Special data classes.
+# Set pointer to function which will be used for data.
+#
+# @overload set_func(x,y,z,p,p=NULL)
+#  @param [mreal (f)(mreal] x 
+#  @param [Float] y 
+#  @param [Float] z 
+#  @param [nil] p 
+#  @param [nil] p default=NULL
+#  @return [nil]
+def set_func
+end
+
+
+end # MglDataF
 
 end
