@@ -20,7 +20,11 @@
   </head>
   <body>
     <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) {
+      var hasFrames = false;
+      try {
+        hasFrames = window.top.frames.main ? true : false;
+      } catch (e) { }
+      if (hasFrames) {
         document.getElementById('base_target').target = 'main';
         document.body.className = 'frames';
       }
@@ -54,14 +58,14 @@
   
 
   <li class="r2 ">
-    <span class='object_link'><a href="MathGL/MglColor.html#%2A-instance_method" title="MathGL::MglColor#* (method)">#*</a></span>
-    <small>MathGL::MglColor</small>
+    <span class='object_link'><a href="MathGL/MglData.html#%2A-instance_method" title="MathGL::MglData#* (method)">#*</a></span>
+    <small>MathGL::MglData</small>
   </li>
   
 
   <li class="r1 ">
-    <span class='object_link'><a href="MathGL/MglData.html#%2A-instance_method" title="MathGL::MglData#* (method)">#*</a></span>
-    <small>MathGL::MglData</small>
+    <span class='object_link'><a href="MathGL/MglColor.html#%2A-instance_method" title="MathGL::MglColor#* (method)">#*</a></span>
+    <small>MathGL::MglColor</small>
   </li>
   
 
@@ -72,32 +76,32 @@
   
 
   <li class="r1 ">
+    <span class='object_link'><a href="MathGL/MglData.html#%2B-instance_method" title="MathGL::MglData#+ (method)">#+</a></span>
+    <small>MathGL::MglData</small>
+  </li>
+  
+
+  <li class="r2 ">
+    <span class='object_link'><a href="MathGL/MglColor.html#%2B-instance_method" title="MathGL::MglColor#+ (method)">#+</a></span>
+    <small>MathGL::MglColor</small>
+  </li>
+  
+
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglPoint.html#%2B-instance_method" title="MathGL::MglPoint#+ (method)">#+</a></span>
     <small>MathGL::MglPoint</small>
   </li>
   
 
   <li class="r2 ">
-    <span class='object_link'><a href="MathGL/MglData.html#%2B-instance_method" title="MathGL::MglData#+ (method)">#+</a></span>
-    <small>MathGL::MglData</small>
-  </li>
-  
-
-  <li class="r1 ">
-    <span class='object_link'><a href="MathGL/MglColor.html#%2B-instance_method" title="MathGL::MglColor#+ (method)">#+</a></span>
-    <small>MathGL::MglColor</small>
-  </li>
-  
-
-  <li class="r2 ">
-    <span class='object_link'><a href="MathGL/MglColor.html#--instance_method" title="MathGL::MglColor#- (method)">#-</a></span>
-    <small>MathGL::MglColor</small>
-  </li>
-  
-
-  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglData.html#--instance_method" title="MathGL::MglData#- (method)">#-</a></span>
     <small>MathGL::MglData</small>
+  </li>
+  
+
+  <li class="r1 ">
+    <span class='object_link'><a href="MathGL/MglColor.html#--instance_method" title="MathGL::MglColor#- (method)">#-</a></span>
+    <small>MathGL::MglColor</small>
   </li>
   
 
@@ -108,20 +112,20 @@
   
 
   <li class="r1 ">
-    <span class='object_link'><a href="MathGL/MglPoint.html#%2F-instance_method" title="MathGL::MglPoint#/ (method)">#/</a></span>
-    <small>MathGL::MglPoint</small>
-  </li>
-  
-
-  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglData.html#%2F-instance_method" title="MathGL::MglData#/ (method)">#/</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglColor.html#%2F-instance_method" title="MathGL::MglColor#/ (method)">#/</a></span>
     <small>MathGL::MglColor</small>
+  </li>
+  
+
+  <li class="r1 ">
+    <span class='object_link'><a href="MathGL/MglPoint.html#%2F-instance_method" title="MathGL::MglPoint#/ (method)">#/</a></span>
+    <small>MathGL::MglPoint</small>
   </li>
   
 
@@ -150,6 +154,18 @@
   
 
   <li class="r2 ">
+    <span class='object_link'><a href="MathGL/MglGraph.html#add_range-instance_method" title="MathGL::MglGraph#add_range (method)">#add_range</a></span>
+    <small>MathGL::MglGraph</small>
+  </li>
+  
+
+  <li class="r1 ">
+    <span class='object_link'><a href="MathGL/MglGraph.html#add_tick-instance_method" title="MathGL::MglGraph#add_tick (method)">#add_tick</a></span>
+    <small>MathGL::MglGraph</small>
+  </li>
+  
+
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglParse.html#add_var-instance_method" title="MathGL::MglParse#add_var (method)">#add_var</a></span>
     <small>MathGL::MglParse</small>
   </li>
@@ -162,19 +178,31 @@
   
 
   <li class="r2 ">
-    <span class='object_link'><a href="MathGL/MglParse.html#allow_file_io-instance_method" title="MathGL::MglParse#allow_file_io (method)">#allow_file_io</a></span>
+    <span class='object_link'><a href="MathGL/MglParse.html#allow_dll_call-instance_method" title="MathGL::MglParse#allow_dll_call (method)">#allow_dll_call</a></span>
     <small>MathGL::MglParse</small>
   </li>
   
 
   <li class="r1 ">
-    <span class='object_link'><a href="MathGL/MglParse.html#allow_set_size-instance_method" title="MathGL::MglParse#allow_set_size (method)">#allow_set_size</a></span>
+    <span class='object_link'><a href="MathGL/MglParse.html#allow_file_io-instance_method" title="MathGL::MglParse#allow_file_io (method)">#allow_file_io</a></span>
     <small>MathGL::MglParse</small>
   </li>
   
 
   <li class="r2 ">
+    <span class='object_link'><a href="MathGL/MglParse.html#allow_set_size-instance_method" title="MathGL::MglParse#allow_set_size (method)">#allow_set_size</a></span>
+    <small>MathGL::MglParse</small>
+  </li>
+  
+
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#alpha-instance_method" title="MathGL::MglGraph#alpha (method)">#alpha</a></span>
+    <small>MathGL::MglGraph</small>
+  </li>
+  
+
+  <li class="r2 ">
+    <span class='object_link'><a href="MathGL/MglGraph.html#arc-instance_method" title="MathGL::MglGraph#arc (method)">#arc</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
@@ -192,91 +220,103 @@
   
 
   <li class="r1 ">
+    <span class='object_link'><a href="MathGL/MglData.html#auto_correl-instance_method" title="MathGL::MglData#auto_correl (method)">#auto_correl</a></span>
+    <small>MathGL::MglData</small>
+  </li>
+  
+
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#axial-instance_method" title="MathGL::MglGraph#axial (method)">#axial</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#axis-instance_method" title="MathGL::MglGraph#axis (method)">#axis</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#ball-instance_method" title="MathGL::MglGraph#ball (method)">#ball</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#barh-instance_method" title="MathGL::MglGraph#barh (method)">#barh</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#bars-instance_method" title="MathGL::MglGraph#bars (method)">#bars</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#beam-instance_method" title="MathGL::MglGraph#beam (method)">#beam</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#belt-instance_method" title="MathGL::MglGraph#belt (method)">#belt</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#box-instance_method" title="MathGL::MglGraph#box (method)">#box</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#box_plot-instance_method" title="MathGL::MglGraph#box_plot (method)">#box_plot</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#boxs-instance_method" title="MathGL::MglGraph#boxs (method)">#boxs</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglParse.html#calc-instance_method" title="MathGL::MglParse#calc (method)">#calc</a></span>
     <small>MathGL::MglParse</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#calc_scr-instance_method" title="MathGL::MglGraph#calc_scr (method)">#calc_scr</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#calc_xyz-instance_method" title="MathGL::MglGraph#calc_xyz (method)">#calc_xyz</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#candle-instance_method" title="MathGL::MglGraph#candle (method)">#candle</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#chart-instance_method" title="MathGL::MglGraph#chart (method)">#chart</a></span>
+    <small>MathGL::MglGraph</small>
+  </li>
+  
+
+  <li class="r1 ">
+    <span class='object_link'><a href="MathGL/MglGraph.html#check_version-instance_method" title="MathGL::MglGraph#check_version (method)">#check_version</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
@@ -294,164 +334,176 @@
   
 
   <li class="r2 ">
+    <span class='object_link'><a href="MathGL/MglGraph.html#clear_frame-instance_method" title="MathGL::MglGraph#clear_frame (method)">#clear_frame</a></span>
+    <small>MathGL::MglGraph</small>
+  </li>
+  
+
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#clear_legend-instance_method" title="MathGL::MglGraph#clear_legend (method)">#clear_legend</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#clf-instance_method" title="MathGL::MglGraph#clf (method)">#clf</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#close_gif-instance_method" title="MathGL::MglGraph#close_gif (method)">#close_gif</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#cloud-instance_method" title="MathGL::MglGraph#cloud (method)">#cloud</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglParse.html#cmd_desc-instance_method" title="MathGL::MglParse#cmd_desc (method)">#cmd_desc</a></span>
     <small>MathGL::MglParse</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglParse.html#cmd_format-instance_method" title="MathGL::MglParse#cmd_format (method)">#cmd_format</a></span>
     <small>MathGL::MglParse</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglParse.html#cmd_type-instance_method" title="MathGL::MglParse#cmd_type (method)">#cmd_type</a></span>
     <small>MathGL::MglParse</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#colorbar-instance_method" title="MathGL::MglGraph#colorbar (method)">#colorbar</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglData.html#column-instance_method" title="MathGL::MglData#column (method)">#column</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#column_plot-instance_method" title="MathGL::MglGraph#column_plot (method)">#column_plot</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#combine-instance_method" title="MathGL::MglGraph#combine (method)">#combine</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglData.html#combine-instance_method" title="MathGL::MglData#combine (method)">#combine</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#cone-instance_method" title="MathGL::MglGraph#cone (method)">#cone</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#cones-instance_method" title="MathGL::MglGraph#cones (method)">#cones</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#cont-instance_method" title="MathGL::MglGraph#cont (method)">#cont</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#cont3-instance_method" title="MathGL::MglGraph#cont3 (method)">#cont3</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#cont_d-instance_method" title="MathGL::MglGraph#cont_d (method)">#cont_d</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#cont_f-instance_method" title="MathGL::MglGraph#cont_f (method)">#cont_f</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#cont_fx-instance_method" title="MathGL::MglGraph#cont_fx (method)">#cont_fx</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#cont_fy-instance_method" title="MathGL::MglGraph#cont_fy (method)">#cont_fy</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#cont_fz-instance_method" title="MathGL::MglGraph#cont_fz (method)">#cont_fz</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#cont_v-instance_method" title="MathGL::MglGraph#cont_v (method)">#cont_v</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#cont_x-instance_method" title="MathGL::MglGraph#cont_x (method)">#cont_x</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#cont_y-instance_method" title="MathGL::MglGraph#cont_y (method)">#cont_y</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#cont_z-instance_method" title="MathGL::MglGraph#cont_z (method)">#cont_z</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#contf3-instance_method" title="MathGL::MglGraph#contf3 (method)">#contf3</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#copy_font-instance_method" title="MathGL::MglGraph#copy_font (method)">#copy_font</a></span>
     <small>MathGL::MglGraph</small>
+  </li>
+  
+
+  <li class="r2 ">
+    <span class='object_link'><a href="MathGL/MglData.html#correl-instance_method" title="MathGL::MglData#correl (method)">#correl</a></span>
+    <small>MathGL::MglData</small>
   </li>
   
 
@@ -464,6 +516,18 @@
   <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglData.html#create-instance_method" title="MathGL::MglData#create (method)">#create</a></span>
     <small>MathGL::MglData</small>
+  </li>
+  
+
+  <li class="r1 ">
+    <span class='object_link'><a href="MathGL/MglDataV.html#create-instance_method" title="MathGL::MglDataV#create (method)">#create</a></span>
+    <small>MathGL::MglDataV</small>
+  </li>
+  
+
+  <li class="r2 ">
+    <span class='object_link'><a href="MathGL/MglDataF.html#create-instance_method" title="MathGL::MglDataF#create (method)">#create</a></span>
+    <small>MathGL::MglDataF</small>
   </li>
   
 
@@ -504,8 +568,8 @@
   
 
   <li class="r1 ">
-    <span class='object_link'><a href="MathGL/MglData.html#datas_hdf-instance_method" title="MathGL::MglData#datas_hdf (method)">#datas_hdf</a></span>
-    <small>MathGL::MglData</small>
+    <span class='object_link'><a href="MathGL/MglDataA.html#datas_hdf-instance_method" title="MathGL::MglDataA#datas_hdf (method)">#datas_hdf</a></span>
+    <small>MathGL::MglDataA</small>
   </li>
   
 
@@ -654,8 +718,8 @@
   
 
   <li class="r2 ">
-    <span class='object_link'><a href="MathGL/MglData.html#export-instance_method" title="MathGL::MglData#export (method)">#export</a></span>
-    <small>MathGL::MglData</small>
+    <span class='object_link'><a href="MathGL/MglDataA.html#export-instance_method" title="MathGL::MglDataA#export (method)">#export</a></span>
+    <small>MathGL::MglDataA</small>
   </li>
   
 
@@ -714,74 +778,86 @@
   
 
   <li class="r2 ">
+    <span class='object_link'><a href="MathGL/MglDataV.html#fill-instance_method" title="MathGL::MglDataV#fill (method)">#fill</a></span>
+    <small>MathGL::MglDataV</small>
+  </li>
+  
+
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglData.html#fill_sample-instance_method" title="MathGL::MglData#fill_sample (method)">#fill_sample</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
+  <li class="r2 ">
+    <span class='object_link'><a href="MathGL/MglDataA.html#find-instance_method" title="MathGL::MglDataA#find (method)">#find</a></span>
+    <small>MathGL::MglDataA</small>
+  </li>
+  
+
   <li class="r1 ">
-    <span class='object_link'><a href="MathGL/MglData.html#find-instance_method" title="MathGL::MglData#find (method)">#find</a></span>
-    <small>MathGL::MglData</small>
+    <span class='object_link'><a href="MathGL/MglDataA.html#find_any-instance_method" title="MathGL::MglDataA#find_any (method)">#find_any</a></span>
+    <small>MathGL::MglDataA</small>
   </li>
   
 
   <li class="r2 ">
-    <span class='object_link'><a href="MathGL/MglData.html#find_any-instance_method" title="MathGL::MglData#find_any (method)">#find_any</a></span>
-    <small>MathGL::MglData</small>
-  </li>
-  
-
-  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglParse.html#find_var-instance_method" title="MathGL::MglParse#find_var (method)">#find_var</a></span>
     <small>MathGL::MglParse</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#fit-instance_method" title="MathGL::MglGraph#fit (method)">#fit</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#fit2-instance_method" title="MathGL::MglGraph#fit2 (method)">#fit2</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#fit3-instance_method" title="MathGL::MglGraph#fit3 (method)">#fit3</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#fit_s-instance_method" title="MathGL::MglGraph#fit_s (method)">#fit_s</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#flow-instance_method" title="MathGL::MglGraph#flow (method)">#flow</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#flow_p-instance_method" title="MathGL::MglGraph#flow_p (method)">#flow_p</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#fog-instance_method" title="MathGL::MglGraph#fog (method)">#fog</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#fplot-instance_method" title="MathGL::MglGraph#fplot (method)">#fplot</a></span>
     <small>MathGL::MglGraph</small>
+  </li>
+  
+
+  <li class="r1 ">
+    <span class='object_link'><a href="MathGL/MglDataV.html#freq-instance_method" title="MathGL::MglDataV#freq (method)">#freq</a></span>
+    <small>MathGL::MglDataV</small>
   </li>
   
 
@@ -816,91 +892,103 @@
   
 
   <li class="r1 ">
+    <span class='object_link'><a href="MathGL/MglGraph.html#get_fit_chi-instance_method" title="MathGL::MglGraph#get_fit_chi (method)">#get_fit_chi</a></span>
+    <small>MathGL::MglGraph</small>
+  </li>
+  
+
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#get_frame-instance_method" title="MathGL::MglGraph#get_frame (method)">#get_frame</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#get_height-instance_method" title="MathGL::MglGraph#get_height (method)">#get_height</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#get_num_frame-instance_method" title="MathGL::MglGraph#get_num_frame (method)">#get_num_frame</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
-    <span class='object_link'><a href="MathGL/MglData.html#get_nx-instance_method" title="MathGL::MglData#get_nx (method)">#get_nx</a></span>
-    <small>MathGL::MglData</small>
-  </li>
-  
-
   <li class="r1 ">
-    <span class='object_link'><a href="MathGL/MglData.html#get_ny-instance_method" title="MathGL::MglData#get_ny (method)">#get_ny</a></span>
-    <small>MathGL::MglData</small>
+    <span class='object_link'><a href="MathGL/MglDataA.html#get_nx-instance_method" title="MathGL::MglDataA#get_nx (method)">#get_nx</a></span>
+    <small>MathGL::MglDataA</small>
   </li>
   
 
   <li class="r2 ">
-    <span class='object_link'><a href="MathGL/MglData.html#get_nz-instance_method" title="MathGL::MglData#get_nz (method)">#get_nz</a></span>
-    <small>MathGL::MglData</small>
+    <span class='object_link'><a href="MathGL/MglDataA.html#get_ny-instance_method" title="MathGL::MglDataA#get_ny (method)">#get_ny</a></span>
+    <small>MathGL::MglDataA</small>
   </li>
   
 
   <li class="r1 ">
+    <span class='object_link'><a href="MathGL/MglDataA.html#get_nz-instance_method" title="MathGL::MglDataA#get_nz (method)">#get_nz</a></span>
+    <small>MathGL::MglDataA</small>
+  </li>
+  
+
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#get_obj_id-instance_method" title="MathGL::MglGraph#get_obj_id (method)">#get_obj_id</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#get_plot_id-instance_method" title="MathGL::MglGraph#get_plot_id (method)">#get_plot_id</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#get_quality-instance_method" title="MathGL::MglGraph#get_quality (method)">#get_quality</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#get_rgb-instance_method" title="MathGL::MglGraph#get_rgb (method)">#get_rgb</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#get_rgba-instance_method" title="MathGL::MglGraph#get_rgba (method)">#get_rgba</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#get_spl_id-instance_method" title="MathGL::MglGraph#get_spl_id (method)">#get_spl_id</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglData.html#get_val-instance_method" title="MathGL::MglData#get_val (method)">#get_val</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
+  <li class="r1 ">
+    <span class='object_link'><a href="MathGL/MglGraph.html#get_warn-instance_method" title="MathGL::MglGraph#get_warn (method)">#get_warn</a></span>
+    <small>MathGL::MglGraph</small>
+  </li>
+  
+
   <li class="r2 ">
-    <span class='object_link'><a href="MathGL/MglGraph.html#get_warn_code-instance_method" title="MathGL::MglGraph#get_warn_code (method)">#get_warn_code</a></span>
+    <span class='object_link'><a href="MathGL/MglGraph.html#get_width-instance_method" title="MathGL::MglGraph#get_width (method)">#get_width</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
   <li class="r1 ">
-    <span class='object_link'><a href="MathGL/MglGraph.html#get_width-instance_method" title="MathGL::MglGraph#get_width (method)">#get_width</a></span>
+    <span class='object_link'><a href="MathGL/MglGraph.html#global_warn-instance_method" title="MathGL::MglGraph#global_warn (method)">#global_warn</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
@@ -918,25 +1006,37 @@
   
 
   <li class="r2 ">
-    <span class='object_link'><a href="MathGL/MglGraph.html#grid3-instance_method" title="MathGL::MglGraph#grid3 (method)">#grid3</a></span>
-    <small>MathGL::MglGraph</small>
-  </li>
-  
-
-  <li class="r1 ">
-    <span class='object_link'><a href="MathGL/MglGraph.html#grid_plot-instance_method" title="MathGL::MglGraph#grid_plot (method)">#grid_plot</a></span>
-    <small>MathGL::MglGraph</small>
-  </li>
-  
-
-  <li class="r2 ">
-    <span class='object_link'><a href="MathGL/MglData.html#hankel-instance_method" title="MathGL::MglData#hankel (method)">#hankel</a></span>
+    <span class='object_link'><a href="MathGL/MglData.html#grid-instance_method" title="MathGL::MglData#grid (method)">#grid</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
   <li class="r1 ">
+    <span class='object_link'><a href="MathGL/MglGraph.html#grid3-instance_method" title="MathGL::MglGraph#grid3 (method)">#grid3</a></span>
+    <small>MathGL::MglGraph</small>
+  </li>
+  
+
+  <li class="r2 ">
+    <span class='object_link'><a href="MathGL/MglGraph.html#grid_plot-instance_method" title="MathGL::MglGraph#grid_plot (method)">#grid_plot</a></span>
+    <small>MathGL::MglGraph</small>
+  </li>
+  
+
+  <li class="r1 ">
+    <span class='object_link'><a href="MathGL/MglData.html#hankel-instance_method" title="MathGL::MglData#hankel (method)">#hankel</a></span>
+    <small>MathGL::MglData</small>
+  </li>
+  
+
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#highlight-instance_method" title="MathGL::MglGraph#highlight (method)">#highlight</a></span>
+    <small>MathGL::MglGraph</small>
+  </li>
+  
+
+  <li class="r1 ">
+    <span class='object_link'><a href="MathGL/MglGraph.html#hist-instance_method" title="MathGL::MglGraph#hist (method)">#hist</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
@@ -948,25 +1048,25 @@
   
 
   <li class="r1 ">
-    <span class='object_link'><a href="MathGL/MglGraph.html#hist-instance_method" title="MathGL::MglGraph#hist (method)">#hist</a></span>
-    <small>MathGL::MglGraph</small>
-  </li>
-  
-
-  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglData.html#import-instance_method" title="MathGL::MglData#import (method)">#import</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#import_mgld-instance_method" title="MathGL::MglGraph#import_mgld (method)">#import_mgld</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#in_plot-instance_method" title="MathGL::MglGraph#in_plot (method)">#in_plot</a></span>
+    <small>MathGL::MglGraph</small>
+  </li>
+  
+
+  <li class="r2 ">
+    <span class='object_link'><a href="MathGL/MglGraph.html#initialize-instance_method" title="MathGL::MglGraph#initialize (method)">#initialize</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
@@ -984,98 +1084,98 @@
   
 
   <li class="r1 ">
-    <span class='object_link'><a href="MathGL/MglGraph.html#initialize-instance_method" title="MathGL::MglGraph#initialize (method)">#initialize</a></span>
-    <small>MathGL::MglGraph</small>
-  </li>
-  
-
-  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglFLTK.html#initialize-instance_method" title="MathGL::MglFLTK#initialize (method)">#initialize</a></span>
     <small>MathGL::MglFLTK</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGLUT.html#initialize-instance_method" title="MathGL::MglGLUT#initialize (method)">#initialize</a></span>
     <small>MathGL::MglGLUT</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglData.html#insert-instance_method" title="MathGL::MglData#insert (method)">#insert</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglData.html#integral-instance_method" title="MathGL::MglData#integral (method)">#integral</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#is_active-instance_method" title="MathGL::MglGraph#is_active (method)">#is_active</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglPoint.html#is_nan-instance_method" title="MathGL::MglPoint#is_nan (method)">#is_nan</a></span>
     <small>MathGL::MglPoint</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglData.html#join-instance_method" title="MathGL::MglData#join (method)">#join</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#label-instance_method" title="MathGL::MglGraph#label (method)">#label</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
-    <span class='object_link'><a href="MathGL/MglData.html#last-instance_method" title="MathGL::MglData#last (method)">#last</a></span>
-    <small>MathGL::MglData</small>
+  <li class="r1 ">
+    <span class='object_link'><a href="MathGL/MglDataA.html#last-instance_method" title="MathGL::MglDataA#last (method)">#last</a></span>
+    <small>MathGL::MglDataA</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#legend-instance_method" title="MathGL::MglGraph#legend (method)">#legend</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#light-instance_method" title="MathGL::MglGraph#light (method)">#light</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#line-instance_method" title="MathGL::MglGraph#line (method)">#line</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglData.html#linear-instance_method" title="MathGL::MglData#linear (method)">#linear</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglData.html#linear1-instance_method" title="MathGL::MglData#linear1 (method)">#linear1</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglData.html#link-instance_method" title="MathGL::MglData#link (method)">#link</a></span>
     <small>MathGL::MglData</small>
+  </li>
+  
+
+  <li class="r2 ">
+    <span class='object_link'><a href="MathGL/MglGraph.html#load_background-instance_method" title="MathGL::MglGraph#load_background (method)">#load_background</a></span>
+    <small>MathGL::MglGraph</small>
   </li>
   
 
@@ -1086,91 +1186,103 @@
   
 
   <li class="r2 ">
+    <span class='object_link'><a href="MathGL/MglGraph.html#logo-instance_method" title="MathGL::MglGraph#logo (method)">#logo</a></span>
+    <small>MathGL::MglGraph</small>
+  </li>
+  
+
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#map-instance_method" title="MathGL::MglGraph#map (method)">#map</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#mark-instance_method" title="MathGL::MglGraph#mark (method)">#mark</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglData.html#max-instance_method" title="MathGL::MglData#max (method)">#max</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r1 ">
-    <span class='object_link'><a href="MathGL/MglData.html#maximal-instance_method" title="MathGL::MglData#maximal (method)">#maximal</a></span>
-    <small>MathGL::MglData</small>
+  <li class="r2 ">
+    <span class='object_link'><a href="MathGL/MglDataA.html#maximal-instance_method" title="MathGL::MglDataA#maximal (method)">#maximal</a></span>
+    <small>MathGL::MglDataA</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#mesh-instance_method" title="MathGL::MglGraph#mesh (method)">#mesh</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#message-instance_method" title="MathGL::MglGraph#message (method)">#message</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglData.html#min-instance_method" title="MathGL::MglData#min (method)">#min</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r1 ">
-    <span class='object_link'><a href="MathGL/MglData.html#minimal-instance_method" title="MathGL::MglData#minimal (method)">#minimal</a></span>
-    <small>MathGL::MglData</small>
+  <li class="r2 ">
+    <span class='object_link'><a href="MathGL/MglDataA.html#minimal-instance_method" title="MathGL::MglDataA#minimal (method)">#minimal</a></span>
+    <small>MathGL::MglDataA</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglData.html#mirror-instance_method" title="MathGL::MglData#mirror (method)">#mirror</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglData.html#modify-instance_method" title="MathGL::MglData#modify (method)">#modify</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglData.html#momentum-instance_method" title="MathGL::MglData#momentum (method)">#momentum</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r1 ">
-    <span class='object_link'><a href="MathGL/MglVar.html#move_after-instance_method" title="MathGL::MglVar#move_after (method)">#move_after</a></span>
-    <small>MathGL::MglVar</small>
+  <li class="r2 ">
+    <span class='object_link'><a href="MathGL/MglDataA.html#momentum-instance_method" title="MathGL::MglDataA#momentum (method)">#momentum</a></span>
+    <small>MathGL::MglDataA</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#mpi_recv-instance_method" title="MathGL::MglGraph#mpi_recv (method)">#mpi_recv</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#mpi_send-instance_method" title="MathGL::MglGraph#mpi_send (method)">#mpi_send</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#multi_plot-instance_method" title="MathGL::MglGraph#multi_plot (method)">#multi_plot</a></span>
+    <small>MathGL::MglGraph</small>
+  </li>
+  
+
+  <li class="r2 ">
+    <span class='object_link'><a href="MathGL/MglGraph.html#need_stop-instance_method" title="MathGL::MglGraph#need_stop (method)">#need_stop</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
@@ -1182,20 +1294,20 @@
   
 
   <li class="r2 ">
-    <span class='object_link'><a href="MathGL/MglPoint.html#norm-instance_method" title="MathGL::MglPoint#norm (method)">#norm</a></span>
-    <small>MathGL::MglPoint</small>
-  </li>
-  
-
-  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglData.html#norm-instance_method" title="MathGL::MglData#norm (method)">#norm</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglColor.html#norm-instance_method" title="MathGL::MglColor#norm (method)">#norm</a></span>
     <small>MathGL::MglColor</small>
+  </li>
+  
+
+  <li class="r2 ">
+    <span class='object_link'><a href="MathGL/MglPoint.html#norm-instance_method" title="MathGL::MglPoint#norm (method)">#norm</a></span>
+    <small>MathGL::MglPoint</small>
   </li>
   
 
@@ -1212,31 +1324,43 @@
   
 
   <li class="r1 ">
+    <span class='object_link'><a href="MathGL/MglGraph.html#ohlc-instance_method" title="MathGL::MglGraph#ohlc (method)">#ohlc</a></span>
+    <small>MathGL::MglGraph</small>
+  </li>
+  
+
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglParse.html#parse-instance_method" title="MathGL::MglParse#parse (method)">#parse</a></span>
     <small>MathGL::MglParse</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#pde-instance_method" title="MathGL::MglGraph#pde (method)">#pde</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#perspective-instance_method" title="MathGL::MglGraph#perspective (method)">#perspective</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#pipe-instance_method" title="MathGL::MglGraph#pipe (method)">#pipe</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#plot-instance_method" title="MathGL::MglGraph#plot (method)">#plot</a></span>
+    <small>MathGL::MglGraph</small>
+  </li>
+  
+
+  <li class="r1 ">
+    <span class='object_link'><a href="MathGL/MglGraph.html#polygon-instance_method" title="MathGL::MglGraph#polygon (method)">#polygon</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
@@ -1248,8 +1372,8 @@
   
 
   <li class="r1 ">
-    <span class='object_link'><a href="MathGL/MglData.html#print_info-instance_method" title="MathGL::MglData#print_info (method)">#print_info</a></span>
-    <small>MathGL::MglData</small>
+    <span class='object_link'><a href="MathGL/MglDataA.html#print_info-instance_method" title="MathGL::MglDataA#print_info (method)">#print_info</a></span>
+    <small>MathGL::MglDataA</small>
   </li>
   
 
@@ -1290,104 +1414,116 @@
   
 
   <li class="r2 ">
+    <span class='object_link'><a href="MathGL/MglGraph.html#rasterize-instance_method" title="MathGL::MglGraph#rasterize (method)">#rasterize</a></span>
+    <small>MathGL::MglGraph</small>
+  </li>
+  
+
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglData.html#read-instance_method" title="MathGL::MglData#read (method)">#read</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglData.html#read_all-instance_method" title="MathGL::MglData#read_all (method)">#read_all</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglData.html#read_hdf-instance_method" title="MathGL::MglData#read_hdf (method)">#read_hdf</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglData.html#read_mat-instance_method" title="MathGL::MglData#read_mat (method)">#read_mat</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglData.html#read_range-instance_method" title="MathGL::MglData#read_range (method)">#read_range</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglData.html#rearrange-instance_method" title="MathGL::MglData#rearrange (method)">#rearrange</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
+  <li class="r1 ">
+    <span class='object_link'><a href="MathGL/MglData.html#refill-instance_method" title="MathGL::MglData#refill (method)">#refill</a></span>
+    <small>MathGL::MglData</small>
+  </li>
+  
+
   <li class="r2 ">
+    <span class='object_link'><a href="MathGL/MglData.html#refill_gs-instance_method" title="MathGL::MglData#refill_gs (method)">#refill_gs</a></span>
+    <small>MathGL::MglData</small>
+  </li>
+  
+
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#region-instance_method" title="MathGL::MglGraph#region (method)">#region</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#reset_frames-instance_method" title="MathGL::MglGraph#reset_frames (method)">#reset_frames</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglData.html#resize-instance_method" title="MathGL::MglData#resize (method)">#resize</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#restore_font-instance_method" title="MathGL::MglGraph#restore_font (method)">#restore_font</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglParse.html#restore_once-instance_method" title="MathGL::MglParse#restore_once (method)">#restore_once</a></span>
     <small>MathGL::MglParse</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#rhomb-instance_method" title="MathGL::MglGraph#rhomb (method)">#rhomb</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglData.html#roll-instance_method" title="MathGL::MglData#roll (method)">#roll</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglData.html#roots-instance_method" title="MathGL::MglData#roots (method)">#roots</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#rotate-instance_method" title="MathGL::MglGraph#rotate (method)">#rotate</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#rotate_n-instance_method" title="MathGL::MglGraph#rotate_n (method)">#rotate_n</a></span>
     <small>MathGL::MglGraph</small>
-  </li>
-  
-
-  <li class="r2 ">
-    <span class='object_link'><a href="MathGL/MglFLTK.html#run-instance_method" title="MathGL::MglFLTK#run (method)">#run</a></span>
-    <small>MathGL::MglFLTK</small>
   </li>
   
 
@@ -1398,61 +1534,73 @@
   
 
   <li class="r2 ">
-    <span class='object_link'><a href="MathGL/MglData.html#save-instance_method" title="MathGL::MglData#save (method)">#save</a></span>
-    <small>MathGL::MglData</small>
+    <span class='object_link'><a href="MathGL/MglFLTK.html#run-instance_method" title="MathGL::MglFLTK#run (method)">#run</a></span>
+    <small>MathGL::MglFLTK</small>
   </li>
   
 
   <li class="r1 ">
-    <span class='object_link'><a href="MathGL/MglData.html#save_hdf-instance_method" title="MathGL::MglData#save_hdf (method)">#save_hdf</a></span>
-    <small>MathGL::MglData</small>
+    <span class='object_link'><a href="MathGL/MglDataA.html#save-instance_method" title="MathGL::MglDataA#save (method)">#save</a></span>
+    <small>MathGL::MglDataA</small>
   </li>
   
 
   <li class="r2 ">
+    <span class='object_link'><a href="MathGL/MglDataA.html#save_hdf-instance_method" title="MathGL::MglDataA#save_hdf (method)">#save_hdf</a></span>
+    <small>MathGL::MglDataA</small>
+  </li>
+  
+
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglData.html#set-instance_method" title="MathGL::MglData#set (method)">#set</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglColor.html#set-instance_method" title="MathGL::MglColor#set (method)">#set</a></span>
     <small>MathGL::MglColor</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#set_alpha_def-instance_method" title="MathGL::MglGraph#set_alpha_def (method)">#set_alpha_def</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#set_ambient-instance_method" title="MathGL::MglGraph#set_ambient (method)">#set_ambient</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#set_arrow_size-instance_method" title="MathGL::MglGraph#set_arrow_size (method)">#set_arrow_size</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#set_auto_ranges-instance_method" title="MathGL::MglGraph#set_auto_ranges (method)">#set_auto_ranges</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#set_axis_stl-instance_method" title="MathGL::MglGraph#set_axis_stl (method)">#set_axis_stl</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#set_bar_width-instance_method" title="MathGL::MglGraph#set_bar_width (method)">#set_bar_width</a></span>
+    <small>MathGL::MglGraph</small>
+  </li>
+  
+
+  <li class="r1 ">
+    <span class='object_link'><a href="MathGL/MglGraph.html#set_color-instance_method" title="MathGL::MglGraph#set_color (method)">#set_color</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
@@ -1482,50 +1630,74 @@
   
 
   <li class="r2 ">
+    <span class='object_link'><a href="MathGL/MglGraph.html#set_def_font-instance_method" title="MathGL::MglGraph#set_def_font (method)">#set_def_font</a></span>
+    <small>MathGL::MglGraph</small>
+  </li>
+  
+
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#set_def_scheme-instance_method" title="MathGL::MglGraph#set_def_scheme (method)">#set_def_scheme</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
+  <li class="r2 ">
+    <span class='object_link'><a href="MathGL/MglGraph.html#set_diffuse-instance_method" title="MathGL::MglGraph#set_diffuse (method)">#set_diffuse</a></span>
+    <small>MathGL::MglGraph</small>
+  </li>
+  
+
   <li class="r1 ">
-    <span class='object_link'><a href="MathGL/MglGraph.html#set_dif_light-instance_method" title="MathGL::MglGraph#set_dif_light (method)">#set_dif_light</a></span>
+    <span class='object_link'><a href="MathGL/MglGraph.html#set_draw_reg-instance_method" title="MathGL::MglGraph#set_draw_reg (method)">#set_draw_reg</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
   <li class="r2 ">
+    <span class='object_link'><a href="MathGL/MglGraph.html#set_event_func-instance_method" title="MathGL::MglGraph#set_event_func (method)">#set_event_func</a></span>
+    <small>MathGL::MglGraph</small>
+  </li>
+  
+
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#set_face_num-instance_method" title="MathGL::MglGraph#set_face_num (method)">#set_face_num</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#set_font_def-instance_method" title="MathGL::MglGraph#set_font_def (method)">#set_font_def</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#set_font_size-instance_method" title="MathGL::MglGraph#set_font_size (method)">#set_font_size</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#set_font_size_cm-instance_method" title="MathGL::MglGraph#set_font_size_cm (method)">#set_font_size_cm</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#set_font_size_in-instance_method" title="MathGL::MglGraph#set_font_size_in (method)">#set_font_size_in</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#set_font_size_pt-instance_method" title="MathGL::MglGraph#set_font_size_pt (method)">#set_font_size_pt</a></span>
     <small>MathGL::MglGraph</small>
+  </li>
+  
+
+  <li class="r1 ">
+    <span class='object_link'><a href="MathGL/MglDataF.html#set_formula-instance_method" title="MathGL::MglDataF#set_formula (method)">#set_formula</a></span>
+    <small>MathGL::MglDataF</small>
   </li>
   
 
@@ -1542,6 +1714,18 @@
   
 
   <li class="r2 ">
+    <span class='object_link'><a href="MathGL/MglDataF.html#set_func-instance_method" title="MathGL::MglDataF#set_func (method)">#set_func</a></span>
+    <small>MathGL::MglDataF</small>
+  </li>
+  
+
+  <li class="r1 ">
+    <span class='object_link'><a href="MathGL/MglGraph.html#set_global_warn-instance_method" title="MathGL::MglGraph#set_global_warn (method)">#set_global_warn</a></span>
+    <small>MathGL::MglGraph</small>
+  </li>
+  
+
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#set_legend_marks-instance_method" title="MathGL::MglGraph#set_legend_marks (method)">#set_legend_marks</a></span>
     <small>MathGL::MglGraph</small>
   </li>
@@ -1549,6 +1733,18 @@
 
   <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#set_mark_size-instance_method" title="MathGL::MglGraph#set_mark_size (method)">#set_mark_size</a></span>
+    <small>MathGL::MglGraph</small>
+  </li>
+  
+
+  <li class="r2 ">
+    <span class='object_link'><a href="MathGL/MglGraph.html#set_mask-instance_method" title="MathGL::MglGraph#set_mask (method)">#set_mask</a></span>
+    <small>MathGL::MglGraph</small>
+  </li>
+  
+
+  <li class="r1 ">
+    <span class='object_link'><a href="MathGL/MglGraph.html#set_mask_angle-instance_method" title="MathGL::MglGraph#set_mask_angle (method)">#set_mask_angle</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
@@ -1614,193 +1810,205 @@
   
 
   <li class="r2 ">
+    <span class='object_link'><a href="MathGL/MglDataF.html#set_ranges-instance_method" title="MathGL::MglDataF#set_ranges (method)">#set_ranges</a></span>
+    <small>MathGL::MglDataF</small>
+  </li>
+  
+
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#set_rotated_text-instance_method" title="MathGL::MglGraph#set_rotated_text (method)">#set_rotated_text</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#set_size-instance_method" title="MathGL::MglGraph#set_size (method)">#set_size</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#set_tick_len-instance_method" title="MathGL::MglGraph#set_tick_len (method)">#set_tick_len</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#set_tick_rotate-instance_method" title="MathGL::MglGraph#set_tick_rotate (method)">#set_tick_rotate</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#set_tick_shift-instance_method" title="MathGL::MglGraph#set_tick_shift (method)">#set_tick_shift</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#set_tick_skip-instance_method" title="MathGL::MglGraph#set_tick_skip (method)">#set_tick_skip</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#set_tick_templ-instance_method" title="MathGL::MglGraph#set_tick_templ (method)">#set_tick_templ</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#set_ticks-instance_method" title="MathGL::MglGraph#set_ticks (method)">#set_ticks</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#set_ticks_time-instance_method" title="MathGL::MglGraph#set_ticks_time (method)">#set_ticks_time</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#set_ticks_val-instance_method" title="MathGL::MglGraph#set_ticks_val (method)">#set_ticks_val</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#set_time_utc-instance_method" title="MathGL::MglGraph#set_time_utc (method)">#set_time_utc</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#set_transp_type-instance_method" title="MathGL::MglGraph#set_transp_type (method)">#set_transp_type</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#set_tune_ticks-instance_method" title="MathGL::MglGraph#set_tune_ticks (method)">#set_tune_ticks</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglData.html#set_val-instance_method" title="MathGL::MglData#set_val (method)">#set_val</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#set_warn-instance_method" title="MathGL::MglGraph#set_warn (method)">#set_warn</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglData.html#sew-instance_method" title="MathGL::MglData#sew (method)">#sew</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#show_frame-instance_method" title="MathGL::MglGraph#show_frame (method)">#show_frame</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#show_image-instance_method" title="MathGL::MglGraph#show_image (method)">#show_image</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglData.html#sin_fft-instance_method" title="MathGL::MglData#sin_fft (method)">#sin_fft</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglData.html#smooth-instance_method" title="MathGL::MglData#smooth (method)">#smooth</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglData.html#solve-instance_method" title="MathGL::MglData#solve (method)">#solve</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglData.html#sort-instance_method" title="MathGL::MglData#sort (method)">#sort</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#sphere-instance_method" title="MathGL::MglGraph#sphere (method)">#sphere</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglData.html#spline-instance_method" title="MathGL::MglData#spline (method)">#spline</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglData.html#spline1-instance_method" title="MathGL::MglData#spline1 (method)">#spline1</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglData.html#squeeze-instance_method" title="MathGL::MglData#squeeze (method)">#squeeze</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#start_gif-instance_method" title="MathGL::MglGraph#start_gif (method)">#start_gif</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#start_group-instance_method" title="MathGL::MglGraph#start_group (method)">#start_group</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#stem-instance_method" title="MathGL::MglGraph#stem (method)">#stem</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#step-instance_method" title="MathGL::MglGraph#step (method)">#step</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#stfa-instance_method" title="MathGL::MglGraph#stfa (method)">#stfa</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#stick_plot-instance_method" title="MathGL::MglGraph#stick_plot (method)">#stick_plot</a></span>
+    <small>MathGL::MglGraph</small>
+  </li>
+  
+
+  <li class="r1 ">
+    <span class='object_link'><a href="MathGL/MglGraph.html#stop-instance_method" title="MathGL::MglGraph#stop (method)">#stop</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
@@ -1830,288 +2038,294 @@
   
 
   <li class="r2 ">
+    <span class='object_link'><a href="MathGL/MglGraph.html#suppress_warn-instance_method" title="MathGL::MglGraph#suppress_warn (method)">#suppress_warn</a></span>
+    <small>MathGL::MglGraph</small>
+  </li>
+  
+
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#surf-instance_method" title="MathGL::MglGraph#surf (method)">#surf</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#surf3-instance_method" title="MathGL::MglGraph#surf3 (method)">#surf3</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#surf_3a-instance_method" title="MathGL::MglGraph#surf_3a (method)">#surf_3a</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#surf_3c-instance_method" title="MathGL::MglGraph#surf_3c (method)">#surf_3c</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#surf_a-instance_method" title="MathGL::MglGraph#surf_a (method)">#surf_a</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#surf_c-instance_method" title="MathGL::MglGraph#surf_c (method)">#surf_c</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglData.html#swap-instance_method" title="MathGL::MglData#swap (method)">#swap</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#table-instance_method" title="MathGL::MglGraph#table (method)">#table</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#tape-instance_method" title="MathGL::MglGraph#tape (method)">#tape</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#tens-instance_method" title="MathGL::MglGraph#tens (method)">#tens</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#ternary-instance_method" title="MathGL::MglGraph#ternary (method)">#ternary</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#text-instance_method" title="MathGL::MglGraph#text (method)">#text</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#text_mark-instance_method" title="MathGL::MglGraph#text_mark (method)">#text_mark</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#tile-instance_method" title="MathGL::MglGraph#tile (method)">#tile</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#tile_s-instance_method" title="MathGL::MglGraph#tile_s (method)">#tile_s</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#title-instance_method" title="MathGL::MglGraph#title (method)">#title</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#torus-instance_method" title="MathGL::MglGraph#torus (method)">#torus</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglData.html#trace-instance_method" title="MathGL::MglData#trace (method)">#trace</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#traj-instance_method" title="MathGL::MglGraph#traj (method)">#traj</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglData.html#transpose-instance_method" title="MathGL::MglData#transpose (method)">#transpose</a></span>
     <small>MathGL::MglData</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#tri_cont-instance_method" title="MathGL::MglGraph#tri_cont (method)">#tri_cont</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#tri_cont_v-instance_method" title="MathGL::MglGraph#tri_cont_v (method)">#tri_cont_v</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#tri_plot-instance_method" title="MathGL::MglGraph#tri_plot (method)">#tri_plot</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#tube-instance_method" title="MathGL::MglGraph#tube (method)">#tube</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglPoint.html#val-instance_method" title="MathGL::MglPoint#val (method)">#val</a></span>
     <small>MathGL::MglPoint</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglColor.html#valid-instance_method" title="MathGL::MglColor#valid (method)">#valid</a></span>
     <small>MathGL::MglColor</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#vect-instance_method" title="MathGL::MglGraph#vect (method)">#vect</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#vect3-instance_method" title="MathGL::MglGraph#vect3 (method)">#vect3</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#view-instance_method" title="MathGL::MglGraph#view (method)">#view</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#write_bmp-instance_method" title="MathGL::MglGraph#write_bmp (method)">#write_bmp</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#write_bps-instance_method" title="MathGL::MglGraph#write_bps (method)">#write_bps</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#write_eps-instance_method" title="MathGL::MglGraph#write_eps (method)">#write_eps</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#write_frame-instance_method" title="MathGL::MglGraph#write_frame (method)">#write_frame</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#write_gif-instance_method" title="MathGL::MglGraph#write_gif (method)">#write_gif</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#write_jpeg-instance_method" title="MathGL::MglGraph#write_jpeg (method)">#write_jpeg</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#write_json-instance_method" title="MathGL::MglGraph#write_json (method)">#write_json</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#write_obj-instance_method" title="MathGL::MglGraph#write_obj (method)">#write_obj</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#write_off-instance_method" title="MathGL::MglGraph#write_off (method)">#write_off</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#write_png-instance_method" title="MathGL::MglGraph#write_png (method)">#write_png</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#write_prc-instance_method" title="MathGL::MglGraph#write_prc (method)">#write_prc</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#write_stl-instance_method" title="MathGL::MglGraph#write_stl (method)">#write_stl</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#write_svg-instance_method" title="MathGL::MglGraph#write_svg (method)">#write_svg</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#write_tex-instance_method" title="MathGL::MglGraph#write_tex (method)">#write_tex</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#write_tga-instance_method" title="MathGL::MglGraph#write_tga (method)">#write_tga</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#write_xyz-instance_method" title="MathGL::MglGraph#write_xyz (method)">#write_xyz</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#zoom-instance_method" title="MathGL::MglGraph#zoom (method)">#zoom</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r2 ">
+  <li class="r1 ">
     <span class='object_link'><a href="MathGL/MglGraph.html#zoom_axis-instance_method" title="MathGL::MglGraph#zoom_axis (method)">#zoom_axis</a></span>
     <small>MathGL::MglGraph</small>
   </li>
   
 
-  <li class="r1 ">
+  <li class="r2 ">
     <span class='object_link'><a href="MathGL/MglPoint.html#%7C-instance_method" title="MathGL::MglPoint#| (method)">#|</a></span>
     <small>MathGL::MglPoint</small>
   </li>

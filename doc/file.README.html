@@ -17,7 +17,7 @@
 <script type="text/javascript" charset="utf-8">
   hasFrames = window.top.frames.main ? true : false;
   relpath = '';
-  framesUrl = "frames.html#!" + escape(window.location.href);
+  framesUrl = "frames.html#!file.README.html";
 </script>
 
 
@@ -86,17 +86,17 @@
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_ruby'>ruby</span> <span class='id identifier rubyid_setup'>setup</span><span class='period'>.</span><span class='id identifier rubyid_rb'>rb</span> <span class='id identifier rubyid_config'>config</span> <span class='op'>-</span><span class='op'>-</span> <span class='op'>-</span><span class='op'>-</span><span class='id identifier rubyid_with'>with</span><span class='op'>-</span><span class='id identifier rubyid_mathgl'>mathgl</span><span class='op'>-</span><span class='id identifier rubyid_dir'>dir</span><span class='op'>=</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>usr</span><span class='regexp_end'>/local</span></span>
 <span class='id identifier rubyid_ruby'>ruby</span> <span class='id identifier rubyid_setup'>setup</span><span class='period'>.</span><span class='id identifier rubyid_rb'>rb</span> <span class='id identifier rubyid_setup'>setup</span>
 <span class='id identifier rubyid_ruby'>ruby</span> <span class='id identifier rubyid_setup'>setup</span><span class='period'>.</span><span class='id identifier rubyid_rb'>rb</span> <span class='id identifier rubyid_install'>install</span>
-</code></pre>
-
-<p>Or install with gem:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_mathgl'>mathgl</span> <span class='op'>-</span><span class='op'>-</span> <span class='op'>-</span><span class='op'>-</span><span class='id identifier rubyid_with'>with</span><span class='op'>-</span><span class='id identifier rubyid_mathgl'>mathgl</span><span class='op'>-</span><span class='id identifier rubyid_dir'>dir</span><span class='op'>=</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>usr</span><span class='regexp_end'>/local</span></span>
 </code></pre></li>
 </ol>
 
+<p>Or install with gem:</p>
+
+<pre class="code ruby"><code class="ruby">    <span class='id identifier rubyid_gem'>gem</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_mathgl'>mathgl</span> <span class='op'>-</span><span class='op'>-</span> <span class='op'>-</span><span class='op'>-</span><span class='id identifier rubyid_with'>with</span><span class='op'>-</span><span class='id identifier rubyid_mathgl'>mathgl</span><span class='op'>-</span><span class='id identifier rubyid_dir'>dir</span><span class='op'>=</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>usr</span><span class='regexp_end'>/local</span></span>
+</code></pre>
+
 <h2>Usage</h2>
 
-<p>Write to PNG</p>
+<p>Write a plot to PNG file:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>mathgl</span><span class='tstring_end'>&#39;</span></span>
 
@@ -114,7 +114,7 @@
 <span class='id identifier rubyid_gr'>gr</span><span class='period'>.</span><span class='id identifier rubyid_write_png'>write_png</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>test.png</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='kw'>false</span><span class='rparen'>)</span>
 </code></pre>
 
-<p>Qt window:</p>
+<p>Display a plot on Qt window:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>mathgl</span><span class='tstring_end'>&#39;</span></span>
 
@@ -143,9 +143,9 @@
 </div></div>
 
     <div id="footer">
-  Generated on Tue Oct 29 09:19:21 2013 by
+  Generated on Sat May  9 20:24:45 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.2 (ruby-2.0.0).
+  0.8.7.6 (ruby-2.2.2).
 </div>
 
   </body>
