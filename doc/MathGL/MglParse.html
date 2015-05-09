@@ -17,7 +17,7 @@
 <script type="text/javascript" charset="utf-8">
   hasFrames = window.top.frames.main ? true : false;
   relpath = '../';
-  framesUrl = "../frames.html#!" + escape(window.location.href);
+  framesUrl = "../frames.html#!MathGL/MglParse.html";
 </script>
 
 
@@ -94,7 +94,7 @@
   
   
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">lib/mathgl/libdoc_parse_en.rb</dd>
+    <dd class="r2 last">../lib/mathgl/doc/libdoc_parse_en.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -177,6 +177,30 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#allow_dll_call-instance_method" title="#allow_dll_call (instance method)">- (nil) <strong>allow_dll_call</strong>(a) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Allow to parse load command or not.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#allow_file_io-instance_method" title="#allow_file_io (instance method)">- (nil) <strong>allow_file_io</strong>(a) </a>
     
 
@@ -216,7 +240,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Allow to parse &#39;setsize&#39; command or not.</p>
+<p>Allow to parse setsize command or not.</p>
 </div></span>
   
 </li>
@@ -336,7 +360,8 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Function delete all variables in this parser.</p>
+<p>Function delete all variables and reset list of commands to default one in
+this parser.</p>
 </div></span>
   
 </li>
@@ -360,7 +385,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Function delete the variable specified by its name or by its pointer.</p>
+<p>Function delete the variable with given name.</p>
 </div></span>
   
 </li>
@@ -627,7 +652,7 @@ symbol.</p>
 57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mathgl/libdoc_parse_en.rb', line 56</span>
+      <pre class="code"><span class="info file"># File '../lib/mathgl/doc/libdoc_parse_en.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_param'>add_param</span>
 <span class='kw'>end</span></pre>
@@ -639,7 +664,7 @@ symbol.</p>
       <div class="method_details ">
   <h3 class="signature " id="add_var-instance_method">
   
-    - (<tt><span class='object_link'><a href="MglVar.html" title="MathGL::MglVar (class)">MglVar</a></span></tt>) <strong>add_var</strong>(name) 
+    - (<tt>MglVar</tt>) <strong>add_var</strong>(name) 
   
 
   
@@ -687,7 +712,7 @@ must not delete obtained data arrays!</p>
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="MglVar.html" title="MathGL::MglVar (class)">MglVar</a></span></tt>)</span>
+        <span class='type'>(<tt>MglVar</tt>)</span>
       
       
       
@@ -708,9 +733,87 @@ must not delete obtained data arrays!</p>
 75</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mathgl/libdoc_parse_en.rb', line 74</span>
+      <pre class="code"><span class="info file"># File '../lib/mathgl/doc/libdoc_parse_en.rb', line 74</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_var'>add_var</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="allow_dll_call-instance_method">
+  
+    - (<tt>nil</tt>) <strong>allow_dll_call</strong>(a) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Allow to parse load command or not.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>a</span>
+      
+      
+        <span class='type'>(<tt>bool</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+126
+127</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '../lib/mathgl/doc/libdoc_parse_en.rb', line 126</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_allow_dll_call'>allow_dll_call</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -786,7 +889,7 @@ must not delete obtained data arrays!</p>
 118</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mathgl/libdoc_parse_en.rb', line 117</span>
+      <pre class="code"><span class="info file"># File '../lib/mathgl/doc/libdoc_parse_en.rb', line 117</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_allow_file_io'>allow_file_io</span>
 <span class='kw'>end</span></pre>
@@ -807,7 +910,7 @@ must not delete obtained data arrays!</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Allow to parse &#39;setsize&#39; command or not.</p>
+<p>Allow to parse setsize command or not.</p>
 
 
   </div>
@@ -864,7 +967,7 @@ must not delete obtained data arrays!</p>
 109</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mathgl/libdoc_parse_en.rb', line 108</span>
+      <pre class="code"><span class="info file"># File '../lib/mathgl/doc/libdoc_parse_en.rb', line 108</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_allow_set_size'>allow_set_size</span>
 <span class='kw'>end</span></pre>
@@ -944,7 +1047,7 @@ deleted after usage.</p>
 47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mathgl/libdoc_parse_en.rb', line 46</span>
+      <pre class="code"><span class="info file"># File '../lib/mathgl/doc/libdoc_parse_en.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_calc'>calc</span>
 <span class='kw'>end</span></pre>
@@ -1018,11 +1121,11 @@ deleted after usage.</p>
       <pre class="lines">
 
 
-169
-170</pre>
+178
+179</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mathgl/libdoc_parse_en.rb', line 169</span>
+      <pre class="code"><span class="info file"># File '../lib/mathgl/doc/libdoc_parse_en.rb', line 178</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cmd_desc'>cmd_desc</span>
 <span class='kw'>end</span></pre>
@@ -1096,11 +1199,11 @@ deleted after usage.</p>
       <pre class="lines">
 
 
-160
-161</pre>
+169
+170</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mathgl/libdoc_parse_en.rb', line 160</span>
+      <pre class="code"><span class="info file"># File '../lib/mathgl/doc/libdoc_parse_en.rb', line 169</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cmd_format'>cmd_format</span>
 <span class='kw'>end</span></pre>
@@ -1178,11 +1281,11 @@ setup, 16 - text/legend, 17 - data transform.</p>
       <pre class="lines">
 
 
-151
-152</pre>
+160
+161</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mathgl/libdoc_parse_en.rb', line 151</span>
+      <pre class="code"><span class="info file"># File '../lib/mathgl/doc/libdoc_parse_en.rb', line 160</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cmd_type'>cmd_type</span>
 <span class='kw'>end</span></pre>
@@ -1203,7 +1306,8 @@ setup, 16 - text/legend, 17 - data transform.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Function delete all variables in this parser.</p>
+<p>Function delete all variables and reset list of commands to default one in
+this parser.</p>
 
 
   </div>
@@ -1245,7 +1349,7 @@ setup, 16 - text/legend, 17 - data transform.</p>
 92</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mathgl/libdoc_parse_en.rb', line 91</span>
+      <pre class="code"><span class="info file"># File '../lib/mathgl/doc/libdoc_parse_en.rb', line 91</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete_all'>delete_all</span>
 <span class='kw'>end</span></pre>
@@ -1266,7 +1370,7 @@ setup, 16 - text/legend, 17 - data transform.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Function delete the variable specified by its name or by its pointer.</p>
+<p>Function delete the variable with given name.</p>
 
 
   </div>
@@ -1323,7 +1427,7 @@ setup, 16 - text/legend, 17 - data transform.</p>
 84</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mathgl/libdoc_parse_en.rb', line 83</span>
+      <pre class="code"><span class="info file"># File '../lib/mathgl/doc/libdoc_parse_en.rb', line 83</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete_var'>delete_var</span>
 <span class='kw'>end</span></pre>
@@ -1431,7 +1535,7 @@ all warnings and information will be printed in stdout.</p>
 16</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mathgl/libdoc_parse_en.rb', line 15</span>
+      <pre class="code"><span class="info file"># File '../lib/mathgl/doc/libdoc_parse_en.rb', line 15</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_execute'>execute</span>
 <span class='kw'>end</span></pre>
@@ -1443,7 +1547,7 @@ all warnings and information will be printed in stdout.</p>
       <div class="method_details ">
   <h3 class="signature " id="find_var-instance_method">
   
-    - (<tt><span class='object_link'><a href="MglVar.html" title="MathGL::MglVar (class)">MglVar</a></span></tt>) <strong>find_var</strong>(name) 
+    - (<tt>MglVar</tt>) <strong>find_var</strong>(name) 
   
 
   
@@ -1490,7 +1594,7 @@ get the data from the script. You must not delete obtained data arrays!</p>
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="MglVar.html" title="MathGL::MglVar (class)">MglVar</a></span></tt>)</span>
+        <span class='type'>(<tt>MglVar</tt>)</span>
       
       
       
@@ -1511,7 +1615,7 @@ get the data from the script. You must not delete obtained data arrays!</p>
 66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mathgl/libdoc_parse_en.rb', line 65</span>
+      <pre class="code"><span class="info file"># File '../lib/mathgl/doc/libdoc_parse_en.rb', line 65</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_find_var'>find_var</span>
 <span class='kw'>end</span></pre>
@@ -1585,11 +1689,11 @@ get the data from the script. You must not delete obtained data arrays!</p>
       <pre class="lines">
 
 
-142
-143</pre>
+151
+152</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mathgl/libdoc_parse_en.rb', line 142</span>
+      <pre class="code"><span class="info file"># File '../lib/mathgl/doc/libdoc_parse_en.rb', line 151</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_cmd_name'>get_cmd_name</span>
 <span class='kw'>end</span></pre>
@@ -1648,11 +1752,11 @@ get the data from the script. You must not delete obtained data arrays!</p>
       <pre class="lines">
 
 
-133
-134</pre>
+142
+143</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mathgl/libdoc_parse_en.rb', line 133</span>
+      <pre class="code"><span class="info file"># File '../lib/mathgl/doc/libdoc_parse_en.rb', line 142</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_cmd_num'>get_cmd_num</span>
 <span class='kw'>end</span></pre>
@@ -1676,8 +1780,9 @@ get the data from the script. You must not delete obtained data arrays!</p>
 <p>Function parses the string str and executes it by  using gr as a graphics
 plotter. Returns the value depending on an error presence in the string
 str: 0 – no error, 1 – wrong command argument(s), 2 – unknown command, 3 –
-string is too long. Optional argument pos allows to save the string
-position in the document (or file) for using for|next command.</p>
+string is too long, 4 – strings is not closed. Optional argument pos allows
+to save the string position in the document (or file) for using for|next
+command.</p>
 
 
   </div>
@@ -1763,7 +1868,7 @@ position in the document (or file) for using for|next command.</p>
 38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mathgl/libdoc_parse_en.rb', line 37</span>
+      <pre class="code"><span class="info file"># File '../lib/mathgl/doc/libdoc_parse_en.rb', line 37</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_parse'>parse</span>
 <span class='kw'>end</span></pre>
@@ -1826,7 +1931,7 @@ position in the document (or file) for using for|next command.</p>
 100</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mathgl/libdoc_parse_en.rb', line 99</span>
+      <pre class="code"><span class="info file"># File '../lib/mathgl/doc/libdoc_parse_en.rb', line 99</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_restore_once'>restore_once</span>
 <span class='kw'>end</span></pre>
@@ -1885,11 +1990,11 @@ position in the document (or file) for using for|next command.</p>
       <pre class="lines">
 
 
-125
-126</pre>
+134
+135</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/mathgl/libdoc_parse_en.rb', line 125</span>
+      <pre class="code"><span class="info file"># File '../lib/mathgl/doc/libdoc_parse_en.rb', line 134</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_stop'>stop</span>
 <span class='kw'>end</span></pre>
@@ -1903,9 +2008,9 @@ position in the document (or file) for using for|next command.</p>
 </div>
 
     <div id="footer">
-  Generated on Tue Oct 29 09:19:27 2013 by
+  Generated on Sat May  9 21:00:31 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.2 (ruby-2.0.0).
+  0.8.7.6 (ruby-2.2.2).
 </div>
 
   </body>
