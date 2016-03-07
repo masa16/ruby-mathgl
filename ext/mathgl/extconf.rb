@@ -6,10 +6,13 @@ require "mkmf"
 #  --with-mathgl-lib=path
 
 dir_config("mathgl")
-exit unless have_header("mgl2/type.h")
-exit unless have_header("mgl2/data.h")
-exit unless have_header("mgl2/mgl.h")
-exit unless have_library("mgl")
+# check C++ header
+with_cflags("-x c++ -lstdc++") do
+  exit unless have_header("mgl2/type.h")
+  exit unless have_header("mgl2/data.h")
+  exit unless have_header("mgl2/mgl.h")
+  exit unless have_library("mgl")
+end
 $objs = ["mathgl.o"]
 if have_header("mgl2/qt.h") && have_library("mgl-qt")
   $objs << "qt.o"
