@@ -61,6 +61,12 @@ Display a plot on Qt window:
     qt = MathGL::MglQT.new(&prc)
     qt.run
 
+## Version
+
+- MathGL 2.3.3
+- Ruby 2.3.0
+- CentOS 7.2
+
 ## Contributing
 
 1. Fork it
